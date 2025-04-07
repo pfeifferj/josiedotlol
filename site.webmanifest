@@ -1,6 +1,6 @@
 {
-    "name": "",
-    "short_name": "",
+    "name": "Josephine Pfeiffer",
+    "short_name": "josie.lol",
     "icons": [
         {
             "src": "/android-chrome-96x96.png",
@@ -8,7 +8,9 @@
             "type": "image/png"
         }
     ],
-    "theme_color": "#ffffff",
-    "background_color": "#ffffff",
+    "start_url": "/",
+    "scope": "/",
+    "theme_color": "#bb86fc",
+    "background_color": "#121212",
     "display": "standalone"
 }

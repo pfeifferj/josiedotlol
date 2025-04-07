@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Offline - josie.lol</title>
+    
+    <link rel="icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+
+    <!-- Load IBM Plex Mono from Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    
+    <style>
+      body {
+        background-color: #121212;
+        color: #ffffff;
+        font-family: "IBM Plex Mono", monospace;
+        margin: 0;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+      }
+      
+      .terminal {
+        max-width: 600px;
+        width: 100%;
+      }
+      
+      .josie {
+        color: #bb86fc;
+      }
+      
+      a {
+        color: #bb86fc;
+        text-decoration: none;
+      }
+      
+      a:hover {
+        text-decoration: underline;
+      }
+      
+      /* Blinking cursor effect */
+      .cursor {
+        display: inline-block;
+        width: 10px;
+        height: 20px;
+        background-color: #bb86fc;
+        animation: blink 1s step-end infinite;
+        margin-left: 4px;
+      }
+      
+      @keyframes blink {
+        0%, 100% { opacity: 1; }
+        50% { opacity: 0; }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="terminal">
+      <p>❯ ping josie.lol</p>
+      <p>PING josie.lol: 56 data bytes</p>
+      <p>Request timeout for icmp_seq 0</p>
+      <p>Request timeout for icmp_seq 1</p>
+      <p>Request timeout for icmp_seq 2</p>
+      <p><span class="josie">Error:</span> Network connection unavailable</p>
+      <p>❯ echo "You are currently offline. Please reconnect to view this page."<span class="cursor"></span></p>
+      <p style="margin-top: 30px;">
+        <a href="/">Try again</a> when you're back online.
+      </p>
+    </div>
+  </body>
+</html> 

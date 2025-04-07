@@ -1,0 +1,205 @@
+/* Only keep specialized styles that can't be easily replaced with Tailwind */
+
+/* Base element styling */
+a,
+p {
+  font-family: "IBM Plex Mono", monospace;
+}
+span {
+  white-space: pre-wrap;
+  font-family: "IBM Plex Mono", monospace;
+}
+
+/* Command links in terminal */
+.command-link {
+  transition: all 0.2s;
+  position: relative;
+}
+
+.command-link:hover {
+  color: #ffffff !important;
+  text-decoration: underline;
+}
+
+.command-link:active {
+  transform: translateY(1px);
+}
+
+/* Add a subtle indicator to show it's clickable */
+.command-link::before {
+  content: '▶ ';
+  font-size: 0.75em;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.command-link:hover::before {
+  opacity: 1;
+}
+
+/* Main layout */
+main {
+  display: flex;
+  gap: 2rem;
+  flex-direction: column;
+}
+
+/* For screens wider than 768px */
+@media (min-width: 768px) {
+  main {
+    flex-direction: row; /* Use row layout for wider screens */
+  }
+}
+
+/* Default styles (Light mode) */
+body {
+  background-color: #ffffff;
+  color: #000000;
+}
+
+a {
+  color: #bb86fc;
+}
+
+/* Special elements styling */
+.josie {
+  color: #bb86fc;
+}
+.josie:hover {
+  color: #000000;
+}
+.hidden-links {
+  display: none;
+}
+
+/* Show hidden links on hover */
+.show-links:hover + .hidden-links {
+  display: inline;
+}
+
+.cert-item {
+  display: inline-block;
+  padding: 2px 0;
+}
+
+.cert-item::before {
+  content: "$ ";
+  color: #bb86fc;
+  opacity: 0.7;
+}
+
+.item {
+  display: inline-block;
+  padding: 2px 0;
+}
+
+.item::before {
+  content: "$ ";
+  color: #bb86fc;
+  opacity: 0.7;
+}
+
+/* Repository display styles */
+.repo-name {
+  color: #6200ee;
+  font-weight: bold;
+}
+
+.repo-stars {
+  color: #b0a000;
+}
+
+.repo-forks {
+  color: #018786;
+}
+
+.repo-role {
+  background-color: #6200ee;
+  color: #ffffff;
+  padding: 0 4px;
+  border-radius: 3px;
+  font-weight: bold;
+}
+
+/* Tree view styling */
+.tree-dir {
+  color: #6200ee;
+  font-weight: bold;
+}
+
+.tree-title {
+  color: #6200ee;
+  font-weight: bold;
+}
+
+.tree-event {
+  color: #018786;
+}
+
+/* Dark mode overrides */
+@media (prefers-color-scheme: dark) {
+  body {
+    background-color: #121212;
+    color: #ffffff;
+  }
+  
+  a {
+    color: #bb86fc;
+  }
+  
+  .josie:hover {
+    color: #ffffff;
+  }
+  
+  .repo-name {
+    color: #bb86fc;
+  }
+  
+  .repo-stars {
+    color: #ffeb3b;
+  }
+  
+  .repo-forks {
+    color: #03dac6;
+  }
+  
+  .repo-role {
+    background-color: #bb86fc;
+    color: #121212;
+  }
+  
+  .tree-dir {
+    color: #bb86fc;
+  }
+  
+  .tree-title {
+    color: #bb86fc;
+  }
+  
+  .tree-event {
+    color: #03dac6;
+  }
+}
+
+/* Light mode specific styles */
+@media (prefers-color-scheme: light) {
+  .repo-name {
+    color: #6200ee;
+  }
+  
+  .repo-stars {
+    color: #b0a000;
+  }
+  
+  .repo-forks {
+    color: #018786;
+  }
+  
+  .tree-dir, .tree-title {
+    color: #6200ee;
+  }
+  
+  .tree-event {
+    color: #018786;
+  }
+} 
