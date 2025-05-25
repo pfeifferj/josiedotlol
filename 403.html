@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>403 forbidden - josie.lol</title>
+
+    <meta name="description" content="Access forbidden" />
+    <link rel="icon" href="/favicon.ico" />
+
+    <!-- Load IBM Plex Mono from Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/styles.css" />
+    <!-- Direct Tailwind CDN link with integrity checks disabled -->
+    <script src="https://cdn.tailwindcss.com?v=3.3.3"></script>
+    <style>
+      body {
+        background-color: #121212;
+        color: #e0e0e0;
+        font-family: 'IBM Plex Mono', monospace;
+      }
+      .josie {
+        color: #bb86fc;
+      }
+      
+      .terminal-line {
+        margin-bottom: 0.5rem;
+        line-height: 1.5;
+      }
+      
+      .terminal-prompt {
+        color: #bb86fc;
+        margin-right: 0.5rem;
+      }
+      
+      .terminal-error {
+        color: #f87171;
+      }
+      
+      .terminal-command {
+        color: #60a5fa;
+      }
+      
+      .terminal-path {
+        color: #bb86fc;
+      }
+      
+      .blink {
+        animation: cursor-blink 1.2s infinite;
+      }
+      
+      @keyframes cursor-blink {
+        0% { opacity: 1; }
+        50% { opacity: 0; }
+        100% { opacity: 1; }
+      }
+    </style>
+  </head>
+  <body class="bg-[#121212] text-gray-200">
+    <main>
+      <div class="grid md:grid-cols-10 grid-cols-1 justify-start gap-0 max-w-5xl mx-auto">
+        <div class="p-2 w-full md:col-span-10 col-span-1 mt-4 mb-1">
+          <span class="inline-block px-2 py-1 mb-1 rounded bg-opacity-5 bg-purple-500">❯ cat <span class="josie">/var/www/html/restricted-resource.md</span></span>
+          <div class="flex items-center justify-between">
+            <h1 class="text-xl font-bold">
+              <a href="/" class="text-purple-500 dark:text-purple-400 no-underline transition-colors duration-200 hover:text-white hover:underline">
+                <span class="josie">josie.lol</span> <span>/</span> 403
+              </a>
+            </h1>
+          </div>
+        </div>
+        
+        <hr class="border-gray-700 dark:border-gray-600 w-full col-span-full md:col-span-10 mx-0 my-1">
+
+        <div class="p-2 w-full md:col-span-10 col-span-1 mb-1">
+          <div class="pl-2 py-8">
+            <div class="terminal-line"><span class="terminal-error">cat: Permission denied</span></div>
+            <div class="terminal-line mt-4"><span class="terminal-prompt">❯</span> <span class="terminal-command">ls</span> -la <span class="terminal-path">/var/www/html/restricted-resource.md</span></div>
+            <div class="terminal-line">-rw------- 1 root root 1337 Aug 5 2024 /var/www/html/restricted-resource.md</div>
+            <div class="terminal-line mt-4"><span class="terminal-prompt">❯</span> <span class="terminal-command">sudo</span> cat <span class="terminal-path">/var/www/html/restricted-resource.md</span></div>
+            <div class="terminal-line">[sudo] password for <span class="josie">user</span>: </div>
+            <div class="terminal-line terminal-error">Sorry, user is not in the sudoers file. This incident will be reported.</div>
+            <div class="terminal-line mt-4"><span class="terminal-prompt">❯</span> <span class="terminal-command">grep</span> "restricted-resource" <span class="terminal-path">/var/log/httpd/access.log</span> | <span class="terminal-command">tail</span> -n 1</div>
+            <div class="terminal-line terminal-error">::1 - - [05/Aug/2024:14:33:21 +0200] "GET /restricted-resource.md HTTP/1.1" 403 2715 "-" "Mozilla/5.0"</div>
+            <div class="terminal-line mt-4"><span class="terminal-prompt">❯</span> <span class="terminal-command">echo</span> "HTTP 403 - Forbidden. You don't have permission to access this resource."</div>
+            <div class="terminal-line">HTTP 403 - Forbidden. You don't have permission to access this resource.</div>
+            <div class="terminal-line mt-4"><span class="terminal-prompt">❯</span><span class="blink">▋</span></div>
+            
+            <div class="mt-8 mb-2 text-center">
+              <a href="/" class="inline-block px-4 py-2 bg-purple-900 hover:bg-purple-800 text-white rounded border border-purple-700 transition-colors duration-200 mx-2">Return to Homepage</a>
+              <a href="javascript:window.history.back();" class="inline-block px-4 py-2 bg-gray-800 hover:bg-gray-700 text-purple-400 rounded border border-gray-700 transition-colors duration-200 mx-2">Go Back</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </body>
+</html> 

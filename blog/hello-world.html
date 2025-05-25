@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Hello, Blog World! - josie.lol</title>
+
+    <meta name="description" content="The inaugural post for my new blog" />
+    <meta name="author" content="Josephine Pfeiffer" />
+    <link rel="icon" href="/favicon.ico" />
+
+    <!-- Open Graph / Social Media Meta Tags -->
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://josie.lol/blog/hello-world.html" />
+    <meta property="og:title" content="Hello, Blog World! - josie.lol" />
+    <meta property="og:description" content="The inaugural post for my new blog" />
+    <meta property="article:published_time" content="2025-06-01T12:00:00Z" />
+    <meta property="article:author" content="Josephine Pfeiffer" />
+    <meta property="article:tag" content="blog, introduction, markdown, static-site, containers" />
+
+    <!-- Twitter Card Tags -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Hello, Blog World! - josie.lol" />
+    <meta name="twitter:description" content="The inaugural post for my new blog" />
+
+    <!-- Load IBM Plex Mono from Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/styles.css" />
+    <!-- Direct Tailwind CDN link with integrity checks disabled -->
+    <script src="https://cdn.tailwindcss.com?v=3.3.3"></script>
+
+    <style>
+      body {
+        background-color: #121212;
+        color: #e0e0e0;
+        font-family: 'IBM Plex Mono', monospace;
+      }
+      .josie {
+        color: #bb86fc;
+      }
+      /* Blog post specific styles */
+      .blog-content {
+        line-height: 1.7;
+        font-family: 'IBM Plex Mono', monospace;
+        counter-reset: figure;  /* Initialize figure counter */
+      }
+      .blog-content h1 {
+        font-size: 1.75rem;
+        font-weight: bold;
+        margin-top: 2rem;
+        margin-bottom: 1rem;
+        color: #bb86fc;
+      }
+      .blog-content h2 {
+        font-size: 1.5rem;
+        font-weight: bold;
+        margin-top: 1.5rem;
+        margin-bottom: 0.75rem;
+        color: #bb86fc;
+      }
+      .blog-content h3 {
+        font-size: 1.25rem;
+        font-weight: bold;
+        margin-top: 1.25rem;
+        margin-bottom: 0.5rem;
+        color: #9e71da;
+      }
+      .blog-content p {
+        margin-bottom: 1rem;
+      }
+      .blog-content ul, .blog-content ol {
+        margin-bottom: 1rem;
+        margin-left: 2rem;
+      }
+      .blog-content ul {
+        list-style-type: disc;
+      }
+      .blog-content ol {
+        list-style-type: decimal;
+      }
+      .blog-content code {
+        font-family: 'IBM Plex Mono', monospace;
+        padding: 0.2rem 0.4rem;
+        background-color: rgba(187, 134, 252, 0.1);
+        border-radius: 0.25rem;
+      }
+      .blog-content pre {
+        background-color: #1a1a1a;
+        padding: 1rem;
+        border-radius: 0.25rem;
+        overflow-x: auto;
+        margin-bottom: 1rem;
+        border-left: 4px solid #bb86fc;
+        position: relative;
+      }
+      /* Command prompt style header to code blocks */
+      .blog-content pre::before {
+        content: attr(data-prompt);
+        position: absolute;
+        top: 0;
+        left: 0;
+        color: #bb86fc;
+        font-weight: bold;
+        padding: 0.25rem 0.5rem;
+        background-color: rgba(187, 134, 252, 0.1);
+        border-radius: 0.25rem 0 0.25rem 0;
+        font-size: 0.8rem;
+        z-index: 1;
+      }
+      /* Copy button styling */
+      .copy-button {
+        position: absolute;
+        top: 0.5rem;
+        right: 0.5rem;
+        padding: 0.25rem 0.5rem;
+        background-color: rgba(187, 134, 252, 0.1);
+        border: 1px solid #bb86fc;
+        border-radius: 0.25rem;
+        color: #bb86fc;
+        font-size: 0.8rem;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        z-index: 2;
+      }
+      .copy-button:hover {
+        background-color: rgba(187, 134, 252, 0.2);
+        color: #ffffff;
+      }
+      .copy-button.copied {
+        background-color: rgba(76, 175, 80, 0.2);
+        border-color: #4caf50;
+        color: #4caf50;
+      }
+      .blog-content pre code {
+        background-color: transparent;
+        padding: 0;
+        padding-top: 2rem;
+        display: block;
+        color: #e0e0e0;
+        line-height: 1.5;
+        white-space: pre;
+      }
+      /* Language-specific styling for code blocks */
+      .blog-content pre.language-bash code, 
+      .blog-content pre code.language-bash,
+      .blog-content pre code.no-language {
+        color: #e0e0e0;
+      }
+      /* Other language styling */
+      .blog-content pre.language-javascript code,
+      .blog-content pre code.language-javascript {
+        color: #f0db4f; /* Yellowish for JS */
+      }
+      
+      /* Additional language styling */
+      /* Python */
+      .blog-content pre.language-python code,
+      .blog-content pre code.language-python {
+        color: #4B8BBE; /* Python blue */
+      }
+      
+      /* Go */
+      .blog-content pre.language-go code,
+      .blog-content pre code.language-go {
+        color: #00ADD8; /* Go blue */
+      }
+      
+      /* Rust */
+      .blog-content pre.language-rust code,
+      .blog-content pre code.language-rust {
+        color: #DEA584; /* Rust orange */
+      }
+      
+      /* TypeScript */
+      .blog-content pre.language-typescript code,
+      .blog-content pre code.language-typescript {
+        color: #3178C6; /* TypeScript blue */
+      }
+      
+      /* HTML */
+      .blog-content pre.language-html code,
+      .blog-content pre code.language-html {
+        color: #E34C26; /* HTML orange */
+      }
+      
+      /* CSS */
+      .blog-content pre.language-css code,
+      .blog-content pre code.language-css {
+        color: #2965F1; /* CSS blue */
+      }
+      
+      /* JSON */
+      .blog-content pre.language-json code,
+      .blog-content pre code.language-json {
+        color: #A1B3C3; /* JSON light blue */
+      }
+      
+      /* YAML */
+      .blog-content pre.language-yaml code,
+      .blog-content pre code.language-yaml {
+        color: #CB794B; /* YAML orange-brown */
+      }
+      
+      /* Dockerfile */
+      .blog-content pre.language-dockerfile code,
+      .blog-content pre code.language-dockerfile {
+        color: #0db7ed; /* Docker blue */
+      }
+      
+      /* Markdown */
+      .blog-content pre.language-markdown code,
+      .blog-content pre code.language-markdown {
+        color: #b48ead; /* Markdown purple */
+      }
+      
+      /* Shell */
+      .blog-content pre.language-sh code,
+      .blog-content pre code.language-sh {
+        color: #d3d3d3; /* Light gray for shell */
+      }
+      
+      /* SQL */
+      .blog-content pre.language-sql code,
+      .blog-content pre code.language-sql {
+        color: #E97627; /* SQL orange */
+      }
+      
+      /* Style block quotes */
+      .blog-content blockquote {
+        border-left: 4px solid #bb86fc;
+        padding-left: 1rem;
+        font-style: italic;
+        margin-bottom: 1rem;
+        background-color: rgba(187, 134, 252, 0.05);
+        padding: 0.5rem 1rem;
+        border-radius: 0.25rem;
+      }
+      /* Add white background for PNG images */
+      .blog-content img[src$=".png"] {
+        background-color: white;
+        padding: 0.5rem;
+        border-radius: 0.25rem;
+        max-width: 100%;
+        height: auto;
+      }
+      
+      /* Center images and make them responsive */
+      .blog-content img {
+        display: block;
+        margin: 1.5rem auto;
+        max-width: 100%;
+        height: auto;
+      }
+      
+      /* Style for the paragraph that contains an image - center it */
+      .blog-content p:has(img) {
+        text-align: center;
+        margin: 2rem 0;
+      }
+      
+      /* Container for image captions to ensure centering */
+      .blog-content p:has(img) {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      
+      /* Style alt text captions with figure numbering */
+      .blog-content .caption,
+      .blog-content figcaption,
+      .blog-content .image-caption {
+        font-size: 0.9rem;
+        font-style: italic;
+        color: #9e71da;
+        margin-top: 0.5rem;
+        margin-bottom: 2rem;
+        padding: 0.5rem;
+        background-color: rgba(187, 134, 252, 0.05);
+        border-radius: 0.25rem;
+        display: inline-block;
+        text-align: center;
+        counter-increment: figure;  /* Increment figure counter */
+      }
+      
+      /* Add "Figure X: " before each caption */
+      .blog-content .caption::before,
+      .blog-content figcaption::before,
+      .blog-content .image-caption::before {
+        content: "Figure " counter(figure) ": ";
+        font-weight: bold;
+      }
+      
+      .blog-content a {
+        color: #bb86fc;
+        text-decoration: none;
+        transition: color 0.2s ease;
+      }
+      .blog-content a:hover {
+        color: #ffffff;
+        text-decoration: underline;
+      }
+      /* Guest post styling */
+      .guest-post-badge {
+        background-color: rgba(76, 175, 80, 0.2);
+        color: #4caf50;
+        border: 1px solid #4caf50;
+        padding: 0.25rem 0.5rem;
+        border-radius: 0.25rem;
+        font-size: 0.75rem;
+        font-weight: bold;
+        text-transform: uppercase;
+        margin-left: 0.5rem;
+      }
+      .guest-author-bio {
+        background-color: rgba(187, 134, 252, 0.05);
+        border-left: 4px solid #bb86fc;
+        padding: 1rem;
+        margin-top: 2rem;
+        margin-bottom: 2rem;
+        border-radius: 0.25rem;
+      }
+      .guest-author-bio h3 {
+        color: #bb86fc;
+        margin-bottom: 0.5rem;
+      }
+    </style>
+  </head>
+  <body class="bg-[#121212] text-gray-200">
+    <main>
+      <div class="grid md:grid-cols-10 grid-cols-1 justify-start gap-0 max-w-5xl mx-auto">
+        <div class="p-2 w-full md:col-span-10 col-span-1 mt-4 mb-1">
+          <span class="inline-block px-2 py-1 mb-1 rounded bg-opacity-5 bg-purple-500">❯ cat <span class="josie">blog/hello-world.html</span></span>
+          <div class="flex items-center justify-between">
+            <h1 class="text-xl font-bold">
+              <a href="/blog" class="text-purple-500 dark:text-purple-400 no-underline transition-colors duration-200 hover:text-white hover:underline">
+                <span class="josie">josie.lol</span> <span>/</span> blog
+              </a>
+            </h1>
+          </div>
+        </div>
+
+        <hr class="border-gray-700 dark:border-gray-600 w-full col-span-full md:col-span-10 mx-0 my-1">
+
+        <div class="p-2 w-full md:col-span-10 col-span-1 mb-1">
+          <div class="mb-6 pl-2">
+            <h1 class="text-2xl font-bold mb-2 text-purple-400">Hello, Blog World!</h1>
+            <div class="flex flex-wrap items-center text-sm text-gray-400 mb-2">
+              <span class="mr-4">2025-06-01</span>
+              <span>by Josephine Pfeiffer</span>
+              
+            </div>
+            <div class="flex flex-wrap mt-2">
+              <span class="text-xs mr-2 mb-2 px-2 py-1 bg-purple-900 bg-opacity-30 rounded-md">blog</span><span class="text-xs mr-2 mb-2 px-2 py-1 bg-purple-900 bg-opacity-30 rounded-md">introduction</span><span class="text-xs mr-2 mb-2 px-2 py-1 bg-purple-900 bg-opacity-30 rounded-md">markdown</span><span class="text-xs mr-2 mb-2 px-2 py-1 bg-purple-900 bg-opacity-30 rounded-md">static-site</span><span class="text-xs mr-2 mb-2 px-2 py-1 bg-purple-900 bg-opacity-30 rounded-md">containers</span>
+            </div>
+          </div>
+
+          <!-- Blog content will be inserted here -->
+          <article class="blog-content pl-2">
+<p>After years of publishing on various platforms, I’ve come full circle
+and set up a self-hosted blog again! This inaugural post explains why I
+made the switch and how I built this site.</p>
+<h2 id="why-medium-isnt-great-for-readers">Why Medium Isn’t Great for
+Readers</h2>
+<p>Medium started with good intentions, but it’s become increasingly
+hostile to readers. The constant nag walls asking for subscriptions
+interrupt the reading experience. Their aggressive email marketing
+tactics and the limited number of “free” articles create artificial
+scarcity for content that I want to be freely accessible.</p>
+<p>Even worse, Medium’s reading experience has deteriorated with
+floating sidebars, sticky headers, and pop-ups that take up valuable
+screen real estate. The platform prioritizes its monetization strategy
+over reader comfort, resulting in slow page loads filled with tracking
+scripts and analytics.</p>
+<p>When readers visit a technical blog, they want the content – not a
+battle with the UI.</p>
+<h2 id="the-migration">The Migration</h2>
+<p>Migrating my blog was also a convenient chance to evaluate my
+existing content. Some posts have aged poorly and some simply don’t meet
+my quality standards anymore.</p>
+<p>Each article that made it to this blog has been reviewed, updated
+where necessary, and deemed worthy of preservation. It’s liberating to
+leave behind content that no longer serves its purpose and focus on what
+truly matters.</p>
+<h2 id="the-technical-setup">The Technical Setup</h2>
+<p>Here’s the complete structure of my site’s repository:</p>
+<pre data-prompt="bash"><code class="no-language">.
+├── Containerfile           # Multi-stage container build definition
+├── blog/                   # Markdown content and templates
+│   ├── *.md                # Blog posts in Markdown format
+│   ├── images/             # Images used in blog posts
+│   ├── index.html          # Main blog index
+│   └── template.html       # HTML template for post rendering
+├── talks/                  # Conference talks and presentations
+│   ├── *.md                # Talk descriptions and metadata
+│   ├── slides/             # PDF presentations
+│   └── index.html          # Talks listing page
+├── scripts/
+│   └── blog-build.sh       # Markdown to HTML conversion script
+├── index.html              # Homepage with interactive terminal
+├── styles.css              # Global styles
+├── sw.js                   # Service worker for offline functionality
+├── rss.xml                 # RSS feed for the blog
+└── sitemap.xml             # Sitemap for SEO</code></pre>
+<p>The full code is also available on <a
+href="https://github.com/pfeifferj/josiedotlol">GitHub</a>.</p>
+<h3 id="content-first-approach">Content-First Approach</h3>
+<p>The foundation of this blog is straightforward: content is written in
+Markdown files, which are then converted to HTML using Pandoc. This
+approach keeps the focus on writing rather than wrestling with
+formatting. The separation of content from presentation means I can
+update the site’s design without touching the articles themselves.</p>
+<p>Here’s what a typical Markdown file looks like:</p>
+<div class="sourceCode"><pre data-prompt="md" class="sourceCode md"><code class="sourceCode markdown"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> Hello, Blog World!</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="an">date:</span><span class="co"> 2025-01-05</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="an">author:</span><span class="co"> Josephine Pfeiffer</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="an">tags:</span><span class="co"> [blog, introduction, markdown, static-site, containers]</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="an">description:</span><span class="co"> The inaugural post for my new blog</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="fu"># Hello, Blog World!</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>After years of publishing on various platforms, I&#39;ve come full circle...</span></code></pre></div>
+<p>Markdown strikes the perfect balance between readability in its raw
+form and flexibility for presentation. I can include code blocks with
+syntax highlighting, images with captions, and mathematical formulas
+when needed – all without leaving the comfort of plain text.</p>
+<h3 id="multi-stage-container-build">Multi-Stage Container Build</h3>
+<p>I’ve set up a multi-stage Docker build that handles the conversion
+process efficiently:</p>
+<div class="sourceCode"><pre data-prompt="dockerfile" class="sourceCode dockerfile"><code class="sourceCode dockerfile"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Stage 1: Builder container</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="kw">FROM</span> fedora:latest <span class="kw">AS</span> builder</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Install build dependencies</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="kw">RUN</span> <span class="ex">dnf</span> install <span class="at">-y</span> pandoc <span class="kw">&amp;&amp;</span> <span class="ex">dnf</span> clean all</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Copy source files to builder</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="kw">WORKDIR</span> /build</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="kw">COPY</span> . .</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Run the blog build script to generate static HTML files</span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a><span class="kw">RUN</span> <span class="ex">./scripts/blog-build.sh</span></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Stage 2: Runtime container</span></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a><span class="kw">FROM</span> quay.io/fedora/httpd-24</span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Copy only the generated files from the builder stage</span></span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a><span class="kw">COPY</span> <span class="op">--from=builder</span> <span class="op">--chown=1001:0</span> /build /var/www/html/</span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a><span class="co"># Configure Apache httpd settings (abbreviated)</span></span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a><span class="co"># ...</span></span></code></pre></div>
+<p>The build has two stages:</p>
+<ol type="1">
+<li>A builder stage that installs Pandoc and runs the build script</li>
+<li>A runtime stage using a minimal Apache HTTPD image that serves the
+static files</li>
+</ol>
+<p>This approach results in a tiny production container that’s secure
+and fast to deploy.</p>
+<h3 id="the-build-script">The Build Script</h3>
+<p>The blog-build.sh script handles the Markdown to HTML conversion:</p>
+<div class="sourceCode"><pre data-prompt="bash" class="sourceCode bash"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Extract metadata from markdown file</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="va">title</span><span class="op">=</span><span class="va">$(</span><span class="fu">grep</span> <span class="at">-m</span> 1 <span class="st">&quot;^title:&quot;</span> <span class="st">&quot;</span><span class="va">$md_file</span><span class="st">&quot;</span> <span class="kw">|</span> <span class="fu">sed</span> <span class="st">&#39;s/^title: *//&#39;</span><span class="va">)</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="va">date</span><span class="op">=</span><span class="va">$(</span><span class="fu">grep</span> <span class="at">-m</span> 1 <span class="st">&quot;^date:&quot;</span> <span class="st">&quot;</span><span class="va">$md_file</span><span class="st">&quot;</span> <span class="kw">|</span> <span class="fu">sed</span> <span class="st">&#39;s/^date: *//&#39;</span><span class="va">)</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="va">author</span><span class="op">=</span><span class="va">$(</span><span class="fu">grep</span> <span class="at">-m</span> 1 <span class="st">&quot;^author:&quot;</span> <span class="st">&quot;</span><span class="va">$md_file</span><span class="st">&quot;</span> <span class="kw">|</span> <span class="fu">sed</span> <span class="st">&#39;s/^author: *//&#39;</span><span class="va">)</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="va">description</span><span class="op">=</span><span class="va">$(</span><span class="fu">grep</span> <span class="at">-m</span> 1 <span class="st">&quot;^description:&quot;</span> <span class="st">&quot;</span><span class="va">$md_file</span><span class="st">&quot;</span> <span class="kw">|</span> <span class="fu">sed</span> <span class="st">&#39;s/^description: *//&#39;</span><span class="va">)</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="va">tags_line</span><span class="op">=</span><span class="va">$(</span><span class="fu">grep</span> <span class="at">-m</span> 1 <span class="st">&quot;^tags:&quot;</span> <span class="st">&quot;</span><span class="va">$md_file</span><span class="st">&quot;</span> <span class="kw">|</span> <span class="fu">sed</span> <span class="st">&#39;s/^tags: *//&#39;</span><span class="va">)</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Use pandoc to convert Markdown to HTML</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="ex">pandoc</span> <span class="at">-f</span> markdown <span class="at">-t</span> html <span class="at">--no-highlight</span> <span class="st">&quot;</span><span class="va">$md_file</span><span class="st">&quot;</span> <span class="op">&gt;</span> <span class="st">&quot;</span><span class="va">$content_file</span><span class="st">&quot;</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Process images with captions</span></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span> <span class="st">&quot;</span><span class="va">$final_content_file</span><span class="st">&quot;</span> <span class="kw">|</span> <span class="fu">sed</span> <span class="at">-E</span> <span class="st">&#39;s|&lt;p&gt;&lt;img src=&quot;([^&quot;]+)&quot; alt=&quot;([^&quot;]+)&quot; /&gt;&lt;/p&gt;|&lt;figure&gt;\n  &lt;img src=&quot;\1&quot; alt=&quot;\2&quot; class=&quot;w-full rounded-md shadow-lg&quot; /&gt;\n  &lt;figcaption&gt;\2&lt;/figcaption&gt;\n&lt;/figure&gt;|g&#39;</span> <span class="op">&gt;</span> <span class="st">&quot;</span><span class="va">$image_content_file</span><span class="st">&quot;</span></span></code></pre></div>
+<p>The script extracts metadata from frontmatter, converts Markdown to
+HTML, and applies custom styling and formatting to elements like code
+blocks and images.</p>
+<p>It also handles generating the blog index and RSS feed
+automatically:</p>
+<div class="sourceCode"><pre data-prompt="bash" class="sourceCode bash"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Update the blog index</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> file <span class="kw">in</span> <span class="st">&quot;</span><span class="va">${sorted_files</span><span class="op">[@]</span><span class="va">}</span><span class="st">&quot;</span><span class="kw">;</span> <span class="cf">do</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    <span class="va">post_data</span><span class="op">=</span><span class="st">&quot;</span><span class="va">${posts</span><span class="op">[</span><span class="va">$file</span><span class="op">]</span><span class="va">}</span><span class="st">&quot;</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    <span class="va">IFS</span><span class="op">=</span><span class="st">&#39;|&#39;</span> <span class="bu">read</span> <span class="at">-r</span> <span class="va">title</span> <span class="va">date</span> <span class="va">description</span> <span class="va">tags_html_file</span> <span class="op">&lt;&lt;&lt;</span> <span class="st">&quot;</span><span class="va">$post_data</span><span class="st">&quot;</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Get tags HTML from file</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>    <span class="va">tags_html</span><span class="op">=</span><span class="va">$(</span><span class="fu">cat</span> <span class="st">&quot;</span><span class="va">$tags_html_file</span><span class="st">&quot;</span><span class="va">)</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">cat</span> <span class="op">&gt;&gt;</span> <span class="st">&quot;</span><span class="va">$temp_index</span><span class="st">&quot;</span> <span class="op">&lt;&lt; EOF</span></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="st">&lt;div class=&quot;py-4 border-b border-gray-700 dark:border-gray-600&quot;&gt;</span></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a><span class="st">  &lt;p class=&quot;text-sm text-gray-500 mb-2&quot;&gt;</span><span class="va">$date</span><span class="st">&lt;/p&gt;</span></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a><span class="st">  &lt;h2 class=&quot;text-xl mb-2&quot;&gt;</span></span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a><span class="st">    &lt;a href=&quot;</span><span class="va">$file</span><span class="st">&quot; class=&quot;text-purple-500 dark:text-purple-400 no-underline transition-colors duration-200 hover:text-black dark:hover:text-white hover:underline&quot;&gt;</span><span class="va">$title</span><span class="st">&lt;/a&gt;</span></span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a><span class="st">  &lt;/h2&gt;</span></span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a><span class="st">  &lt;p class=&quot;text-gray-300 mb-2&quot;&gt;</span><span class="va">$description</span><span class="st">&lt;/p&gt;</span></span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a><span class="st">  &lt;div class=&quot;flex flex-wrap&quot;&gt;</span></span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a><span class="st">    </span><span class="va">$tags_html</span></span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a><span class="st">  &lt;/div&gt;</span></span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a><span class="st">&lt;/div&gt;</span></span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a><span class="op">EOF</span></span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a><span class="cf">done</span></span></code></pre></div>
+<p>Another benefit of this approach is that I can always update the blog
+post template and just re-render the pages.</p>
+<h3 id="pre-commit-hooks-instead-of-ci-pipelines">Pre-Commit Hooks
+Instead of CI Pipelines</h3>
+<p>Rather than setting up complex CI/CD pipelines, I’ve implemented
+pre-commit hooks that validate and format content before it’s committed.
+These hooks:</p>
+<ul>
+<li>Check for broken links</li>
+<li>Validate Markdown syntax</li>
+<li>Ensure frontmatter is correctly formatted</li>
+<li>Run a spell checker to catch obvious typos</li>
+<li>Optimize images to keep page load times fast</li>
+</ul>
+<p>This catches issues early and ensures the repository always contains
+publish-ready content. It’s much simpler than waiting for a pipeline to
+fail after pushing changes.</p>
+<h3 id="the-beauty-of-static">The Beauty of Static</h3>
+<p>The final output is a completely static site – no database, no
+server-side processing, and no dynamic content generation. This approach
+has several advantages:</p>
+<ul>
+<li>Lightning-fast page loads</li>
+<li>Excellent security profile (no attack surface)</li>
+<li>Easy deployment (it’s just files)</li>
+<li>Minimal hosting requirements</li>
+<li>Perfect caching behavior</li>
+</ul>
+<p>Since everything is version-controlled, I have a complete history of
+changes and can easily roll back if needed.</p>
+<h2 id="looking-forward">Looking Forward</h2>
+<p>This setup gives me complete control while keeping things
+refreshingly simple. No fighting with CMS quirks, no database
+migrations, and no dependency hell – just content and code, both handled
+elegantly.</p>
+<p>Welcome to my blog – I hope you’ll find something valuable here.</p>
+          </article>
+
+          
+
+          <hr class="border-gray-700 dark:border-gray-600 w-full mx-0 my-6">
+
+          <div class="flex justify-between items-center pl-2">
+            <a href="/blog" class="text-purple-500 dark:text-purple-400 no-underline transition-colors duration-200 hover:text-white hover:underline">← back to all posts</a>
+          </div>
+        </div>
+      </div>
+    </main>
+    <script>
+      // Add copy buttons to all code blocks
+      document.addEventListener('DOMContentLoaded', function() {
+        const codeBlocks = document.querySelectorAll('.blog-content pre');
+        
+        codeBlocks.forEach(function(pre) {
+          // Create copy button
+          const copyButton = document.createElement('button');
+          copyButton.className = 'copy-button';
+          copyButton.textContent = 'Copy';
+          
+          // Add click handler
+          copyButton.addEventListener('click', function() {
+            const code = pre.querySelector('code');
+            const textToCopy = code.textContent || code.innerText;
+            
+            // Copy to clipboard
+            navigator.clipboard.writeText(textToCopy).then(function() {
+              // Show success state
+              copyButton.textContent = 'Copied!';
+              copyButton.classList.add('copied');
+              
+              // Reset after 2 seconds
+              setTimeout(function() {
+                copyButton.textContent = 'Copy';
+                copyButton.classList.remove('copied');
+              }, 2000);
+            }).catch(function(err) {
+              console.error('Failed to copy:', err);
+              copyButton.textContent = 'Error';
+              setTimeout(function() {
+                copyButton.textContent = 'Copy';
+              }, 2000);
+            });
+          });
+          
+          // Add button to code block
+          pre.appendChild(copyButton);
+        });
+      });
+    </script>
+  </body>

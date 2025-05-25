@@ -1,0 +1,34 @@
+# robots.txt for https://josie.lol
+User-agent: *
+Allow: /
+
+# Disallow AI scraping bots from accessing blog posts
+User-agent: GPTBot
+Disallow: /blog/
+
+User-agent: ChatGPT-User
+Disallow: /blog/
+
+User-agent: Google-Extended
+Disallow: /blog/
+
+User-agent: CCBot
+Disallow: /blog/
+
+User-agent: Anthropic-AI
+Disallow: /blog/
+
+User-agent: Claude-Web
+Disallow: /blog/
+
+User-agent: Cohere-AI
+Disallow: /blog/
+
+User-agent: FacebookBot
+Disallow: /blog/
+
+User-agent: PerplexityBot
+Disallow: /blog/
+
+# Sitemap location
+Sitemap: https://josie.lol/sitemap.xml

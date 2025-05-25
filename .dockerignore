@@ -1,0 +1,17 @@
+# Git files
+.git
+.gitignore
+
+# Docker files
+Containerfile
+.dockerignore
+compose.yaml
+
+# Editor config files
+.vscode
+.idea
+
+# Build artifacts and temporary files
+node_modules
+*.log
+*.tmp 

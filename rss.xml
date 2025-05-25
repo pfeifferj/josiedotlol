@@ -4,40 +4,38 @@
   <title>Josephine Pfeiffer's Publications</title>
   <link>https://josie.lol/</link>
   <description>Publications by Josephine Pfeiffer</description>
-  <lastBuildDate>Mon, 07 Apr 2025 08:30:00 +0000</lastBuildDate>
-  <atom:link href="https://josie.lol/publications.xml" rel="self" type="application/rss+xml" />
+  <lastBuildDate>Mon, 26 May 2025 11:36:33 +0200</lastBuildDate>
+  <atom:link href="https://josie.lol/rss.xml" rel="self" type="application/rss+xml" />
   
+  <!-- POSTS_START -->
   <item>
-    <title>How golden paths improve developer productivity</title>
+    <title>Hello, Blog World!</title>
+    <link>https://josie.lol/blog/hello-world.html</link>
+    <description><![CDATA[The inaugural post for my new blog]]></description>
+    <pubDate>Sun, 01 Jun 2025 00:00:00 +0200</pubDate>
+    <guid>https://josie.lol/blog/hello-world.html</guid>
+  </item>
+  <item>
+    <title>How Golden Paths improve developer productivity (via Red Hat Developer)</title>
     <link>https://developers.redhat.com/articles/2025/01/29/how-golden-paths-improve-developer-productivity</link>
-    <pubDate>Thu, 12 Jan 2025 10:00:00 +0000</pubDate>
+    <description><![CDATA[Golden Paths guide developers through recommended best practices, reducing cognitive load and accelerating delivery while maintaining quality and consistency]]></description>
+    <pubDate>Wed, 29 Jan 2025 00:00:00 +0100</pubDate>
     <guid>https://developers.redhat.com/articles/2025/01/29/how-golden-paths-improve-developer-productivity</guid>
-    <description>A deep dive into the implementation of golden paths for streamlining developer workflows.</description>
   </item>
-  
   <item>
-    <title>Unleashing the T-Rex: How Containers Sometimes Fail to Contain</title>
-    <link>https://medium.com/@josielol/unleashing-the-t-rex-how-containers-sometimes-fail-to-contain-1710b6cc7990</link>
-    <pubDate>Fri, 14 Nov 2024 14:30:00 +0000</pubDate>
-    <guid>https://medium.com/@josielol/unleashing-the-t-rex-how-containers-sometimes-fail-to-contain-1710b6cc7990</guid>
-    <description>An exploration of container escape vulnerabilities and mitigation strategies.</description>
+    <title>Unleashing the T-Rex - How Containers Sometimes Fail to Contain</title>
+    <link>https://josie.lol/blog/t-rex.html</link>
+    <description><![CDATA[An exploration of container escapes through the lens of Jurassic Park]]></description>
+    <pubDate>Mon, 23 Sep 2024 00:00:00 +0200</pubDate>
+    <guid>https://josie.lol/blog/t-rex.html</guid>
   </item>
-  
   <item>
-    <title>Achieve more with less using Red Hat Developer Hub's self-service features</title>
+    <title>Achieve more with less using Red Hat Developer Hub's self-service features (via Red Hat Developer)</title>
     <link>https://developers.redhat.com/articles/2024/03/12/achieve-more-less-using-red-hat-developer-hubs-self-service-features</link>
-    <pubDate>Wed, 23 Aug 2024 09:15:00 +0000</pubDate>
+    <description><![CDATA[Learn how Red Hat Developer Hub's self-service capabilities empower developers to provision resources, deploy applications, and manage infrastructure without waiting for IT tickets]]></description>
+    <pubDate>Tue, 12 Mar 2024 00:00:00 +0100</pubDate>
     <guid>https://developers.redhat.com/articles/2024/03/12/achieve-more-less-using-red-hat-developer-hubs-self-service-features</guid>
-    <description>How to leverage Red Hat Developer Hub's self-service capabilities to boost development team efficiency.</description>
   </item>
-  
-  <item>
-    <title>CVE-2023-6944</title>
-    <link>https://access.redhat.com/security/cve/cve-2023-6944</link>
-    <pubDate>Mon, 15 Jan 2024 16:45:00 +0000</pubDate>
-    <guid>https://access.redhat.com/security/cve/cve-2023-6944</guid>
-    <description>Security vulnerability disclosure and technical analysis of CVE-2023-6944.</description>
-  </item>
+  <!-- POSTS_END -->
   
 </channel>
-</rss> 

@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>TITLE_PLACEHOLDER - josie.lol</title>
+
+    <meta name="description" content="DESCRIPTION_PLACEHOLDER" />
+    <meta name="author" content="AUTHOR_PLACEHOLDER" />
+    <link rel="icon" href="/favicon.ico" />
+
+    <!-- Open Graph / Social Media Meta Tags -->
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://josie.lol/blog/URL_PLACEHOLDER" />
+    <meta property="og:title" content="TITLE_PLACEHOLDER - josie.lol" />
+    <meta property="og:description" content="DESCRIPTION_PLACEHOLDER" />
+    <meta property="article:published_time" content="DATE_ISO_PLACEHOLDER" />
+    <meta property="article:author" content="AUTHOR_PLACEHOLDER" />
+    <meta property="article:tag" content="TAGS_PLACEHOLDER" />
+
+    <!-- Twitter Card Tags -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="TITLE_PLACEHOLDER - josie.lol" />
+    <meta name="twitter:description" content="DESCRIPTION_PLACEHOLDER" />
+
+    <!-- Load IBM Plex Mono from Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/styles.css" />
+    <!-- Direct Tailwind CDN link with integrity checks disabled -->
+    <script src="https://cdn.tailwindcss.com?v=3.3.3"></script>
+
+    <style>
+      body {
+        background-color: #121212;
+        color: #e0e0e0;
+        font-family: 'IBM Plex Mono', monospace;
+      }
+      .josie {
+        color: #bb86fc;
+      }
+      /* Blog post specific styles */
+      .blog-content {
+        line-height: 1.7;
+        font-family: 'IBM Plex Mono', monospace;
+        counter-reset: figure;  /* Initialize figure counter */
+      }
+      .blog-content h1 {
+        font-size: 1.75rem;
+        font-weight: bold;
+        margin-top: 2rem;
+        margin-bottom: 1rem;
+        color: #bb86fc;
+      }
+      .blog-content h2 {
+        font-size: 1.5rem;
+        font-weight: bold;
+        margin-top: 1.5rem;
+        margin-bottom: 0.75rem;
+        color: #bb86fc;
+      }
+      .blog-content h3 {
+        font-size: 1.25rem;
+        font-weight: bold;
+        margin-top: 1.25rem;
+        margin-bottom: 0.5rem;
+        color: #9e71da;
+      }
+      .blog-content p {
+        margin-bottom: 1rem;
+      }
+      .blog-content ul, .blog-content ol {
+        margin-bottom: 1rem;
+        margin-left: 2rem;
+      }
+      .blog-content ul {
+        list-style-type: disc;
+      }
+      .blog-content ol {
+        list-style-type: decimal;
+      }
+      .blog-content code {
+        font-family: 'IBM Plex Mono', monospace;
+        padding: 0.2rem 0.4rem;
+        background-color: rgba(187, 134, 252, 0.1);
+        border-radius: 0.25rem;
+      }
+      .blog-content pre {
+        background-color: #1a1a1a;
+        padding: 1rem;
+        border-radius: 0.25rem;
+        overflow-x: auto;
+        margin-bottom: 1rem;
+        border-left: 4px solid #bb86fc;
+        position: relative;
+      }
+      /* Command prompt style header to code blocks */
+      .blog-content pre::before {
+        content: attr(data-prompt);
+        position: absolute;
+        top: 0;
+        left: 0;
+        color: #bb86fc;
+        font-weight: bold;
+        padding: 0.25rem 0.5rem;
+        background-color: rgba(187, 134, 252, 0.1);
+        border-radius: 0.25rem 0 0.25rem 0;
+        font-size: 0.8rem;
+        z-index: 1;
+      }
+      /* Copy button styling */
+      .copy-button {
+        position: absolute;
+        top: 0.5rem;
+        right: 0.5rem;
+        padding: 0.25rem 0.5rem;
+        background-color: rgba(187, 134, 252, 0.1);
+        border: 1px solid #bb86fc;
+        border-radius: 0.25rem;
+        color: #bb86fc;
+        font-size: 0.8rem;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        z-index: 2;
+      }
+      .copy-button:hover {
+        background-color: rgba(187, 134, 252, 0.2);
+        color: #ffffff;
+      }
+      .copy-button.copied {
+        background-color: rgba(76, 175, 80, 0.2);
+        border-color: #4caf50;
+        color: #4caf50;
+      }
+      .blog-content pre code {
+        background-color: transparent;
+        padding: 0;
+        padding-top: 2rem;
+        display: block;
+        color: #e0e0e0;
+        line-height: 1.5;
+        white-space: pre;
+      }
+      /* Language-specific styling for code blocks */
+      .blog-content pre.language-bash code, 
+      .blog-content pre code.language-bash,
+      .blog-content pre code.no-language {
+        color: #e0e0e0;
+      }
+      /* Other language styling */
+      .blog-content pre.language-javascript code,
+      .blog-content pre code.language-javascript {
+        color: #f0db4f; /* Yellowish for JS */
+      }
+      
+      /* Additional language styling */
+      /* Python */
+      .blog-content pre.language-python code,
+      .blog-content pre code.language-python {
+        color: #4B8BBE; /* Python blue */
+      }
+      
+      /* Go */
+      .blog-content pre.language-go code,
+      .blog-content pre code.language-go {
+        color: #00ADD8; /* Go blue */
+      }
+      
+      /* Rust */
+      .blog-content pre.language-rust code,
+      .blog-content pre code.language-rust {
+        color: #DEA584; /* Rust orange */
+      }
+      
+      /* TypeScript */
+      .blog-content pre.language-typescript code,
+      .blog-content pre code.language-typescript {
+        color: #3178C6; /* TypeScript blue */
+      }
+      
+      /* HTML */
+      .blog-content pre.language-html code,
+      .blog-content pre code.language-html {
+        color: #E34C26; /* HTML orange */
+      }
+      
+      /* CSS */
+      .blog-content pre.language-css code,
+      .blog-content pre code.language-css {
+        color: #2965F1; /* CSS blue */
+      }
+      
+      /* JSON */
+      .blog-content pre.language-json code,
+      .blog-content pre code.language-json {
+        color: #A1B3C3; /* JSON light blue */
+      }
+      
+      /* YAML */
+      .blog-content pre.language-yaml code,
+      .blog-content pre code.language-yaml {
+        color: #CB794B; /* YAML orange-brown */
+      }
+      
+      /* Dockerfile */
+      .blog-content pre.language-dockerfile code,
+      .blog-content pre code.language-dockerfile {
+        color: #0db7ed; /* Docker blue */
+      }
+      
+      /* Markdown */
+      .blog-content pre.language-markdown code,
+      .blog-content pre code.language-markdown {
+        color: #b48ead; /* Markdown purple */
+      }
+      
+      /* Shell */
+      .blog-content pre.language-sh code,
+      .blog-content pre code.language-sh {
+        color: #d3d3d3; /* Light gray for shell */
+      }
+      
+      /* SQL */
+      .blog-content pre.language-sql code,
+      .blog-content pre code.language-sql {
+        color: #E97627; /* SQL orange */
+      }
+      
+      /* Style block quotes */
+      .blog-content blockquote {
+        border-left: 4px solid #bb86fc;
+        padding-left: 1rem;
+        font-style: italic;
+        margin-bottom: 1rem;
+        background-color: rgba(187, 134, 252, 0.05);
+        padding: 0.5rem 1rem;
+        border-radius: 0.25rem;
+      }
+      /* Add white background for PNG images */
+      .blog-content img[src$=".png"] {
+        background-color: white;
+        padding: 0.5rem;
+        border-radius: 0.25rem;
+        max-width: 100%;
+        height: auto;
+      }
+      
+      /* Center images and make them responsive */
+      .blog-content img {
+        display: block;
+        margin: 1.5rem auto;
+        max-width: 100%;
+        height: auto;
+      }
+      
+      /* Style for the paragraph that contains an image - center it */
+      .blog-content p:has(img) {
+        text-align: center;
+        margin: 2rem 0;
+      }
+      
+      /* Container for image captions to ensure centering */
+      .blog-content p:has(img) {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      
+      /* Style alt text captions with figure numbering */
+      .blog-content .caption,
+      .blog-content figcaption,
+      .blog-content .image-caption {
+        font-size: 0.9rem;
+        font-style: italic;
+        color: #9e71da;
+        margin-top: 0.5rem;
+        margin-bottom: 2rem;
+        padding: 0.5rem;
+        background-color: rgba(187, 134, 252, 0.05);
+        border-radius: 0.25rem;
+        display: inline-block;
+        text-align: center;
+        counter-increment: figure;  /* Increment figure counter */
+      }
+      
+      /* Add "Figure X: " before each caption */
+      .blog-content .caption::before,
+      .blog-content figcaption::before,
+      .blog-content .image-caption::before {
+        content: "Figure " counter(figure) ": ";
+        font-weight: bold;
+      }
+      
+      .blog-content a {
+        color: #bb86fc;
+        text-decoration: none;
+        transition: color 0.2s ease;
+      }
+      .blog-content a:hover {
+        color: #ffffff;
+        text-decoration: underline;
+      }
+      /* Guest post styling */
+      .guest-post-badge {
+        background-color: rgba(76, 175, 80, 0.2);
+        color: #4caf50;
+        border: 1px solid #4caf50;
+        padding: 0.25rem 0.5rem;
+        border-radius: 0.25rem;
+        font-size: 0.75rem;
+        font-weight: bold;
+        text-transform: uppercase;
+        margin-left: 0.5rem;
+      }
+      .guest-author-bio {
+        background-color: rgba(187, 134, 252, 0.05);
+        border-left: 4px solid #bb86fc;
+        padding: 1rem;
+        margin-top: 2rem;
+        margin-bottom: 2rem;
+        border-radius: 0.25rem;
+      }
+      .guest-author-bio h3 {
+        color: #bb86fc;
+        margin-bottom: 0.5rem;
+      }
+    </style>
+  </head>
+  <body class="bg-[#121212] text-gray-200">
+    <main>
+      <div class="grid md:grid-cols-10 grid-cols-1 justify-start gap-0 max-w-5xl mx-auto">
+        <div class="p-2 w-full md:col-span-10 col-span-1 mt-4 mb-1">
+          <span class="inline-block px-2 py-1 mb-1 rounded bg-opacity-5 bg-purple-500">❯ cat <span class="josie">blog/URL_PLACEHOLDER</span></span>
+          <div class="flex items-center justify-between">
+            <h1 class="text-xl font-bold">
+              <a href="/blog" class="text-purple-500 dark:text-purple-400 no-underline transition-colors duration-200 hover:text-white hover:underline">
+                <span class="josie">josie.lol</span> <span>/</span> blog
+              </a>
+            </h1>
+          </div>
+        </div>
+
+        <hr class="border-gray-700 dark:border-gray-600 w-full col-span-full md:col-span-10 mx-0 my-1">
+
+        <div class="p-2 w-full md:col-span-10 col-span-1 mb-1">
+          <div class="mb-6 pl-2">
+            <h1 class="text-2xl font-bold mb-2 text-purple-400">TITLE_PLACEHOLDER</h1>
+            <div class="flex flex-wrap items-center text-sm text-gray-400 mb-2">
+              <span class="mr-4">DATE_PLACEHOLDER</span>
+              <span>by AUTHOR_PLACEHOLDER</span>
+              GUEST_BADGE_PLACEHOLDER
+            </div>
+            <div class="flex flex-wrap mt-2">
+              TAGS_HTML_PLACEHOLDER
+            </div>
+          </div>
+
+          <!-- Blog content will be inserted here -->
+          <article class="blog-content pl-2">
+            CONTENT_PLACEHOLDER
+          </article>
+
+          GUEST_BIO_PLACEHOLDER
+
+          <hr class="border-gray-700 dark:border-gray-600 w-full mx-0 my-6">
+
+          <div class="flex justify-between items-center pl-2">
+            <a href="/blog" class="text-purple-500 dark:text-purple-400 no-underline transition-colors duration-200 hover:text-white hover:underline">← back to all posts</a>
+          </div>
+        </div>
+      </div>
+    </main>
+    <script>
+      // Add copy buttons to all code blocks
+      document.addEventListener('DOMContentLoaded', function() {
+        const codeBlocks = document.querySelectorAll('.blog-content pre');
+        
+        codeBlocks.forEach(function(pre) {
+          // Create copy button
+          const copyButton = document.createElement('button');
+          copyButton.className = 'copy-button';
+          copyButton.textContent = 'Copy';
+          
+          // Add click handler
+          copyButton.addEventListener('click', function() {
+            const code = pre.querySelector('code');
+            const textToCopy = code.textContent || code.innerText;
+            
+            // Copy to clipboard
+            navigator.clipboard.writeText(textToCopy).then(function() {
+              // Show success state
+              copyButton.textContent = 'Copied!';
+              copyButton.classList.add('copied');
+              
+              // Reset after 2 seconds
+              setTimeout(function() {
+                copyButton.textContent = 'Copy';
+                copyButton.classList.remove('copied');
+              }, 2000);
+            }).catch(function(err) {
+              console.error('Failed to copy:', err);
+              copyButton.textContent = 'Error';
+              setTimeout(function() {
+                copyButton.textContent = 'Copy';
+              }, 2000);
+            });
+          });
+          
+          // Add button to code block
+          pre.appendChild(copyButton);
+        });
+      });
+    </script>
+  </body>
+</html> 
