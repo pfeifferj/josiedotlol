@@ -5,9 +5,51 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>404 not found - josie.lol</title>
+    <meta name="robots" content="noindex, nofollow">
 
-    <meta name="description" content="Page not found" />
+    <meta name="description" content="page not found" />
     <link rel="icon" href="/favicon.ico" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://josie.lol/404" />
+    <meta name="title" property="og:title" content="404 not found - josie.lol" />
+    <meta
+      name="description"
+      property="og:description"
+      content="page not found"
+    />
+    <meta
+      name="image"
+      property="og:image"
+      content="https://josie.lol/screenshot.png"
+    />
+    <meta name="author" content="josephine pfeiffer" />
+
+    <meta
+      name="twitter:card"
+      property="twitter:card"
+      content="summary_large_image"
+    />
+    <meta
+      name="twitter:url"
+      property="twitter:url"
+      content="https://josie.lol/404"
+    />
+    <meta
+      name="twitter:title"
+      property="twitter:title"
+      content="404 not found - josie.lol"
+    />
+    <meta
+      name="twitter:description"
+      property="twitter:description"
+      content="page not found"
+    />
+    <meta
+      name="twitter:image"
+      property="twitter:image"
+      content="https://josie.lol/screenshot.png"
+    />
 
     <!-- Load IBM Plex Mono from Google Fonts -->
     <link
@@ -78,18 +120,18 @@
 
         <div class="p-2 w-full md:col-span-10 col-span-1 mb-1">
           <div class="pl-2 py-8">
-            <div class="terminal-line"><span class="terminal-error">find: No such file or directory</span></div>
+            <div class="terminal-line"><span class="terminal-error">find: no such file or directory</span></div>
             <div class="terminal-line mt-4"><span class="terminal-prompt">❯</span> <span class="terminal-command">grep</span> -r "requested-page" <span class="terminal-path">/var/www/html</span></div>
-            <div class="terminal-line"><span class="terminal-error">grep: No matches found</span></div>
+            <div class="terminal-line"><span class="terminal-error">grep: no matches found</span></div>
             <div class="terminal-line mt-4"><span class="terminal-prompt">❯</span> <span class="terminal-command">cat</span> <span class="terminal-path">/var/log/httpd/error.log</span> | <span class="terminal-command">tail</span> -n 1</div>
-            <div class="terminal-line"><span class="terminal-error">[error] [client ::1] File does not exist: /var/www/html/requested-page.html</span></div>
-            <div class="terminal-line mt-4"><span class="terminal-prompt">❯</span> <span class="terminal-command">echo</span> "HTTP 404 - Page not found. The resource you're looking for might have been removed or is temporarily unavailable."</div>
-            <div class="terminal-line">HTTP 404 - Page not found. The resource you're looking for might have been removed or is temporarily unavailable.</div>
+            <div class="terminal-line"><span class="terminal-error">[error] [client ::1] file does not exist: /var/www/html/requested-page.html</span></div>
+            <div class="terminal-line mt-4"><span class="terminal-prompt">❯</span> <span class="terminal-command">echo</span> "HTTP 404 - page not found. the resource you're looking for might have been removed or is temporarily unavailable."</div>
+            <div class="terminal-line">HTTP 404 - page not found. the resource you're looking for might have been removed or is temporarily unavailable.</div>
             <div class="terminal-line mt-4"><span class="terminal-prompt">❯</span> <span class="terminal-command">cd</span> <span class="terminal-path">/</span><span class="blink">▋</span></div>
             
             <div class="mt-8 mb-2 text-center">
-              <a href="/" class="inline-block px-4 py-2 bg-purple-900 hover:bg-purple-800 text-white rounded border border-purple-700 transition-colors duration-200 mx-2">Return to Homepage</a>
-              <a href="/blog" class="inline-block px-4 py-2 bg-gray-800 hover:bg-gray-700 text-purple-400 rounded border border-gray-700 transition-colors duration-200 mx-2">Visit Blog</a>
+              <a href="/" class="inline-block px-4 py-2 bg-purple-900 hover:bg-purple-800 text-white rounded border border-purple-700 transition-colors duration-200 mx-2">return to homepage</a>
+              <a href="/blog" class="inline-block px-4 py-2 bg-gray-800 hover:bg-gray-700 text-purple-400 rounded border border-gray-700 transition-colors duration-200 mx-2">visit blog</a>
             </div>
           </div>
         </div>

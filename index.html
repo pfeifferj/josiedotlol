@@ -87,38 +87,46 @@
       }
     </style>
     
+    <link rel="canonical" href="https://josie.lol/" />
+    <link rel="alternate" type="application/rss+xml" title="josie.lol blog RSS Feed" href="https://josie.lol/rss.xml" />
+    
     <link rel="stylesheet" href="styles.css" />
     <!-- Load Tailwind asynchronously to prevent render blocking -->
     <script defer src="https://cdn.tailwindcss.com?v=3.3.3"></script>
 
-    <!-- Schema.org Person markup -->
+    <!-- Schema.org structured data -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "Person",
-      "name": "Josephine Pfeiffer",
-      "jobTitle": "Consultant",
-      "worksFor": {
-        "@type": "Organization",
-        "name": "Red Hat"
-      },
-      "address": {
-        "@type": "PostalAddress",
-        "addressLocality": "Zurich",
-        "addressCountry": "Switzerland"
-      },
-      "email": "hi@josie.lol",
+      "@type": "WebSite",
       "url": "https://josie.lol/",
-      "sameAs": [
-        "https://medium.com/@josielol",
-        "https://github.com/pfeifferj",
-        "https://gitlab.com/users/jpfeiffe/groups",
-        "https://gitlab.com/users/josephine.pfeiffer/activity",
-        "https://www.linkedin.com/in/josephine-pfeiffer/",
-        "https://www.credly.com/users/pfeifferj"
-      ],
-      "knowsAbout": ["cloud-native", "foss", "gnu/linux", "infosec", "infrastructure", "sre", "kubernetes", "containers", "openshift", "developer-productivity", "security"],
-      "hasCredential": [
+      "name": "josie.lol",
+      "description": "Personal website and technical blog of Josephine Pfeiffer",
+      "author": {
+        "@type": "Person",
+        "name": "Josephine Pfeiffer",
+        "jobTitle": "Consultant",
+        "worksFor": {
+          "@type": "Organization",
+          "name": "Red Hat"
+        },
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Zurich",
+          "addressCountry": "Switzerland"
+        },
+        "email": "hi@josie.lol",
+        "url": "https://josie.lol/",
+        "sameAs": [
+          "https://medium.com/@josielol",
+          "https://github.com/pfeifferj",
+          "https://gitlab.com/users/jpfeiffe/groups",
+          "https://gitlab.com/users/josephine.pfeiffer/activity",
+          "https://www.linkedin.com/in/josephine-pfeiffer/",
+          "https://www.credly.com/users/pfeifferj"
+        ],
+        "knowsAbout": ["cloud-native", "foss", "gnu/linux", "infosec", "infrastructure", "sre", "kubernetes", "containers", "openshift", "developer-productivity", "security"],
+        "hasCredential": [
         {
           "@type": "EducationalOccupationalCredential",
           "name": "Google Cloud Professional Cloud Architect",
@@ -271,12 +279,13 @@
             "startDate": "2024"
           }
         }
-      ],
-      "codeRepository": [
-        "https://github.com/archlinux",
-        "https://github.com/kube-burner/kube-burner",
-        "https://github.com/backstage/backstage"
-      ]
+        ],
+        "codeRepository": [
+          "https://github.com/archlinux",
+          "https://github.com/kube-burner/kube-burner",
+          "https://github.com/backstage/backstage"
+        ]
+      }
     }
     </script>
 
@@ -529,7 +538,7 @@
             action: () => {
               document.getElementById('section-certs').classList.remove('hidden');
               document.getElementById('hr-certs').classList.remove('hidden');
-              return 'Showing certifications section';
+              return 'showing certifications section';
             }
           },
           'grep "volunteer" ~/.profile': {
@@ -537,7 +546,7 @@
             action: () => {
               document.getElementById('section-volunteer').classList.remove('hidden');
               document.getElementById('hr-volunteer').classList.remove('hidden');
-              return 'Showing volunteer experience';
+              return 'showing volunteer experience';
             }
           },
           'gh repo list': {
@@ -545,7 +554,7 @@
             action: () => {
               document.getElementById('section-repos').classList.remove('hidden');
               document.getElementById('hr-repos').classList.remove('hidden');
-              return 'Showing repositories';
+              return 'showing repositories';
             }
           },
           'clear': {
@@ -847,7 +856,7 @@
           if (command) {
             response = command.action();
           } else if (input) {
-            response = `Command not found: ${input}\nType 'help' for available commands.`;
+            response = `command not found: ${input}\ntype 'help' for available commands.`;
           }
 
           // Add response to output if any

@@ -9,6 +9,8 @@
     <meta name="description" content="An exploration of container escapes through the lens of Jurassic Park" />
     <meta name="author" content="Josephine Pfeiffer" />
     <link rel="icon" href="/favicon.ico" />
+    <link rel="canonical" href="https://josie.lol/blog/t-rex.html" />
+    <link rel="alternate" type="application/rss+xml" title="josie.lol blog RSS Feed" href="https://josie.lol/rss.xml" />
 
     <!-- Open Graph / Social Media Meta Tags -->
     <meta property="og:type" content="article" />
@@ -18,11 +20,13 @@
     <meta property="article:published_time" content="2024-09-23T12:00:00Z" />
     <meta property="article:author" content="Josephine Pfeiffer" />
     <meta property="article:tag" content="containers, security, vulnerabilities, eBPF, jurassic-park" />
+    <meta property="og:image" content="https://josie.lol/screenshot.png" />
 
     <!-- Twitter Card Tags -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Unleashing the T-Rex - How Containers Sometimes Fail to Contain - josie.lol" />
     <meta name="twitter:description" content="An exploration of container escapes through the lens of Jurassic Park" />
+    <meta name="twitter:image" content="https://josie.lol/screenshot.png" />
 
     <!-- Load IBM Plex Mono from Google Fonts -->
     <link
@@ -32,6 +36,33 @@
     <link rel="stylesheet" href="/styles.css" />
     <!-- Direct Tailwind CDN link with integrity checks disabled -->
     <script src="https://cdn.tailwindcss.com?v=3.3.3"></script>
+
+    <!-- JSON-LD structured data for blog post -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": "Unleashing the T-Rex - How Containers Sometimes Fail to Contain",
+      "description": "An exploration of container escapes through the lens of Jurassic Park",
+      "author": {
+        "@type": "Person",
+        "name": "Josephine Pfeiffer"
+      },
+      "datePublished": "2024-09-23T12:00:00Z",
+      "dateModified": "2024-09-23T12:00:00Z",
+      "publisher": {
+        "@type": "Person",
+        "name": "Josephine Pfeiffer",
+        "url": "https://josie.lol/"
+      },
+      "url": "https://josie.lol/blog/t-rex.html",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://josie.lol/blog/t-rex.html"
+      },
+      "keywords": "containers, security, vulnerabilities, eBPF, jurassic-park"
+    }
+    </script>
 
     <style>
       body {
@@ -312,7 +343,7 @@
         border-radius: 0.25rem;
         font-size: 0.75rem;
         font-weight: bold;
-        text-transform: uppercase;
+        text-transform: none;
         margin-left: 0.5rem;
       }
       .guest-author-bio {
@@ -620,7 +651,7 @@ Bypass Security Monitoring</a></li>
           // Create copy button
           const copyButton = document.createElement('button');
           copyButton.className = 'copy-button';
-          copyButton.textContent = 'Copy';
+          copyButton.textContent = 'copy';
           
           // Add click handler
           copyButton.addEventListener('click', function() {
@@ -630,19 +661,19 @@ Bypass Security Monitoring</a></li>
             // Copy to clipboard
             navigator.clipboard.writeText(textToCopy).then(function() {
               // Show success state
-              copyButton.textContent = 'Copied!';
+              copyButton.textContent = 'copied!';
               copyButton.classList.add('copied');
               
               // Reset after 2 seconds
               setTimeout(function() {
-                copyButton.textContent = 'Copy';
+                copyButton.textContent = 'copy';
                 copyButton.classList.remove('copied');
               }, 2000);
             }).catch(function(err) {
               console.error('Failed to copy:', err);
-              copyButton.textContent = 'Error';
+              copyButton.textContent = 'error';
               setTimeout(function() {
-                copyButton.textContent = 'Copy';
+                copyButton.textContent = 'copy';
               }, 2000);
             });
           });

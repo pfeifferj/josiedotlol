@@ -67,6 +67,21 @@ for md_file in $(find "$BLOG_DIR" -name "*.md" | sort -r); do
     author=$(grep -m 1 "^author:" "$md_file" | sed 's/^author: *//')
     description=$(grep -m 1 "^description:" "$md_file" | sed 's/^description: *//')
     tags_line=$(grep -m 1 "^tags:" "$md_file" | sed 's/^tags: *//')
+    og_image=$(grep -m 1 "^og_image:" "$md_file" | sed 's/^og_image: *//')
+    
+    # Generate canonical URL for this blog post
+    canonical_url="${SITE_URL}/blog/${html_filename}"
+    
+    # Set default og:image if not specified
+    if [[ -z "$og_image" ]]; then
+        # Use the terminal screenshot as default
+        og_image="${SITE_URL}/screenshot.png"
+    else
+        # If og_image is a relative path, make it absolute
+        if [[ ! "$og_image" =~ ^https?:// ]]; then
+            og_image="${SITE_URL}${og_image}"
+        fi
+    fi
     
     # Extract guest post metadata
     guest_post=$(grep -m 1 "^guest_post:" "$md_file" | sed 's/^guest_post: *//')
@@ -157,6 +172,9 @@ for md_file in $(find "$BLOG_DIR" -name "*.md" | sort -r); do
     sed -i "s|DATE_ISO_PLACEHOLDER|$date_iso|g" "$working_file"
     sed -i "s|TAGS_PLACEHOLDER|$tags_meta|g" "$working_file"
     sed -i "s|URL_PLACEHOLDER|$html_filename|g" "$working_file"
+    sed -i "s|CANONICAL_URL_PLACEHOLDER|$canonical_url|g" "$working_file"
+    sed -i "s|CANONICAL_$html_filename|$canonical_url|g" "$working_file"
+    sed -i "s|OG_IMAGE_PLACEHOLDER|$og_image|g" "$working_file"
     
     # Read the tags HTML and content files
     tags_html=$(cat "$tags_html_file")
@@ -169,14 +187,14 @@ for md_file in $(find "$BLOG_DIR" -name "*.md" | sort -r); do
     guest_bio_html=""
     
     if [[ "$guest_post" == "true" ]]; then
-        guest_badge_html='<span class="guest-post-badge">Guest Post</span>'
+        guest_badge_html='<span class="guest-post-badge">guest post</span>'
         
         if [[ ! -z "$guest_bio" ]]; then
             # Escape special characters in guest bio
             escaped_bio=$(printf '%s' "$guest_bio" | sed 's/&/\&amp;/g; s/</\&lt;/g; s/>/\&gt;/g; s/"/\&quot;/g')
-            guest_bio_html="<div class=\"guest-author-bio\"><h3>About the Guest Author</h3><p>$escaped_bio</p>"
+            guest_bio_html="<div class=\"guest-author-bio\"><h3>about the guest author</h3><p>$escaped_bio</p>"
             if [[ ! -z "$guest_link" ]]; then
-                guest_bio_html+="<p><a href=\"$guest_link\" target=\"_blank\" rel=\"noopener noreferrer\">Learn more about $author →</a></p>"
+                guest_bio_html+="<p><a href=\"$guest_link\" target=\"_blank\" rel=\"noopener noreferrer\">learn more about $author →</a></p>"
             fi
             guest_bio_html+="</div>"
         fi
@@ -203,8 +221,8 @@ for md_file in $(find "$BLOG_DIR" -name "*.md" | sort -r); do
         else
             # Skip lines with CONTENT_PLACEHOLDER if we've already processed it
             if [[ "$line" != *"CONTENT_PLACEHOLDER"* ]]; then
-                # Regular line, just copy it
-                echo "$line" >> "$final_html"
+                # Regular line, just copy it (but replace any remaining CANONICAL_URL_PLACEHOLDER)
+                echo "${line//CANONICAL_URL_PLACEHOLDER/$canonical_url}" >> "$final_html"
             fi
         fi
     done < "$working_file"
@@ -265,7 +283,7 @@ if [ -f "$INDEX_FILE" ]; then
                 badges=""
                 author_text="$author_name"
                 if [[ "$is_guest" == "true" ]]; then
-                    badges+=' <span class="guest-post-badge">Guest Post</span>'
+                    badges+=' <span class="guest-post-badge">guest post</span>'
                 fi
                 if [[ "$is_external" == "true" ]]; then
                     badges+=" · <span class=\"external-post-badge\">Published on $external_publication</span>"
@@ -563,14 +581,14 @@ for md_file in $talk_files; do
                 if [[ "$conf_cancelled" == "true" ]]; then
                     conf_entry+="<div class=\"font-semibold line-through opacity-50\">$conf_name</div>"
                     conf_entry+="<div class=\"text-sm text-gray-500 line-through opacity-50\">$conf_location ($conf_date)</div>"
-                    conf_entry+="<div class=\"text-sm text-gray-500 italic\">Cancelled</div>"
+                    conf_entry+="<div class=\"text-sm text-gray-500 italic\">cancelled</div>"
                 else
                     conf_entry+="<div class=\"font-semibold\">$conf_name</div>"
                     conf_entry+="<div class=\"text-sm text-gray-500\">$conf_location ($conf_date)</div>"
                     
                     # Add upcoming badge if conference is in the future
                     if [[ "$is_upcoming" == "true" ]]; then
-                        conf_entry+="<div class=\"text-sm\"><span class=\"inline-block px-2 py-1 bg-green-900 bg-opacity-30 text-green-400 rounded text-xs font-semibold\">UPCOMING</span></div>"
+                        conf_entry+="<div class=\"text-sm\"><span class=\"inline-block px-2 py-1 bg-green-900 bg-opacity-30 text-green-400 rounded text-xs font-semibold\">upcoming</span></div>"
                     fi
                 fi
                 
@@ -578,10 +596,10 @@ for md_file in $talk_files; do
                 if [[ "$conf_cancelled" != "true" && (! -z "$conf_slides" || ! -z "$conf_recording") ]]; then
                     conf_entry+="<div class=\"mt-1\">"
                     if [[ ! -z "$conf_slides" ]]; then
-                        conf_entry+="<a href=\"$conf_slides\" class=\"text-purple-500 dark:text-purple-400 mr-3 text-sm no-underline transition-colors duration-200 hover:text-white hover:underline\">Slides</a>"
+                        conf_entry+="<a href=\"$conf_slides\" class=\"text-purple-500 dark:text-purple-400 mr-3 text-sm no-underline transition-colors duration-200 hover:text-white hover:underline\">slides</a>"
                     fi
                     if [[ ! -z "$conf_recording" ]]; then
-                        conf_entry+="<a href=\"$conf_recording\" class=\"text-purple-500 dark:text-purple-400 text-sm no-underline transition-colors duration-200 hover:text-white hover:underline\">Recording</a>"
+                        conf_entry+="<a href=\"$conf_recording\" class=\"text-purple-500 dark:text-purple-400 text-sm no-underline transition-colors duration-200 hover:text-white hover:underline\">recording</a>"
                     fi
                     conf_entry+="</div>"
                 fi
@@ -639,7 +657,7 @@ EOF
     
     cat >> "$temp_index" << EOF
           <div class="text-base text-gray-400">
-            <p class="mb-2 font-bold">Presented at:</p>
+            <p class="mb-2 font-bold">presented at:</p>
             $conferences_html
           </div>
         </div>
