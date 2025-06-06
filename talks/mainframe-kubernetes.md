@@ -5,7 +5,7 @@ abstract: Mainframes have been declared dead more times than JavaScript framewor
 pinned: true
 conferences:
   - name: The Linux Foundation Open Source Summit North America
-    location: TBD
+    location: Denver
     date: 2025-06-24
     cancelled: true
   - name: Kubernetes Community Day Budapest
@@ -15,6 +15,10 @@ conferences:
   - name: Kubernetes Community Days Bratislava
     location: Bratislava
     date: 2025-06-06
+    slides: /talks/slides/kcd-bra-mainframe.pdf
+  - name: The Linux Foundation Open Source Summit Europe
+    location: Amsterdam, Netherlands
+    date: 2025-08-25
   - name: Container Days 
     location: Hamburg
     date: 2025-09-10
