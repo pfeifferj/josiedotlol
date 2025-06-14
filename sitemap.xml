@@ -47,6 +47,18 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://josie.lol/talks/slides/kcd-bra-mainframe.pdf</loc>
+    <lastmod>2025-01-01</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://josie.loltalks/slides/devconf-brno-karpenter.pdf</loc>
+    <lastmod>2025-06-14</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://josie.lol/talks/slides/uphill-2024-ai-dev.pdf</loc>
     <lastmod>2024-05-16</lastmod>
     <changefreq>yearly</changefreq>

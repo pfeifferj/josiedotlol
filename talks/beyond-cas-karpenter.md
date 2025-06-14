@@ -6,6 +6,7 @@ conferences:
   - name: DevConf
     location: Brno
     date: 2025-06-14
+    slides: /talks/slides/devconf-brno-karpenter.pdf
 ---
 
 Kubernetes' Cluster Autoscaler (CAS) has been the standard for dynamic scaling, but it suffers from limitations that hamper its performance in some scenarios.
