@@ -9,5 +9,5 @@ conferences:
     location: Bristol
     date: 2024-08-30
     slides: /talks/slides/bsides-brs-containers.pdf
-    recording: https://www.youtube.com/watch?v=_7R-Ha3cnuE&pp=ygUPcGZlaWZmZXIgYnNpZGVz0gcJCY0JAYcqIYzv
+    recording: https://youtu.be/_7R-Ha3cnuE
 ---

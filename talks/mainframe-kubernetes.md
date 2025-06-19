@@ -12,6 +12,7 @@ conferences:
     location: Budapest
     date: 2025-04-24
     slides: /talks/slides/kcd-bud-mainframe.pdf
+    recording: https://youtu.be/MRLQL0BNVPk
   - name: Kubernetes Community Days Bratislava
     location: Bratislava
     date: 2025-06-06

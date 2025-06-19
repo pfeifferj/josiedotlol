@@ -7,7 +7,7 @@ conferences:
     location: Bern
     date: 2024-05-16
     slides: /talks/slides/uphill-2024-ai-dev.pdf
-    recording: https://www.youtube.com/watch?v=ThKFpgDGM94&pp=ygUQZnJpZXMgdXBoaWxsY29uZg%3D%3D
+    recording: https://youtu.be/ThKFpgDGM94
   - name: Kubernetes Community Days Zurich Rejects
     location: Zurich
     date: 2024-06-13
