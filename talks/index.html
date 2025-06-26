@@ -100,7 +100,7 @@
           <p class="text-gray-300 mb-4">Kubernetes' Cluster Autoscaler (CAS) has been the standard for dynamic scaling, but it suffers from limitations that hamper its performance in some scenarios. This talk introduces Karpenter, a modern alternative designed for real-time, workload-specific node provisioning.</p>
           <div class="text-base text-gray-400">
             <p class="mb-2 font-bold">presented at:</p>
-            <div class="mb-3"><div class="font-semibold">DevConf</div><div class="text-sm text-gray-500">Brno (2025-06-14)</div><div class="mt-1"><a href="/talks/slides/devconf-brno-karpenter.pdf" class="text-purple-500 dark:text-purple-400 mr-3 text-sm no-underline transition-colors duration-200 hover:text-white hover:underline">slides</a></div></div>
+            <div class="mb-3"><div class="font-semibold">DevConf</div><div class="text-sm text-gray-500">Brno (2025-06-14)</div><div class="mt-1"><a href="/talks/slides/devconf-brno-karpenter.pdf" class="text-purple-500 dark:text-purple-400 mr-3 text-sm no-underline transition-colors duration-200 hover:text-white hover:underline">slides</a><a href="https://youtu.be/YDyalb99OZc" class="text-purple-500 dark:text-purple-400 text-sm no-underline transition-colors duration-200 hover:text-white hover:underline">recording</a></div></div>
           </div>
         </div>
         <div class="py-6 border-b border-gray-700 dark:border-gray-600">
@@ -142,5 +142,19 @@
         </div>
       </div>
     </main>
+    <script>
+      // Make external links open in new tabs
+      document.addEventListener('DOMContentLoaded', function() {
+        const allLinks = document.querySelectorAll('a');
+        allLinks.forEach(function(link) {
+          const href = link.getAttribute('href');
+          // Check if it's an external link (starts with http/https and not josie.lol)
+          if (href && (href.startsWith('http://') || href.startsWith('https://')) && !href.includes('josie.lol')) {
+            link.setAttribute('target', '_blank');
+            link.setAttribute('rel', 'noopener noreferrer');
+          }
+        });
+      });
+    </script>
   </body>
 </html> 

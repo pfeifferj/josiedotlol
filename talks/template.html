@@ -57,5 +57,19 @@
         </div>
       </div>
     </main>
+    <script>
+      // Make external links open in new tabs
+      document.addEventListener('DOMContentLoaded', function() {
+        const allLinks = document.querySelectorAll('a');
+        allLinks.forEach(function(link) {
+          const href = link.getAttribute('href');
+          // Check if it's an external link (starts with http/https and not josie.lol)
+          if (href && (href.startsWith('http://') || href.startsWith('https://')) && !href.includes('josie.lol')) {
+            link.setAttribute('target', '_blank');
+            link.setAttribute('rel', 'noopener noreferrer');
+          }
+        });
+      });
+    </script>
   </body>
 </html> 
