@@ -65,7 +65,7 @@
     <!-- Preload IBM Plex Mono font files to avoid layout shifts -->
     <link rel="preload" href="https://fonts.gstatic.com/s/ibmplexmono/v19/-F63fjptAgt5VM-kVkqdyU8n1i8q1w.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="https://fonts.gstatic.com/s/ibmplexmono/v19/-F6qfjptAgt5VM-kVkqdyU8n3E8d33Q.woff2" as="font" type="font/woff2" crossorigin>
-    
+
     <!-- Font style preloaded with font-display: swap to prevent render blocking -->
     <style>
       /* Inline critical font styles */
@@ -86,10 +86,10 @@
         unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
       }
     </style>
-    
+
     <link rel="canonical" href="https://josie.lol/" />
     <link rel="alternate" type="application/rss+xml" title="josie.lol blog RSS Feed" href="https://josie.lol/rss.xml" />
-    
+
     <link rel="stylesheet" href="styles.css" />
     <!-- Load Tailwind asynchronously to prevent render blocking -->
     <script defer src="https://cdn.tailwindcss.com?v=3.3.3"></script>
@@ -105,7 +105,7 @@
       "author": {
         "@type": "Person",
         "name": "Josephine Pfeiffer",
-        "jobTitle": "Consultant",
+        "jobTitle": "Senior Software Engineer",
         "worksFor": {
           "@type": "Organization",
           "name": "Red Hat"
@@ -120,8 +120,8 @@
         "sameAs": [
           "https://medium.com/@josielol",
           "https://github.com/pfeifferj",
-          "https://gitlab.com/users/jpfeiffe/groups",
-          "https://gitlab.com/users/josephine.pfeiffer/activity",
+          "https://gitlab.com/users/josie/groups",
+          "https://gitlab.com/users/josie/activity",
           "https://www.linkedin.com/in/josephine-pfeiffer/",
           "https://www.credly.com/users/pfeifferj"
         ],
@@ -294,7 +294,7 @@
       :root {
         color-scheme: light dark;
       }
-      
+
       body {
         font-family: 'IBM Plex Mono', monospace;
         background-color: #121212;
@@ -303,46 +303,46 @@
         margin: 0;
         padding: 0;
       }
-      
+
       main {
         max-width: 800px;
         margin: 0 auto;
         padding: 2rem 1rem;
       }
-      
+
       .josie {
         color: #bb86fc;
       }
-      
+
       hr {
         border-color: rgba(128, 128, 128, 0.3);
       }
-      
+
       input {
         color: inherit;
         font-family: inherit;
       }
-      
+
       a {
         color: #bb86fc;
         text-decoration: none;
       }
-      
+
       a:hover {
         text-decoration: underline;
         color: white;
       }
-      
+
       .hidden-links {
         display: none;
       }
-      
+
       /* Pre-allocate space for hidden sections to prevent layout shifts */
       #section-certs, #section-volunteer, #section-repos {
         min-height: 0;
         transition: min-height 0.3s ease-out;
       }
-      
+
       #section-certs.hidden, #section-volunteer.hidden, #section-repos.hidden {
         visibility: hidden;
         height: 0;
@@ -371,11 +371,9 @@
             <div class="text-center md:text-left">
 				    <span><span class="josie">hi</span>@<span class="josie">josie.lol</span></span><br />
 				    <span>-------------</span><br />
-				    <span>senior consultant @ red hat</span><br />
-				    <span>zurich, switzerland</span><br />
-				    <span>cloud-native, foss, gnu/linux, infosec, infra, sre</span
-				    ><br />
-				    <span><a href="/blog" class="text-purple-500 dark:text-purple-400 no-underline transition-colors duration-200 hover:text-black dark:hover:text-white hover:underline">blog</a>, <a href="/talks" class="text-purple-500 dark:text-purple-400 no-underline transition-colors duration-200 hover:text-black dark:hover:text-white hover:underline">talks</a>, <a rel="noopener noreferrer" target="_blank" href="#" class="show-links text-purple-500 dark:text-purple-400 no-underline transition-colors duration-200 hover:text-black dark:hover:text-white hover:underline">code</a><span class="hidden-links">(<a rel="noopener noreferrer" target="_blank" href="https://github.com/pfeifferj" class="text-purple-500 dark:text-purple-400 no-underline transition-colors duration-200 hover:text-black dark:hover:text-white hover:underline">github</a>, <a rel="noopener noreferrer" target="_blank" href="https://gitlab.com/users/jpfeiffe/groups" class="text-purple-500 dark:text-purple-400 no-underline transition-colors duration-200 hover:text-black dark:hover:text-white hover:underline">red hat gitlab</a>)</span>, <a rel="noopener noreferrer" target="_blank" href="https://www.linkedin.com/in/josephine-pfeiffer/" class="text-purple-500 dark:text-purple-400 no-underline transition-colors duration-200 hover:text-black dark:hover:text-white hover:underline">linkedin</a>, <a rel="noopener noreferrer" target="_blank" href="https://bsky.app/profile/josie.lol" class="text-purple-500 dark:text-purple-400 no-underline transition-colors duration-200 hover:text-black dark:hover:text-white hover:underline">bluesky</a></span><br />
+				    <span>senior software engineer (rust/c) @ red hat</span><br />
+				    <span>networkmanager, nmstate, paru, alpm.rs</span><br />
+				    <span><a href="/blog" class="text-purple-500 dark:text-purple-400 no-underline transition-colors duration-200 hover:text-black dark:hover:text-white hover:underline">blog</a>, <a href="/talks" class="text-purple-500 dark:text-purple-400 no-underline transition-colors duration-200 hover:text-black dark:hover:text-white hover:underline">talks</a>, <a rel="noopener noreferrer" target="_blank" href="#" class="show-links text-purple-500 dark:text-purple-400 no-underline transition-colors duration-200 hover:text-black dark:hover:text-white hover:underline">code</a><span class="hidden-links">(<a rel="noopener noreferrer" target="_blank" href="https://github.com/pfeifferj" class="text-purple-500 dark:text-purple-400 no-underline transition-colors duration-200 hover:text-black dark:hover:text-white hover:underline">github</a>, <a rel="noopener noreferrer" target="_blank" href="https://gitlab.com/users/josie/groups" class="text-purple-500 dark:text-purple-400 no-underline transition-colors duration-200 hover:text-black dark:hover:text-white hover:underline">red hat gitlab</a>)</span>, <a rel="noopener noreferrer" target="_blank" href="https://www.linkedin.com/in/josephine-pfeiffer/" class="text-purple-500 dark:text-purple-400 no-underline transition-colors duration-200 hover:text-black dark:hover:text-white hover:underline">linkedin</a>, <a rel="noopener noreferrer" target="_blank" href="https://bsky.app/profile/josie.lol" class="text-purple-500 dark:text-purple-400 no-underline transition-colors duration-200 hover:text-black dark:hover:text-white hover:underline">bluesky</a>, <a rel="me noopener noreferrer" target="_blank" href="https://sofre.ch/@josie" class="text-purple-500 dark:text-purple-400 no-underline transition-colors duration-200 hover:text-black dark:hover:text-white hover:underline">fedi</a></span><br />
 				    <span><a href="mailto:hi@josie.lol" class="text-purple-500 dark:text-purple-400 no-underline transition-colors duration-200 hover:text-black dark:hover:text-white hover:underline">email</a>, <a href="https://signal.me/#eu/5dUnyeTE3jQeVMg25RUzq7ZDO9_doMLUADNs9asfo7wcIeVQJjFL_obcpG4AbWc0" rel="noopener noreferrer" target="_blank" class="text-purple-500 dark:text-purple-400 no-underline transition-colors duration-200 hover:text-black dark:hover:text-white hover:underline">signal</a></span><br />
 			    </div>
           </div>
@@ -455,7 +453,7 @@
       document.fonts.ready.then(() => {
         document.body.classList.add('fonts-loaded');
       });
-      
+
       const codeLink = document.querySelector(".show-links");
       const hiddenLinks = document.querySelector(".hidden-links");
       let timer;
@@ -509,7 +507,7 @@
                 output += `<div><span class="text-purple-500 dark:text-purple-400 cursor-pointer command-link" tabindex="0" role="button" data-command="${escapedCmd}">${cmd}</span></div><div>${commands[cmd].description}</div>`;
               }
               output += '</div>';
-              
+
               // Add a small delay to ensure the DOM is updated before adding event listeners
               setTimeout(() => {
                 // Add click event listeners to all command links
@@ -519,7 +517,7 @@
                   link.addEventListener('click', () => {
                     executeCommand(link.getAttribute('data-command'));
                   });
-                  
+
                   // Keyboard handler for enter and space
                   link.addEventListener('keydown', (e) => {
                     if (e.key === 'Enter' || e.key === ' ') {
@@ -529,7 +527,7 @@
                   });
                 });
               }, 100);
-              
+
               return output;
             }
           },
@@ -581,7 +579,7 @@
         function findCommand(input) {
           // Clean the input by trimming whitespace
           const cleanInput = input.trim();
-          
+
           // Exact match - check the exact command string
           if (commands[cleanInput]) return commands[cleanInput];
 
@@ -642,7 +640,7 @@
 
             fragment.appendChild(item);
           });
-          
+
           autocompleteDiv.appendChild(fragment);
 
           // Position the autocomplete div below the input
@@ -650,13 +648,13 @@
           const inputRect = terminalInput.getBoundingClientRect();
           const inputParent = terminalInput.parentElement;
           const parentRect = inputParent.getBoundingClientRect();
-          
+
           // Position the autocomplete to align with the input text (accounting for the prompt)
           autocompleteDiv.style.position = 'fixed';
           autocompleteDiv.style.left = `${inputRect.left}px`;
           autocompleteDiv.style.top = `${inputRect.bottom + 8}px`; // 8px gap below input
           autocompleteDiv.style.width = `${inputRect.width}px`;
-          
+
           document.body.appendChild(autocompleteDiv);
 
           // Set initial selection
@@ -711,13 +709,13 @@
         function styleTerminalLinks() {
           // Get all links in the terminal output (only standard <a> tags, not command links)
           const links = terminalOutput.querySelectorAll('a:not(.command-link)');
-          
+
           // Apply Tailwind classes to each link
           links.forEach(link => {
             // Add Tailwind classes
             link.classList.add('text-purple-500', 'dark:text-purple-400', 'no-underline', 'transition-colors', 'duration-200', 'hover:text-black', 'dark:hover:text-white', 'hover:underline');
           });
-          
+
           // Make sure command links in the terminal output have the necessary event listeners
           const commandLinks = terminalOutput.querySelectorAll('.command-link');
           commandLinks.forEach(link => {
@@ -726,7 +724,7 @@
             link.addEventListener('keydown', handleCommandLinkKeydown);
           });
         }
-        
+
         // Event handlers as separate functions to reduce duplicate code
         function handleCommandLinkClick(e) {
           const command = e.currentTarget.getAttribute('data-command');
@@ -734,7 +732,7 @@
             executeCommand(command);
           }
         }
-        
+
         function handleCommandLinkKeydown(e) {
           if (e.key === 'Enter' || e.key === ' ') {
             e.preventDefault();
@@ -747,7 +745,7 @@
 
         // Handle terminal input
         terminalInput.addEventListener('keydown', handleTerminalKeydown);
-        
+
         function handleTerminalKeydown(e) {
           // Handle autocomplete navigation with up/down arrows when autocomplete is active
           if (autocompleteDiv && (e.key === 'ArrowUp' || e.key === 'ArrowDown')) {
@@ -839,7 +837,7 @@
         // Function to execute a command
         function executeCommand(commandInput) {
           const input = commandInput.trim();
-          
+
           // Clear previous output
           terminalOutput.innerHTML = '';
 
@@ -886,7 +884,7 @@
         requestAnimationFrame(() => {
           terminalInput.focus();
         });
-        
+
         // Click handler for the page to focus terminal
         document.addEventListener('click', () => {
           terminalInput.focus();
@@ -919,7 +917,7 @@
               console.log('ServiceWorker registration failed: ', error);
             });
         };
-        
+
         if ('requestIdleCallback' in window) {
           window.requestIdleCallback(registerSW);
         } else {

@@ -4,7 +4,7 @@
   <title>Josephine Pfeiffer's Publications</title>
   <link>https://josie.lol/</link>
   <description>Publications by Josephine Pfeiffer</description>
-  <lastBuildDate>Wed, 04 Feb 2026 15:36:24 +0100</lastBuildDate>
+  <lastBuildDate>Thu, 09 Apr 2026 12:57:10 +0200</lastBuildDate>
   <atom:link href="https://josie.lol/rss.xml" rel="self" type="application/rss+xml" />
   
   <!-- POSTS_START -->
@@ -19,7 +19,7 @@
     <title>Implement a multi-architecture OpenShift cluster with s390x LPAR (via Red Hat Developer)</title>
     <link>https://developers.redhat.com/learn/openshift/implement-multi-architecture-openshift-cluster-s390x-lpar</link>
     <description><![CDATA[A learning path on implementing multi-architecture OpenShift clusters with IBM Z systems]]></description>
-    <pubDate>Wed, 04 Feb 2026 15:36:24 +0100</pubDate>
+    <pubDate>Thu, 09 Apr 2026 12:57:10 +0200</pubDate>
     <guid>https://developers.redhat.com/learn/openshift/implement-multi-architecture-openshift-cluster-s390x-lpar</guid>
   </item>
   <item>
