@@ -2,7 +2,7 @@
 FROM fedora:latest AS builder
 
 # Install build dependencies
-RUN dnf install -y pandoc perl && dnf clean all
+RUN dnf install -y pandoc perl jq && dnf clean all
 
 # Copy source files to builder
 WORKDIR /build

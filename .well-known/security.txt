@@ -1,0 +1,5 @@
+Contact: mailto:hi@josie.lol
+Contact: https://go.josie.lol/signal
+Expires: 2027-04-20T17:59:26.000Z
+Preferred-Languages: en
+Canonical: https://josie.lol/.well-known/security.txt

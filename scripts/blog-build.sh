@@ -11,7 +11,6 @@ SITE_URL="https://josie.lol"
 
 # Configuration - Add talks directory
 TALKS_DIR="talks"
-TALKS_TEMPLATE_FILE="$TALKS_DIR/template.html"
 TALKS_INDEX_FILE="$TALKS_DIR/index.html"
 
 # Ensure required commands are available
@@ -21,7 +20,7 @@ if ! command -v pandoc &> /dev/null; then
     exit 1
 fi
 
-echo "🔄 Building blog posts from Markdown..."
+echo "Building blog posts from Markdown..."
 
 # Create RSS feed header if it doesn't exist
 if [ ! -f "$RSS_FILE" ]; then
@@ -42,7 +41,7 @@ if [ ! -f "$RSS_FILE" ]; then
 </channel>
 </rss>
 EOF
-    echo "📝 Created new RSS feed file"
+    echo "Created new RSS feed file"
 fi
 
 # Initialize or read the posts array
@@ -59,7 +58,7 @@ for md_file in $(find "$BLOG_DIR" -name "*.md" | sort -r); do
         continue
     fi
     
-    echo "🔨 Processing: $filename"
+    echo "Processing: $filename"
     
     # Extract metadata from markdown file
     title=$(grep -m 1 "^title:" "$md_file" | sed 's/^title: *//')
@@ -114,7 +113,7 @@ for md_file in $(find "$BLOG_DIR" -name "*.md" | sort -r); do
     
     # For external posts, we only need metadata for the index, skip HTML generation
     if [[ "$external_post" == "true" ]]; then
-        echo "🔗 External post detected, skipping HTML generation"
+        echo "External post detected, skipping HTML generation"
         # Store metadata for index generation
         posts["$html_filename"]="$title|$date|$description|$tags_html_file|$guest_post|$author|$external_post|$external_url|$external_publication"
         post_files+=("$html_filename")
@@ -233,7 +232,7 @@ for md_file in $(find "$BLOG_DIR" -name "*.md" | sort -r); do
     # Clean up temp files
     rm "$tags_html_file" "$content_file" "$working_file" "$final_html"
     
-    echo "✅ Generated: $BLOG_DIR/$html_filename"
+    echo "Generated: $BLOG_DIR/$html_filename"
     
     # Store paths and metadata for index and RSS
     # Store HTML tags for each tag (can't store directly in associative array due to special chars)
@@ -247,6 +246,7 @@ EOF
 done
 
 # Sort post files by date (assuming YYYY-MM-DD format in filename or metadata)
+# shellcheck disable=SC2207
 IFS=$'\n' sorted_files=($(
     for file in "${post_files[@]}"; do
         date=$(echo "${posts[$file]}" | cut -d'|' -f2)
@@ -257,7 +257,7 @@ unset IFS
 
 # Update blog index.html with post list
 if [ -f "$INDEX_FILE" ]; then
-    echo "🔄 Updating blog index..."
+    echo "Updating blog index..."
     
     # Create a temp file for the rebuilt index
     temp_index=$(mktemp)
@@ -320,12 +320,12 @@ EOF
     cp "$temp_index" "$INDEX_FILE"
     rm "$temp_index"
     
-    echo "✅ Updated blog index page"
+    echo "Updated blog index page"
 fi
 
 # Update RSS feed with posts
 if [ -f "$RSS_FILE" ]; then
-    echo "🔄 Updating RSS feed..."
+    echo "Updating RSS feed..."
     
     # Create a temp file for the rebuilt RSS
     temp_rss=$(mktemp)
@@ -344,8 +344,8 @@ if [ -f "$RSS_FILE" ]; then
                 post_data="${posts[$file]}"
                 IFS='|' read -r title date description tags_html_file is_guest author_name is_external external_url external_publication <<< "$post_data"
                 
-                # Convert date to RFC822 format for RSS
-                rfc_date=$(date -d "$date" -R 2>/dev/null || date -R)
+                # Convert date to RFC822 format for RSS; tolerate YYYY-MM by appending -01
+                rfc_date=$(date -d "$date" -R 2>/dev/null || date -d "${date}-01" -R 2>/dev/null || echo "")
                 
                 # Set the correct URL
                 post_link="${SITE_URL}/blog/$file"
@@ -373,8 +373,15 @@ EOF
             echo "$line" >> "$temp_rss"
             in_posts=false
         elif [[ "$line" == *"<lastBuildDate>"* ]]; then
-            # Update the lastBuildDate
-            echo "  <lastBuildDate>$(date -R)</lastBuildDate>" >> "$temp_rss"
+            # Derive lastBuildDate from the most recent post so rebuilds are idempotent
+            build_date=""
+            if [[ ${#sorted_files[@]} -gt 0 ]]; then
+                latest_post_data="${posts[${sorted_files[0]}]}"
+                IFS='|' read -r _ latest_date _ <<< "$latest_post_data"
+                build_date=$(date -d "$latest_date" -R 2>/dev/null)
+            fi
+            [[ -z "$build_date" ]] && build_date=$(date -R)
+            echo "  <lastBuildDate>$build_date</lastBuildDate>" >> "$temp_rss"
         elif [[ "$in_posts" == false ]]; then
             echo "$line" >> "$temp_rss"
         fi
@@ -384,7 +391,7 @@ EOF
     cp "$temp_rss" "$RSS_FILE"
     rm "$temp_rss"
     
-    echo "✅ Updated RSS feed"
+    echo "Updated RSS feed"
 fi
 
 # Clean up any remaining temp files
@@ -398,19 +405,19 @@ for file in "${post_files[@]}"; do
     fi
 done
 
-echo "🎉 Blog build completed successfully!"
+echo "Blog build completed successfully!"
 
 # After processing blog posts, process talks
-echo "🔄 Building talks index..."
+echo "Building talks index..."
 
 # Check if the index file exists and has the right markers
 if ! grep -q "<!-- TALKS_LIST_START -->" "$TALKS_INDEX_FILE"; then
-    echo "⚠️ Could not find TALKS_LIST_START marker in $TALKS_INDEX_FILE"
+    echo "Could not find TALKS_LIST_START marker in $TALKS_INDEX_FILE"
     exit 1
 fi
 
 if ! grep -q "<!-- TALKS_LIST_END -->" "$TALKS_INDEX_FILE"; then
-    echo "⚠️ Could not find TALKS_LIST_END marker in $TALKS_INDEX_FILE"
+    echo "Could not find TALKS_LIST_END marker in $TALKS_INDEX_FILE"
     exit 1
 fi
 
@@ -423,7 +430,7 @@ sed -n '1,/<!-- TALKS_LIST_START -->/p' "$TALKS_INDEX_FILE" > "$temp_index"
 # Find markdown files
 talk_files=$(find "$TALKS_DIR" -name "*.md" | grep -v "index.md" | grep -v "template.md")
 talk_count=$(echo "$talk_files" | wc -l)
-echo "📊 Found $talk_count talk markdown files"
+echo "Found $talk_count talk markdown files"
 
 # Array to store talk data for sorting
 declare -a talk_data_array=()
@@ -431,7 +438,7 @@ declare -a talk_data_array=()
 # First pass: collect all talk data
 for md_file in $talk_files; do
     filename=$(basename "$md_file")
-    echo "🔨 Processing talk: $filename"
+    echo "Processing talk: $filename"
     
     # Extract basic metadata with debug output
     title=$(grep -m 1 "^title:" "$md_file" | sed 's/^title: *//')
@@ -625,7 +632,7 @@ $date|$title|$abstract|$related_post|$conferences_html
 EOF
     talk_data_array+=("$talk_temp_file")
     
-    echo "✅ Collected $title"
+    echo "Collected $title"
 done
 
 # Sort talks by date in descending order and write to index
@@ -651,7 +658,7 @@ EOF
     # Add related blog post link if available
     if [[ ! -z "$related_post" ]]; then
         cat >> "$temp_index" << EOF
-          <p class="mb-4"><a href="$related_post" class="text-purple-500 dark:text-purple-400 no-underline transition-colors duration-200 hover:text-white hover:underline">📝 Read related blog post →</a></p>
+          <p class="mb-4"><a href="$related_post" class="text-purple-500 dark:text-purple-400 no-underline transition-colors duration-200 hover:text-white hover:underline">Read related blog post →</a></p>
 EOF
     fi
     
@@ -674,10 +681,10 @@ sed -n '/<!-- TALKS_LIST_END -->/,$p' "$TALKS_INDEX_FILE" >> "$temp_index"
 cp "$temp_index" "$TALKS_INDEX_FILE"
 rm "$temp_index"
 
-echo "✅ Updated talks index page at $TALKS_INDEX_FILE"
+echo "Updated talks index page at $TALKS_INDEX_FILE"
 
 # After processing blog posts and talks, generate sitemap
-echo "🔄 Generating sitemap..."
+echo "Generating sitemap..."
 
 # Create a temp file for the sitemap
 temp_sitemap=$(mktemp)
@@ -764,7 +771,829 @@ echo "</urlset>" >> "$temp_sitemap"
 cp "$temp_sitemap" "$SITEMAP_FILE"
 rm "$temp_sitemap"
 
-echo "✅ Generated sitemap at $SITEMAP_FILE"
+echo "Generated sitemap at $SITEMAP_FILE"
 
+# === Books / Papers JSON-LD on index.html ===
 
-echo "🎉 All build operations completed successfully!" 
+PERSON_ID="${SITE_URL}/#person"
+BOOKS_DIR="data/books"
+PAPERS_DIR="data/papers"
+TESTIMONIALS_DIR="data/testimonials"
+AWARDS_DIR="data/awards"
+
+# Extract the body of a markdown file (everything after the second '---').
+md_body() {
+    awk 'BEGIN{n=0} /^---$/{n++; next} n>=2 {print}' "$1"
+}
+
+# Extract the first paragraph of a markdown body (collapses lines until blank).
+first_paragraph() {
+    awk '
+        /^$/ && p != "" { print p; p = ""; exit }
+        { if (p == "") p = $0; else p = p " " $0 }
+        END { if (p != "") print p }
+    '
+}
+
+if ! command -v jq &> /dev/null; then
+    echo "jq not found, skipping JSON-LD enrichment + llms.txt generation"
+else
+    echo "Generating books/papers JSON-LD..."
+
+    books_arr=$(mktemp); echo "[]" > "$books_arr"
+    papers_arr=$(mktemp); echo "[]" > "$papers_arr"
+
+    book_idx=0
+    if [[ -d "$BOOKS_DIR" ]]; then
+        for md in $(find "$BOOKS_DIR" -name "*.md" | grep -v "/template.md$" | sort); do
+            b_title=$(grep -m 1 "^title:" "$md" | sed 's/^title: *//')
+            b_isbn=$(grep -m 1 "^isbn:" "$md" | sed 's/^isbn: *//')
+            b_pub=$(grep -m 1 "^datePublished:" "$md" | sed 's/^datePublished: *//')
+            b_publisher=$(grep -m 1 "^publisher:" "$md" | sed 's/^publisher: *//')
+            b_url=$(grep -m 1 "^url:" "$md" | sed 's/^url: *//')
+            b_desc=$(md_body "$md" | first_paragraph)
+
+            jq --arg id "${SITE_URL}/#book-${book_idx}" \
+               --arg name "$b_title" \
+               --arg isbn "$b_isbn" \
+               --arg pub "$b_pub" \
+               --arg publisher "$b_publisher" \
+               --arg url "$b_url" \
+               --arg desc "$b_desc" \
+               --arg pid "$PERSON_ID" \
+               '. += [({
+                   "@type": "Book",
+                   "@id": $id,
+                   "name": $name,
+                   "author": {"@id": $pid},
+                   "isbn": $isbn,
+                   "datePublished": $pub,
+                   "publisher": $publisher,
+                   "url": $url,
+                   "description": $desc
+               } | with_entries(select(.value != null and .value != "" and .value != {})))]' \
+               "$books_arr" > "$books_arr.tmp" && mv "$books_arr.tmp" "$books_arr"
+
+            book_idx=$((book_idx + 1))
+        done
+    fi
+
+    paper_idx=0
+    if [[ -d "$PAPERS_DIR" ]]; then
+        for md in $(find "$PAPERS_DIR" -name "*.md" | grep -v "/template.md$" | sort); do
+            p_title=$(grep -m 1 "^title:" "$md" | sed 's/^title: *//')
+            p_authors_line=$(grep -m 1 "^authors:" "$md" | sed 's/^authors: *//')
+            p_pub=$(grep -m 1 "^datePublished:" "$md" | sed 's/^datePublished: *//')
+            p_venue=$(grep -m 1 "^venue:" "$md" | sed 's/^venue: *//')
+            p_url=$(grep -m 1 "^url:" "$md" | sed 's/^url: *//')
+            p_doi=$(grep -m 1 "^doi:" "$md" | sed 's/^doi: *//')
+            p_abstract=$(md_body "$md" | first_paragraph)
+
+            authors_json="[{\"@id\": \"$PERSON_ID\"}]"
+            if [[ "$p_authors_line" =~ \[(.*)\] ]]; then
+                IFS=',' read -r -a author_array <<< "${BASH_REMATCH[1]}"
+                authors_json=$(
+                    for a in "${author_array[@]}"; do
+                        a=$(echo "$a" | sed -E 's/^[[:space:]]*"?'"'"'?//;s/"?'"'"'?[[:space:]]*$//')
+                        printf '%s\n' "$a"
+                    done | jq -R . | jq -s 'map({"@type": "Person", "name": .})'
+                )
+            fi
+
+            jq --arg id "${SITE_URL}/#paper-${paper_idx}" \
+               --arg name "$p_title" \
+               --argjson authors "$authors_json" \
+               --arg pub "$p_pub" \
+               --arg venue "$p_venue" \
+               --arg url "$p_url" \
+               --arg doi "$p_doi" \
+               --arg abstract "$p_abstract" \
+               '. += [({
+                   "@type": "ScholarlyArticle",
+                   "@id": $id,
+                   "headline": $name,
+                   "author": $authors,
+                   "datePublished": $pub,
+                   "publisher": $venue,
+                   "url": $url,
+                   "identifier": (if $doi != "" then {"@type":"PropertyValue","propertyID":"DOI","value":$doi} else null end),
+                   "abstract": $abstract
+               } | with_entries(select(.value != null and .value != "" and .value != [])))]' \
+               "$papers_arr" > "$papers_arr.tmp" && mv "$papers_arr.tmp" "$papers_arr"
+
+            paper_idx=$((paper_idx + 1))
+        done
+    fi
+
+    reviews_arr=$(mktemp); echo "[]" > "$reviews_arr"
+    review_idx=0
+    if [[ -d "$TESTIMONIALS_DIR" ]]; then
+        for md in $(find "$TESTIMONIALS_DIR" -name "*.md" | grep -v "/template.md$" | sort); do
+            r_author=$(grep -m 1 "^author:" "$md" | sed 's/^author: *//')
+            r_title=$(grep -m 1 "^title:" "$md" | sed 's/^title: *//')
+            r_url=$(grep -m 1 "^url:" "$md" | sed 's/^url: *//')
+            r_date=$(grep -m 1 "^date:" "$md" | sed 's/^date: *//')
+            r_body=$(md_body "$md" | awk 'NF{p=p?p" "$0:$0} END{if (p) print p}')
+            r_slug=$(basename "${md%.md}")
+
+            jq --arg id "${SITE_URL}/#review-${r_slug}" \
+               --arg author "$r_author" \
+               --arg title "$r_title" \
+               --arg url "$r_url" \
+               --arg date "$r_date" \
+               --arg body "$r_body" \
+               --arg pid "$PERSON_ID" \
+               '. += [({
+                   "@type": "Review",
+                   "@id": $id,
+                   "itemReviewed": {"@id": $pid},
+                   "author": ({
+                       "@type": "Person",
+                       "name": $author,
+                       "jobTitle": $title,
+                       "url": $url
+                   } | with_entries(select(.value != null and .value != ""))),
+                   "datePublished": $date,
+                   "reviewBody": $body
+               } | with_entries(select(.value != null and .value != "" and .value != {})))]' \
+               "$reviews_arr" > "$reviews_arr.tmp" && mv "$reviews_arr.tmp" "$reviews_arr"
+
+            review_idx=$((review_idx + 1))
+        done
+    fi
+
+    awards_arr=$(mktemp); echo "[]" > "$awards_arr"
+    if [[ -d "$AWARDS_DIR" ]]; then
+        for md in $(find "$AWARDS_DIR" -name "*.md" | grep -v "/template.md$" | sort); do
+            a_name=$(grep -m 1 "^name:" "$md" | sed 's/^name: *//')
+            a_awarder=$(grep -m 1 "^awarder:" "$md" | sed 's/^awarder: *//')
+            a_date=$(grep -m 1 "^date:" "$md" | sed 's/^date: *//')
+            a_year="${a_date%%-*}"
+
+            display="$a_name"
+            if [[ -n "$a_year" && -n "$a_awarder" ]]; then
+                display="${a_name} (${a_year}, ${a_awarder})"
+            elif [[ -n "$a_year" ]]; then
+                display="${a_name} (${a_year})"
+            elif [[ -n "$a_awarder" ]]; then
+                display="${a_name} (${a_awarder})"
+            fi
+
+            jq --arg s "$display" '. += [$s]' "$awards_arr" > "$awards_arr.tmp" && mv "$awards_arr.tmp" "$awards_arr"
+        done
+    fi
+
+    books_count=$(jq 'length' "$books_arr")
+    papers_count=$(jq 'length' "$papers_arr")
+    reviews_count=$(jq 'length' "$reviews_arr")
+    awards_count=$(jq 'length' "$awards_arr")
+
+    person_aug=$(mktemp); echo "[]" > "$person_aug"
+    if [[ "$awards_count" -gt 0 ]]; then
+        jq --arg pid "$PERSON_ID" --slurpfile awards "$awards_arr" \
+            '. += [{"@type":"Person","@id":$pid,"award":$awards[0]}]' \
+            "$person_aug" > "$person_aug.tmp" && mv "$person_aug.tmp" "$person_aug"
+    fi
+
+    bp_block=""
+    if [[ "$books_count" -gt 0 || "$papers_count" -gt 0 || "$reviews_count" -gt 0 || "$awards_count" -gt 0 ]]; then
+        bp_json=$(jq -n \
+            --slurpfile books "$books_arr" \
+            --slurpfile papers "$papers_arr" \
+            --slurpfile reviews "$reviews_arr" \
+            --slurpfile aug "$person_aug" \
+            '{
+                "@context": "https://schema.org",
+                "@graph": ($books[0] + $papers[0] + $reviews[0] + $aug[0])
+            }')
+        bp_block=$(printf '    <script type="application/ld+json">\n%s\n    </script>' "$bp_json")
+    fi
+    rm "$books_arr" "$papers_arr" "$reviews_arr" "$awards_arr" "$person_aug"
+
+    bp_block_file=$(mktemp)
+    printf '%s\n' "$bp_block" > "$bp_block_file"
+
+    awk -v bf="$bp_block_file" '
+        /<!-- BOOKS_PAPERS_JSONLD_START -->/ {
+            print
+            while ((getline line < bf) > 0) print line
+            close(bf)
+            skip = 1
+            next
+        }
+        /<!-- BOOKS_PAPERS_JSONLD_END -->/ {
+            skip = 0
+            print
+            next
+        }
+        !skip { print }
+    ' index.html > index.html.new && mv index.html.new index.html
+    rm "$bp_block_file"
+    echo "Updated books/papers JSON-LD on index.html"
+
+    # === Talks JSON-LD on talks/index.html ===
+
+    echo "Generating talks JSON-LD..."
+
+    events_json=$(mktemp); echo "[]" > "$events_json"
+    works_json=$(mktemp); echo "[]" > "$works_json"
+    videos_json=$(mktemp); echo "[]" > "$videos_json"
+
+    for md_file in $(find "$TALKS_DIR" -name "*.md" | grep -v "index.md" | grep -v "template.md"); do
+        t_title=$(grep -m 1 "^title:" "$md_file" | sed 's/^title: *//')
+        t_abstract=$(grep -m 1 "^abstract:" "$md_file" | sed 's/^abstract: *//')
+        t_slug=$(basename "${md_file%.md}")
+        t_id="${SITE_URL}/talks/#talk-${t_slug}"
+
+        jq --arg id "$t_id" --arg name "$t_title" --arg desc "$t_abstract" --arg author "$PERSON_ID" \
+            '. += [{
+                "@type": "PresentationDigitalDocument",
+                "@id": $id,
+                "name": $name,
+                "description": $desc,
+                "author": {"@id": $author}
+            }]' "$works_json" > "$works_json.tmp" && mv "$works_json.tmp" "$works_json"
+
+        in_confs=false
+        cn="" cl="" cd="" cs="" cr="" cc=""
+        conf_idx=0
+
+        flush_event() {
+            local event_id="${SITE_URL}/talks/#event-${t_slug}-${conf_idx}"
+            local slides_url=""
+            if [[ -n "$cs" ]]; then
+                if [[ "$cs" == /* ]]; then slides_url="${SITE_URL}${cs}"; else slides_url="$cs"; fi
+            fi
+
+            jq --arg id "$event_id" \
+               --arg name "$cn" \
+               --arg loc "$cl" \
+               --arg date "$cd" \
+               --arg slides "$slides_url" \
+               --arg recording "$cr" \
+               --arg cancelled "$cc" \
+               --arg talk_id "$t_id" \
+               --arg person_id "$PERSON_ID" \
+               '. += [(
+                   {
+                       "@type": "Event",
+                       "@id": $id,
+                       "name": $name,
+                       "startDate": $date,
+                       "location": (if $loc != "" then {"@type":"Place","name":$loc} else null end),
+                       "performer": {"@id": $person_id},
+                       "workPresented": {"@id": $talk_id},
+                       "eventStatus": (if $cancelled == "true" then "https://schema.org/EventCancelled" else null end)
+                   } | with_entries(select(.value != null))
+               )]' "$events_json" > "$events_json.tmp" && mv "$events_json.tmp" "$events_json"
+
+            if [[ -n "$cr" ]]; then
+                local video_id="${SITE_URL}/talks/#video-${t_slug}-${conf_idx}"
+                local rec_clean="${cr%"${cr##*[![:space:]]}"}"
+                jq --arg id "$video_id" \
+                   --arg url "$rec_clean" \
+                   --arg name "$cn" \
+                   --arg desc "$t_abstract" \
+                   --arg date "$cd" \
+                   --arg author "$PERSON_ID" \
+                   '. += [{
+                       "@type": "VideoObject",
+                       "@id": $id,
+                       "contentUrl": $url,
+                       "embedUrl": $url,
+                       "name": $name,
+                       "description": $desc,
+                       "uploadDate": $date,
+                       "author": {"@id": $author}
+                   }]' "$videos_json" > "$videos_json.tmp" && mv "$videos_json.tmp" "$videos_json"
+            fi
+        }
+
+        while IFS= read -r line; do
+            if [[ "$line" == "conferences:" ]]; then in_confs=true; continue; fi
+            if [[ "$in_confs" == false ]]; then continue; fi
+            if [[ "$line" == "---" || "$line" == "" ]]; then break; fi
+
+            if [[ "$line" =~ ^[[:space:]]+- ]]; then
+                if [[ -n "$cn" && -n "$cd" ]]; then
+                    flush_event
+                    conf_idx=$((conf_idx + 1))
+                fi
+                cn=""; cl=""; cd=""; cs=""; cr=""; cc=""
+            fi
+
+            [[ "$line" =~ name: ]]      && cn=$(echo "$line" | sed 's/.*name:[[:space:]]*//')
+            [[ "$line" =~ location: ]]  && cl=$(echo "$line" | sed 's/.*location:[[:space:]]*//')
+            [[ "$line" =~ slides: ]]    && cs=$(echo "$line" | sed 's/.*slides:[[:space:]]*//')
+            [[ "$line" =~ recording: ]] && cr=$(echo "$line" | sed 's/.*recording:[[:space:]]*//')
+            [[ "$line" =~ cancelled: ]] && cc=$(echo "$line" | sed 's/.*cancelled:[[:space:]]*//')
+            if [[ "$line" =~ date:[[:space:]]+20 ]]; then
+                cd=$(echo "$line" | sed 's/.*date:[[:space:]]*//')
+            fi
+        done < "$md_file"
+
+        if [[ -n "$cn" && -n "$cd" ]]; then
+            flush_event
+        fi
+    done
+
+    talks_jsonld=$(jq -n \
+        --slurpfile events "$events_json" \
+        --slurpfile works "$works_json" \
+        --slurpfile videos "$videos_json" \
+        '{
+            "@context": "https://schema.org",
+            "@graph": ($works[0] + $events[0] + $videos[0])
+        }')
+
+    talks_block=$(printf '    <script type="application/ld+json">\n%s\n    </script>' "$talks_jsonld")
+    talks_block_file=$(mktemp)
+    printf '%s\n' "$talks_block" > "$talks_block_file"
+
+    awk -v bf="$talks_block_file" '
+        /<!-- TALKS_JSONLD_START -->/ {
+            print
+            while ((getline line < bf) > 0) print line
+            close(bf)
+            skip = 1
+            next
+        }
+        /<!-- TALKS_JSONLD_END -->/ {
+            skip = 0
+            print
+            next
+        }
+        !skip { print }
+    ' "$TALKS_INDEX_FILE" > "$TALKS_INDEX_FILE.new" && mv "$TALKS_INDEX_FILE.new" "$TALKS_INDEX_FILE"
+
+    echo "Updated talks JSON-LD on $TALKS_INDEX_FILE"
+
+    # === workPerformed JSON-LD on index.html ===
+
+    wp_jsonld=$(jq -n \
+        --arg pid "$PERSON_ID" \
+        --slurpfile events "$events_json" \
+        '{
+            "@context": "https://schema.org",
+            "@graph": [{
+                "@type": "Person",
+                "@id": $pid,
+                "workPerformed": $events[0]
+            }]
+        }')
+
+    wp_block=$(printf '    <script type="application/ld+json">\n%s\n    </script>' "$wp_jsonld")
+    wp_block_file=$(mktemp)
+    printf '%s\n' "$wp_block" > "$wp_block_file"
+
+    awk -v bf="$wp_block_file" '
+        /<!-- WORK_PERFORMED_JSONLD_START -->/ {
+            print
+            while ((getline line < bf) > 0) print line
+            close(bf)
+            skip = 1
+            next
+        }
+        /<!-- WORK_PERFORMED_JSONLD_END -->/ {
+            skip = 0
+            print
+            next
+        }
+        !skip { print }
+    ' index.html > index.html.new && mv index.html.new index.html
+    rm "$wp_block_file"
+    echo "Updated workPerformed JSON-LD on index.html"
+
+    rm "$events_json" "$works_json" "$videos_json" "$talks_block_file"
+
+    # === hasCredential JSON-LD on index.html (from Credly) ===
+
+    CREDLY_USER="${CREDLY_USER:-pfeifferj}"
+    CREDLY_CACHE="data/credly-cache.json"
+    credly_json=$(mktemp)
+    if command -v curl &> /dev/null; then
+        if curl -sSL --max-time 15 -A "Mozilla/5.0" \
+            "https://www.credly.com/users/${CREDLY_USER}/badges.json?sort=most_popular" \
+            -o "$credly_json" 2>/dev/null && jq -e '.data | length > 0' "$credly_json" > /dev/null 2>&1; then
+            cp "$credly_json" "$CREDLY_CACHE"
+            echo "Fetched Credly badges (cached to $CREDLY_CACHE)"
+        elif [[ -f "$CREDLY_CACHE" ]]; then
+            cp "$CREDLY_CACHE" "$credly_json"
+            echo "Credly fetch failed, using cached $CREDLY_CACHE"
+        fi
+    elif [[ -f "$CREDLY_CACHE" ]]; then
+        cp "$CREDLY_CACHE" "$credly_json"
+        echo "curl not found, using cached $CREDLY_CACHE"
+    fi
+
+    if jq -e '.data | length > 0' "$credly_json" > /dev/null 2>&1; then
+        echo "Generating hasCredential JSON-LD..."
+        cred_jsonld=$(jq -n \
+            --arg pid "$PERSON_ID" \
+            --slurpfile credly "$credly_json" \
+            '{
+                "@context": "https://schema.org",
+                "@graph": [{
+                    "@type": "Person",
+                    "@id": $pid,
+                    "hasCredential": (
+                        $credly[0].data
+                        | map(select(.state == "accepted"))
+                        | map(select(.badge_template.type_category == "Certification" or .badge_template.type_category == "Learning"))
+                        | sort_by(.issued_at_date) | reverse
+                        | map({
+                            "@type": "EducationalOccupationalCredential",
+                            "name": .badge_template.name,
+                            "credentialCategory": "certification",
+                            "dateCreated": (.issued_at_date | split("-")[0]),
+                            "recognizedBy": {
+                                "@type": "Organization",
+                                "name": .badge_template.issuer.entities[0].entity.name
+                            },
+                            "url": ("https://www.credly.com/badges/" + .id)
+                          })
+                    )
+                }]
+            }')
+
+        cred_block_file=$(mktemp)
+        printf '    <script type="application/ld+json">\n%s\n    </script>\n' "$cred_jsonld" > "$cred_block_file"
+
+        awk -v bf="$cred_block_file" '
+            /<!-- HAS_CREDENTIAL_JSONLD_START -->/ {
+                print
+                while ((getline line < bf) > 0) print line
+                close(bf)
+                skip = 1
+                next
+            }
+            /<!-- HAS_CREDENTIAL_JSONLD_END -->/ {
+                skip = 0
+                print
+                next
+            }
+            !skip { print }
+        ' index.html > index.html.new && mv index.html.new index.html
+        rm "$cred_block_file"
+        echo "Updated hasCredential JSON-LD on index.html"
+    else
+        echo "No Credly data available, skipping hasCredential generation"
+    fi
+
+    # === Visible #section-certs list (from same Credly data) ===
+
+    if jq -e '.data | length > 0' "$credly_json" > /dev/null 2>&1; then
+        certs_html_file=$(mktemp)
+        jq -r '
+            .data
+            | map(select(.state == "accepted"))
+            | map(select(.badge_template.type_category == "Certification" or .badge_template.type_category == "Learning"))
+            | sort_by(.issued_at_date) | reverse
+            | map("            <span class=\"cert-item\">" + (.badge_template.name | @html) + " (" + (.issued_at_date | split("-")[0]) + ")</span><br />")
+            | .[]
+        ' "$credly_json" > "$certs_html_file"
+
+        awk -v bf="$certs_html_file" '
+            /<!-- CERTS_LIST_START -->/ {
+                print
+                while ((getline line < bf) > 0) print line
+                close(bf)
+                skip = 1
+                next
+            }
+            /<!-- CERTS_LIST_END -->/ {
+                skip = 0
+                print
+                next
+            }
+            !skip { print }
+        ' index.html > index.html.new && mv index.html.new index.html
+        rm "$certs_html_file"
+        echo "Updated #section-certs list on index.html"
+    fi
+    rm "$credly_json"
+
+    # === memberOf JSON-LD on index.html (from data/memberships/) ===
+
+    MEMBERSHIPS_DIR="data/memberships"
+    if [[ -d "$MEMBERSHIPS_DIR" ]]; then
+        echo "Generating memberOf JSON-LD..."
+        memberships_arr=$(mktemp); echo "[]" > "$memberships_arr"
+        volunteer_html_file=$(mktemp)
+        for md in $(find "$MEMBERSHIPS_DIR" -name "*.md" | grep -v "/template.md$" | sort); do
+            m_name=$(grep -m 1 "^name:" "$md" | sed 's/^name: *//')
+            m_url=$(grep -m 1 "^url:" "$md" | sed 's/^url: *//')
+            m_desc=$(grep -m 1 "^description:" "$md" | sed 's/^description: *//')
+            jq --arg name "$m_name" --arg url "$m_url" --arg desc "$m_desc" \
+                '. += [({
+                    "@type": "Organization",
+                    "name": $name,
+                    "url": $url,
+                    "description": $desc
+                } | with_entries(select(.value != null and .value != "")))]' \
+                "$memberships_arr" > "$memberships_arr.tmp" && mv "$memberships_arr.tmp" "$memberships_arr"
+
+            esc_name=$(jq -rn --arg s "$m_name" '$s | @html')
+            esc_desc=$(jq -rn --arg s "$m_desc" '$s | @html')
+            if [[ -n "$esc_desc" ]]; then
+                printf '            <span class="item">%s: %s</span><br />\n' "$esc_name" "$esc_desc" >> "$volunteer_html_file"
+            else
+                printf '            <span class="item">%s</span><br />\n' "$esc_name" >> "$volunteer_html_file"
+            fi
+        done
+
+        awk -v bf="$volunteer_html_file" '
+            /<!-- VOLUNTEER_LIST_START -->/ {
+                print
+                while ((getline line < bf) > 0) print line
+                close(bf)
+                skip = 1
+                next
+            }
+            /<!-- VOLUNTEER_LIST_END -->/ {
+                skip = 0
+                print
+                next
+            }
+            !skip { print }
+        ' index.html > index.html.new && mv index.html.new index.html
+        rm "$volunteer_html_file"
+        echo "Updated #section-volunteer list on index.html"
+
+        if [[ $(jq 'length' "$memberships_arr") -gt 0 ]]; then
+            mem_jsonld=$(jq -n \
+                --arg pid "$PERSON_ID" \
+                --slurpfile orgs "$memberships_arr" \
+                '{
+                    "@context": "https://schema.org",
+                    "@graph": [{
+                        "@type": "Person",
+                        "@id": $pid,
+                        "memberOf": $orgs[0]
+                    }]
+                }')
+
+            mem_block_file=$(mktemp)
+            printf '    <script type="application/ld+json">\n%s\n    </script>\n' "$mem_jsonld" > "$mem_block_file"
+
+            awk -v bf="$mem_block_file" '
+                /<!-- MEMBER_OF_JSONLD_START -->/ {
+                    print
+                    while ((getline line < bf) > 0) print line
+                    close(bf)
+                    skip = 1
+                    next
+                }
+                /<!-- MEMBER_OF_JSONLD_END -->/ {
+                    skip = 0
+                    print
+                    next
+                }
+                !skip { print }
+            ' index.html > index.html.new && mv index.html.new index.html
+            rm "$mem_block_file"
+            echo "Updated memberOf JSON-LD on index.html"
+        fi
+        rm "$memberships_arr"
+    fi
+
+    # === publishedMediaObject JSON-LD on index.html (from blog/*.md + data/publications/) ===
+
+    PUBLICATIONS_DIR="data/publications"
+    if [[ ${#sorted_files[@]} -gt 0 || -d "$PUBLICATIONS_DIR" ]]; then
+        echo "Generating publishedMediaObject JSON-LD..."
+        media_arr=$(mktemp); echo "[]" > "$media_arr"
+        for file in "${sorted_files[@]}"; do
+            post_data="${posts[$file]}"
+            IFS='|' read -r p_title p_date p_desc _ _ _ p_external p_url p_publication <<< "$post_data"
+
+            if [[ "$p_external" == "true" ]]; then
+                p_link="$p_url"
+            else
+                p_link="${SITE_URL}/blog/$file"
+            fi
+
+            jq --arg name "$p_title" \
+               --arg date "$p_date" \
+               --arg desc "$p_desc" \
+               --arg url "$p_link" \
+               --arg publication "$p_publication" \
+                '. += [({
+                    "@type": "Article",
+                    "headline": $name,
+                    "url": $url,
+                    "datePublished": $date,
+                    "description": $desc,
+                    "publisher": (if $publication != "" then {"@type": "Organization", "name": $publication} else null end)
+                } | with_entries(select(.value != null and .value != "" and .value != {})))]' \
+                "$media_arr" > "$media_arr.tmp" && mv "$media_arr.tmp" "$media_arr"
+        done
+
+        if [[ -d "$PUBLICATIONS_DIR" ]]; then
+            for md in $(find "$PUBLICATIONS_DIR" -name "*.md" | grep -v "/template.md$" | sort); do
+                pub_title=$(grep -m 1 "^title:" "$md" | sed 's/^title: *//')
+                pub_url=$(grep -m 1 "^url:" "$md" | sed 's/^url: *//')
+                pub_date=$(grep -m 1 "^datePublished:" "$md" | sed 's/^datePublished: *//')
+                pub_publisher=$(grep -m 1 "^publisher:" "$md" | sed 's/^publisher: *//')
+                pub_type=$(grep -m 1 "^type:" "$md" | sed 's/^type: *//')
+                [[ -z "$pub_type" ]] && pub_type="Article"
+                pub_desc=$(md_body "$md" | first_paragraph)
+
+                jq --arg type "$pub_type" \
+                   --arg name "$pub_title" \
+                   --arg url "$pub_url" \
+                   --arg date "$pub_date" \
+                   --arg desc "$pub_desc" \
+                   --arg publisher "$pub_publisher" \
+                    '. += [({
+                        "@type": $type,
+                        "headline": $name,
+                        "url": $url,
+                        "datePublished": $date,
+                        "description": $desc,
+                        "publisher": (if $publisher != "" then {"@type": "Organization", "name": $publisher} else null end)
+                    } | with_entries(select(.value != null and .value != "" and .value != {})))]' \
+                    "$media_arr" > "$media_arr.tmp" && mv "$media_arr.tmp" "$media_arr"
+            done
+        fi
+
+        if [[ $(jq 'length' "$media_arr") -gt 0 ]]; then
+            media_jsonld=$(jq -n \
+                --arg pid "$PERSON_ID" \
+                --slurpfile articles "$media_arr" \
+                '{
+                    "@context": "https://schema.org",
+                    "@graph": [{
+                        "@type": "Person",
+                        "@id": $pid,
+                        "publishedMediaObject": $articles[0]
+                    }]
+                }')
+
+            media_block_file=$(mktemp)
+            printf '    <script type="application/ld+json">\n%s\n    </script>\n' "$media_jsonld" > "$media_block_file"
+
+            awk -v bf="$media_block_file" '
+                /<!-- PUBLISHED_MEDIA_JSONLD_START -->/ {
+                    print
+                    while ((getline line < bf) > 0) print line
+                    close(bf)
+                    skip = 1
+                    next
+                }
+                /<!-- PUBLISHED_MEDIA_JSONLD_END -->/ {
+                    skip = 0
+                    print
+                    next
+                }
+                !skip { print }
+            ' index.html > index.html.new && mv index.html.new index.html
+            rm "$media_block_file"
+            echo "Updated publishedMediaObject JSON-LD on index.html"
+        fi
+        rm "$media_arr"
+    fi
+
+    # === llms.txt and llms-full.txt ===
+
+    echo "Generating llms.txt and llms-full.txt..."
+
+    {
+        echo "# josie.lol"
+        echo ""
+        echo "> Personal website of Josephine Pfeiffer, Senior Software Engineer at Red Hat. Cloud-native infrastructure, Kubernetes, mainframes, security, developer productivity."
+        echo ""
+        echo "josie works on infrastructure and security. she spends work hours on things like confidential containers, free time on porting distros to weird architectures, and contributing to CNCF projects. she unironically thinks s390x is cool and will argue about it. occasionally writes crystal, and likes electronics with transparent cases."
+        echo ""
+        echo "## About"
+        echo ""
+        echo "- [Homepage](${SITE_URL}/): bio, certifications, sameAs links"
+        echo ""
+        echo "## Talks"
+        echo ""
+        for md_file in $(find "$TALKS_DIR" -name "*.md" | grep -v "index.md" | grep -v "template.md" | sort); do
+            t_title=$(grep -m 1 "^title:" "$md_file" | sed 's/^title: *//')
+            t_abstract=$(grep -m 1 "^abstract:" "$md_file" | sed 's/^abstract: *//')
+            t_slug=$(basename "${md_file%.md}")
+            short_abs=$(echo "$t_abstract" | head -c 200)
+            echo "- [${t_title}](${SITE_URL}/talks/#talk-${t_slug}): ${short_abs}"
+        done
+        echo ""
+        if [[ "$books_count" -gt 0 ]]; then
+            echo "## Books"
+            echo ""
+            b_idx=0
+            for md in $(find "$BOOKS_DIR" -name "*.md" | grep -v "/template.md$" | sort); do
+                b_title=$(grep -m 1 "^title:" "$md" | sed 's/^title: *//')
+                b_url=$(grep -m 1 "^url:" "$md" | sed 's/^url: *//')
+                b_desc=$(md_body "$md" | first_paragraph)
+                [[ -z "$b_url" ]] && b_url="${SITE_URL}/#book-${b_idx}"
+                echo "- [${b_title}](${b_url}): ${b_desc}"
+                b_idx=$((b_idx + 1))
+            done
+            echo ""
+        fi
+        if [[ "$papers_count" -gt 0 ]]; then
+            echo "## Papers"
+            echo ""
+            p_idx=0
+            for md in $(find "$PAPERS_DIR" -name "*.md" | grep -v "/template.md$" | sort); do
+                p_title=$(grep -m 1 "^title:" "$md" | sed 's/^title: *//')
+                p_url=$(grep -m 1 "^url:" "$md" | sed 's/^url: *//')
+                p_abstract=$(md_body "$md" | first_paragraph)
+                [[ -z "$p_url" ]] && p_url="${SITE_URL}/#paper-${p_idx}"
+                echo "- [${p_title}](${p_url}): ${p_abstract}"
+                p_idx=$((p_idx + 1))
+            done
+            echo ""
+        fi
+    } > llms.txt
+    echo "Generated llms.txt"
+
+    {
+        echo "# josie.lol"
+        echo ""
+        echo "Personal website of Josephine Pfeiffer, Senior Software Engineer at Red Hat. Focus areas: cloud-native infrastructure, Kubernetes, mainframes (s390x, z/OS on OpenShift), container security, developer productivity, and Internal Developer Platforms."
+        echo ""
+        echo "josie works on infrastructure and security. she spends work hours on things like confidential containers, free time on porting distros to weird architectures, and contributing to CNCF projects. she unironically thinks s390x is cool and will argue about it. occasionally writes crystal, and likes electronics with transparent cases."
+        echo ""
+        echo "## Talks"
+        echo ""
+        for md_file in $(find "$TALKS_DIR" -name "*.md" | grep -v "index.md" | grep -v "template.md" | sort); do
+            t_title=$(grep -m 1 "^title:" "$md_file" | sed 's/^title: *//')
+            t_abstract=$(grep -m 1 "^abstract:" "$md_file" | sed 's/^abstract: *//')
+            echo "### ${t_title}"
+            echo ""
+            echo "${t_abstract}"
+            echo ""
+            echo "Presented at:"
+            sed -n '/^conferences:/,/^---/p' "$md_file" | grep -E "^\s+-\s+name:|^\s+location:|^\s+date:" | sed -E 's/^\s+/- /; s/\s+/ /g'
+            echo ""
+        done
+        if [[ "$books_count" -gt 0 ]]; then
+            echo "## Books"
+            echo ""
+            for md in $(find "$BOOKS_DIR" -name "*.md" | grep -v "/template.md$" | sort); do
+                b_title=$(grep -m 1 "^title:" "$md" | sed 's/^title: *//')
+                b_body=$(md_body "$md")
+                echo "### ${b_title}"
+                echo ""
+                echo "$b_body"
+                echo ""
+            done
+        fi
+        if [[ "$papers_count" -gt 0 ]]; then
+            echo "## Papers"
+            echo ""
+            for md in $(find "$PAPERS_DIR" -name "*.md" | grep -v "/template.md$" | sort); do
+                p_title=$(grep -m 1 "^title:" "$md" | sed 's/^title: *//')
+                p_body=$(md_body "$md")
+                echo "### ${p_title}"
+                echo ""
+                echo "$p_body"
+                echo ""
+            done
+        fi
+    } > llms-full.txt
+    echo "Generated llms-full.txt"
+fi
+
+# === .well-known/security.txt ===
+
+SECURITY_DIR=".well-known"
+SECURITY_FILE="$SECURITY_DIR/security.txt"
+
+needs_regen=true
+if [[ -f "$SECURITY_FILE" ]]; then
+    current_expires=$(grep -m 1 "^Expires:" "$SECURITY_FILE" | sed 's/^Expires: *//')
+    if [[ -n "$current_expires" ]]; then
+        cutoff=$(date -u -d '+60 days' +%s 2>/dev/null || date -u -v+60d +%s 2>/dev/null || echo 0)
+        current_ts=$(date -u -d "$current_expires" +%s 2>/dev/null || echo 0)
+        if [[ "$current_ts" -gt "$cutoff" ]]; then
+            needs_regen=false
+        fi
+    fi
+fi
+
+if [[ "$needs_regen" == true ]]; then
+    expires=$(date -u -d '+11 months' +%Y-%m-%dT00:00:00Z 2>/dev/null || \
+              date -u -v+11m +%Y-%m-%dT00:00:00Z 2>/dev/null || \
+              echo "")
+    if [[ -n "$expires" ]]; then
+        mkdir -p "$SECURITY_DIR"
+        cat > "$SECURITY_FILE" <<EOF
+Contact: mailto:hi@josie.lol
+Contact: https://go.josie.lol/signal
+Expires: $expires
+Preferred-Languages: en
+Canonical: ${SITE_URL}/.well-known/security.txt
+EOF
+        echo "Regenerated $SECURITY_FILE (Expires: $expires)"
+    else
+        echo "Skipping security.txt: could not compute future date"
+    fi
+else
+    echo "$SECURITY_FILE current (Expires: $current_expires)"
+fi
+
+echo "All build operations completed successfully!"

@@ -1,0 +1,89 @@
+# josie.lol
+
+Personal website of Josephine Pfeiffer, Senior Software Engineer at Red Hat. Focus areas: cloud-native infrastructure, Kubernetes, mainframes (s390x, z/OS on OpenShift), container security, developer productivity, and Internal Developer Platforms.
+
+josie works on infrastructure and security. she spends work hours on things like confidential containers, free time on porting distros to weird architectures, and contributing to CNCF projects. she unironically thinks s390x is cool and will argue about it. occasionally writes crystal, and likes electronics with transparent cases.
+
+## Talks
+
+### Would You Like Fries With That? AI for Developer Productivity
+
+In this talk, Kyra and I showcased how we successfully integrated an AI-powered recommendation engine into Red Hat's Internal Developer Platform, based on Backstage.io, to enhance developer productivity. Our approach leverages data from the Developer Hub analytics API and processes it with Knative event-driven microservices to generate smart action proposals. Using OpenShift AI, we train and deploy AI models that power a frontend plugin in the Developer Hub, providing tailored recommendations directly to users powered by ML-Ops pipelines. By leveraging the power of AI, we have improved the developer experience by providing personalized suggestions for tools, resources, and tutorials, resulting in increased productivity and efficiency.
+
+Presented at:
+- - name: Uphill conf
+- location: Bern
+- date: 2024-05-16
+- - name: Kubernetes Community Days Zurich Rejects
+- location: Zurich
+- date: 2024-06-13
+
+### my mainframe runs arch btw
+
+A lightning talk exploring the journey of getting Arch Linux running on IBM mainframe hardware. Because if it runs Linux, it should run Arch.
+
+Presented at:
+- - name: FOSDEM
+- location: Brussels
+- date: 2026-01-31
+
+### Beyond CAS: Why the world needs another Kubernetes Cluster Autoscaler
+
+Kubernetes' Cluster Autoscaler (CAS) has been the standard for dynamic scaling, but it suffers from limitations that hamper its performance in some scenarios. This talk introduces Karpenter, a modern alternative designed for real-time, workload-specific node provisioning.
+
+Presented at:
+- - name: DevConf
+- location: Brno
+- date: 2025-06-14
+
+### 9001 Ways to break out of a container
+
+Container security is essential, but what happens when the bad guys get creative? In "9001 ways to break out of a container," we’ll explore the fascinating and terrifying techniques hackers use to escape containers. This talk will cover: how attackers slip through the cracks to take over the linux kernel by bypassing the ebpf validator, and the most common and overlooked weaknesses that make containers vulnerable, real-world cases of container escapes and the aftermath. Whether you’re a seasoned security professional or just curious about hacking techniques, this talk should have takeaways for everyone. 
+
+Presented at:
+- - name: Bsides Bristol
+- location: Bristol
+- date: 2024-08-30
+- - name: WHY2025 Hacker Camp
+- location: Geestmerambacht, Netherlands
+- date: 2025-08-08
+
+### A Hitchhiker's Guide to Developer Productivity
+
+This talk explores how Golden Paths and Software Templates can revolutionize developer productivity by providing prescribed, automated practices for common development tasks. Using "The Hitchhiker's Guide to the Galaxy" as a playful metaphor, Janina and I demonstrate how these standardized approaches can eliminate the maze of repetitive tasks, reduce cognitive overload, and cut lead times from 50 days to mere minutes. The presentation covers the what, why, and how of implementing Golden Paths, while emphasizing the importance of treating templates as user-centric products that must evolve with technology and align with organizational culture to truly transform the developer experience from chaos to clarity.
+
+Presented at:
+- - name: Swiss Dev Confederation
+- location: Zurich
+- date: 2024-09-17
+
+### Mainframes Aren't Dead, They're Just Running Kubernetes Now
+
+Mainframes have been declared dead more times than JavaScript frameworks have been invented—but here they are, still running the backbone of global finance, government, and enterprise computing. And now? They’re running Kubernetes too. This talk covers the why and how of running Kubernetes on mainframes, from containerization on z/OS to networking, workload orchestration, and real-world use cases. We’ll break down the challenges, the benefits, and whether this is a clever hack or a genuinely viable approach for modern infrastructure. If you think mainframes are relics, think again—because they’re running microservices now.
+
+Presented at:
+- - name: The Linux Foundation Open Source Summit North America
+- location: Denver
+- date: 2025-06-24
+- - name: Kubernetes Community Day Budapest
+- location: Budapest
+- date: 2025-04-24
+- - name: Kubernetes Community Days Bratislava
+- location: Bratislava
+- date: 2025-06-06
+- - name: The Linux Foundation Open Source Summit Europe
+- location: Amsterdam
+- date: 2025-08-25
+- - name: Container Days 
+- location: Hamburg
+- date: 2025-09-10
+
+### From Static Tokens to Attestation: The Evolution of Secure Node Joining
+
+This panel examines secure node joining in modern Kubernetes environments where tools like Karpenter and Cluster API enable rapid infrastructure scaling. We discuss defining a root of trust, validating node identities with metadata and attestation, locking down CSR approval, and other security mechanisms to prevent unauthorized nodes from joining clusters.
+
+Presented at:
+- - name: KubeCon + CloudNativeCon Europe
+- location: Amsterdam
+- date: 2026-03-24
+
