@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>{{ post.title }} - josie.lol</title>
+
+    <meta name="description" content="{{ post.description }}" />
+    <meta name="author" content="{{ post.author }}" />
+    <link rel="icon" href="/favicon.ico" />
+    <link rel="canonical" href="{{ post.canonical_url }}" />
+    <link rel="alternate" type="application/rss+xml" title="josie.lol blog RSS Feed" href="{{ site.url }}/rss.xml" />
+
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="{{ post.canonical_url }}" />
+    <meta property="og:title" content="{{ post.title }} - josie.lol" />
+    <meta property="og:description" content="{{ post.description }}" />
+    <meta property="article:published_time" content="{{ post.date_iso }}" />
+    <meta property="article:author" content="{{ post.author }}" />
+    <meta property="article:tag" content="{{ (post.tags or []) | join(', ') }}" />
+    <meta property="og:image" content="{{ site.url }}/screenshot.png" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="{{ post.title }} - josie.lol" />
+    <meta name="twitter:description" content="{{ post.description }}" />
+    <meta name="twitter:image" content="{{ site.url }}/screenshot.png" />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/styles.css" />
+    <script src="https://cdn.tailwindcss.com?v=3.3.3"></script>
+
+    <script type="application/ld+json">
+{{ post_jsonld | tojson_ld | safe }}
+    </script>
+
+    <style>
+      body {
+        background-color: #121212;
+        color: #e0e0e0;
+        font-family: 'IBM Plex Mono', monospace;
+      }
+      .josie { color: #bb86fc; }
+      .blog-content {
+        line-height: 1.7;
+        font-family: 'IBM Plex Mono', monospace;
+        counter-reset: figure;
+      }
+      .blog-content h1 { font-size: 1.75rem; font-weight: bold; margin-top: 2rem; margin-bottom: 1rem; color: #bb86fc; }
+      .blog-content h2 { font-size: 1.5rem; font-weight: bold; margin-top: 1.5rem; margin-bottom: 0.75rem; color: #bb86fc; }
+      .blog-content h3 { font-size: 1.25rem; font-weight: bold; margin-top: 1.25rem; margin-bottom: 0.5rem; color: #9e71da; }
+      .blog-content p { margin-bottom: 1rem; }
+      .blog-content ul, .blog-content ol { margin-bottom: 1rem; margin-left: 2rem; }
+      .blog-content ul { list-style-type: disc; }
+      .blog-content ol { list-style-type: decimal; }
+      .blog-content code {
+        font-family: 'IBM Plex Mono', monospace;
+        padding: 0.2rem 0.4rem;
+        background-color: rgba(187, 134, 252, 0.1);
+        border-radius: 0.25rem;
+      }
+      .blog-content pre {
+        background-color: #1a1a1a;
+        padding: 1rem;
+        border-radius: 0.25rem;
+        overflow-x: auto;
+        margin-bottom: 1rem;
+        border-left: 4px solid #bb86fc;
+        position: relative;
+      }
+      .blog-content pre::before {
+        content: attr(data-prompt);
+        position: absolute;
+        top: 0;
+        left: 0;
+        color: #bb86fc;
+        font-weight: bold;
+        padding: 0.25rem 0.5rem;
+        background-color: rgba(187, 134, 252, 0.1);
+        border-radius: 0.25rem 0 0.25rem 0;
+        font-size: 0.8rem;
+        z-index: 1;
+      }
+      .copy-button {
+        position: absolute;
+        top: 0.5rem;
+        right: 0.5rem;
+        padding: 0.25rem 0.5rem;
+        background-color: rgba(187, 134, 252, 0.1);
+        border: 1px solid #bb86fc;
+        border-radius: 0.25rem;
+        color: #bb86fc;
+        font-size: 0.8rem;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        z-index: 2;
+      }
+      .copy-button:hover { background-color: rgba(187, 134, 252, 0.2); color: #ffffff; }
+      .copy-button.copied { background-color: rgba(76, 175, 80, 0.2); border-color: #4caf50; color: #4caf50; }
+      .blog-content pre code {
+        background-color: transparent;
+        padding: 0;
+        padding-top: 2rem;
+        display: block;
+        color: #e0e0e0;
+        line-height: 1.5;
+        white-space: pre;
+      }
+      .blog-content blockquote {
+        border-left: 4px solid #bb86fc;
+        padding: 0.5rem 1rem;
+        font-style: italic;
+        margin-bottom: 1rem;
+        background-color: rgba(187, 134, 252, 0.05);
+        border-radius: 0.25rem;
+      }
+      .blog-content img[src$=".png"] {
+        background-color: white;
+        padding: 0.5rem;
+        border-radius: 0.25rem;
+        max-width: 100%;
+        height: auto;
+      }
+      .blog-content img {
+        display: block;
+        margin: 1.5rem auto;
+        max-width: 100%;
+        height: auto;
+      }
+      .blog-content p:has(img) {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        margin: 2rem 0;
+      }
+      .blog-content .caption,
+      .blog-content figcaption,
+      .blog-content .image-caption {
+        font-size: 0.9rem;
+        font-style: italic;
+        color: #9e71da;
+        margin-top: 0.5rem;
+        margin-bottom: 2rem;
+        padding: 0.5rem;
+        background-color: rgba(187, 134, 252, 0.05);
+        border-radius: 0.25rem;
+        display: inline-block;
+        text-align: center;
+        counter-increment: figure;
+      }
+      .blog-content .caption::before,
+      .blog-content figcaption::before,
+      .blog-content .image-caption::before {
+        content: "Figure " counter(figure) ": ";
+        font-weight: bold;
+      }
+      .blog-content a {
+        color: #bb86fc;
+        text-decoration: none;
+        transition: color 0.2s ease;
+      }
+      .blog-content a:hover { color: #ffffff; text-decoration: underline; }
+    </style>
+  </head>
+  <body class="bg-[#121212] text-gray-200">
+    <main>
+      <div class="grid md:grid-cols-10 grid-cols-1 justify-start gap-0 max-w-5xl mx-auto">
+        <div class="p-2 w-full md:col-span-10 col-span-1 mt-4 mb-1">
+          <span class="inline-block px-2 py-1 mb-1 rounded bg-opacity-5 bg-purple-500">❯ cat <span class="josie">blog/{{ post.slug }}.html</span></span>
+          <div class="flex items-center justify-between">
+            <h1 class="text-xl font-bold">
+              <a href="/blog" class="text-purple-500 dark:text-purple-400 no-underline transition-colors duration-200 hover:text-white hover:underline">
+                <span class="josie">josie.lol</span> <span>/</span> blog
+              </a>
+            </h1>
+          </div>
+        </div>
+
+        <hr class="border-gray-700 dark:border-gray-600 w-full col-span-full md:col-span-10 mx-0 my-1">
+
+        <div class="p-2 w-full md:col-span-10 col-span-1 mb-1">
+          <div class="mb-6 pl-2">
+            <h1 class="text-2xl font-bold mb-2 text-purple-400">{{ post.title }}</h1>
+            <div class="flex flex-wrap items-center text-sm text-gray-400 mb-2">
+              <span class="mr-4">{{ post.date_iso }}</span>
+              <span>by {{ post.author | lower_keep_acronyms }}</span>
+            </div>
+{% if post.tags %}
+            <div class="flex flex-wrap mt-2">
+{% for tag in post.tags %}
+              <span class="text-xs mr-2 mb-2 px-2 py-1 bg-purple-900 bg-opacity-30 rounded-md">{{ tag }}</span>
+{% endfor %}
+            </div>
+{% endif %}
+          </div>
+
+          <article class="blog-content pl-2">
+            {{ post.body_html | safe }}
+          </article>
+
+          <hr class="border-gray-700 dark:border-gray-600 w-full mx-0 my-6">
+
+          <div class="flex justify-between items-center pl-2">
+            <a href="/blog" class="text-purple-500 dark:text-purple-400 no-underline transition-colors duration-200 hover:text-white hover:underline">back to all posts</a>
+          </div>
+        </div>
+      </div>
+    </main>
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        const codeBlocks = document.querySelectorAll('.blog-content pre');
+        codeBlocks.forEach(function(pre) {
+          const copyButton = document.createElement('button');
+          copyButton.className = 'copy-button';
+          copyButton.textContent = 'copy';
+          copyButton.addEventListener('click', function() {
+            const code = pre.querySelector('code');
+            const textToCopy = code.textContent || code.innerText;
+            navigator.clipboard.writeText(textToCopy).then(function() {
+              copyButton.textContent = 'copied!';
+              copyButton.classList.add('copied');
+              setTimeout(function() {
+                copyButton.textContent = 'copy';
+                copyButton.classList.remove('copied');
+              }, 2000);
+            }).catch(function(err) {
+              console.error('Failed to copy:', err);
+              copyButton.textContent = 'error';
+              setTimeout(function() { copyButton.textContent = 'copy'; }, 2000);
+            });
+          });
+          pre.appendChild(copyButton);
+        });
+
+        const blogLinks = document.querySelectorAll('.blog-content a');
+        blogLinks.forEach(function(link) {
+          const href = link.getAttribute('href');
+          if (href && (href.startsWith('http://') || href.startsWith('https://')) && !href.includes('josie.lol')) {
+            link.setAttribute('target', '_blank');
+            link.setAttribute('rel', 'noopener noreferrer');
+          }
+        });
+      });
+    </script>
+  </body>
+</html>

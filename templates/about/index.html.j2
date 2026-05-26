@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>josie.lol - about</title>
+
+    <meta
+      name="description"
+      content="about josephine pfeiffer: senior software engineer at red hat, linux userspace networking, kubernetes contributor (SIG autoscaling, WG node identity), arch linux on s390x, karpenter for ibm cloud."
+    />
+    <link rel="icon" href="/favicon.ico" />
+    <link rel="canonical" href="{{ site.url }}/about/" />
+    <link rel="alternate" type="application/rss+xml" title="josie.lol blog RSS feed" href="/rss.xml" />
+
+    <script type="application/ld+json">
+{{ aboutpage_jsonld | tojson_ld | safe }}
+    </script>
+
+    <script type="application/ld+json">
+{{ knows_about_jsonld | tojson_ld | safe }}
+    </script>
+
+{% if projects_jsonld %}
+    <script type="application/ld+json">
+{{ projects_jsonld | tojson_ld | safe }}
+    </script>
+{% endif %}
+
+{% if work_history_jsonld %}
+    <script type="application/ld+json">
+{{ work_history_jsonld | tojson_ld | safe }}
+    </script>
+{% endif %}
+
+{% if faq_jsonld %}
+    <script type="application/ld+json">
+{{ faq_jsonld | tojson_ld | safe }}
+    </script>
+{% endif %}
+
+    <meta property="og:type" content="profile" />
+    <meta property="og:url" content="{{ site.url }}/about/" />
+    <meta name="title" property="og:title" content="josie.lol - about" />
+    <meta
+      name="description"
+      property="og:description"
+      content="about josephine pfeiffer: senior software engineer at red hat, linux userspace networking, kubernetes contributor, arch linux on s390x."
+    />
+    <meta name="image" property="og:image" content="{{ site.url }}/screenshot.png" />
+    <meta name="author" content="josephine pfeiffer" />
+
+    <meta name="twitter:card" property="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" property="twitter:url" content="{{ site.url }}/about/" />
+    <meta name="twitter:title" property="twitter:title" content="josie.lol - about" />
+    <meta
+      name="twitter:description"
+      property="twitter:description"
+      content="about josephine pfeiffer: senior software engineer at red hat, linux userspace networking, kubernetes contributor, arch linux on s390x."
+    />
+    <meta name="twitter:image" property="twitter:image" content="{{ site.url }}/screenshot.png" />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/styles.css" />
+    <script src="https://cdn.tailwindcss.com?v=3.3.3"></script>
+    <style>
+      body {
+        background-color: #121212;
+        color: #e0e0e0;
+        font-family: 'IBM Plex Mono', monospace;
+      }
+      .josie { color: #bb86fc; }
+      .prompt {
+        display: inline-block;
+        padding: 0.25rem 0.5rem;
+        margin-bottom: 0.25rem;
+        border-radius: 0.25rem;
+        background-color: rgba(187, 134, 252, 0.05);
+      }
+      section { scroll-margin-top: 2rem; }
+      dt.role-label { color: #bb86fc; }
+      .faq-q { color: #bb86fc; font-weight: 700; }
+      .faq-disclosure > summary { list-style: none; }
+      .faq-disclosure > summary::-webkit-details-marker { display: none; }
+      .faq-disclosure[open] .faq-hint::before { content: "(click to collapse)"; }
+      .faq-disclosure:not([open]) .faq-hint::before { content: "(click to expand)"; }
+    </style>
+  </head>
+  <body class="bg-[#121212] text-gray-200">
+    <main>
+      <div class="grid md:grid-cols-10 grid-cols-1 justify-start gap-0 max-w-5xl mx-auto">
+        <div class="p-2 w-full md:col-span-10 col-span-1 mt-4 mb-1">
+          <span class="prompt">❯ ls -la <span class="josie">/about</span></span>
+          <div class="flex items-center justify-between">
+            <h1 class="text-xl font-bold">
+              <a href="/" class="text-purple-500 dark:text-purple-400 no-underline transition-colors duration-200 hover:text-white hover:underline">
+                <span class="josie">josie.lol</span> <span>/</span> about
+              </a>
+            </h1>
+          </div>
+        </div>
+
+        <hr class="border-gray-700 dark:border-gray-600 w-full col-span-full md:col-span-10 mx-0 my-1">
+
+        <section id="whoami" class="p-2 w-full md:col-span-10 col-span-1 mb-1">
+          <span class="prompt">❯ whoami</span>
+          <h2 class="text-lg font-bold text-purple-400 mb-2">{{ person.name | lower_keep_acronyms }}</h2>
+          <p class="text-gray-300 mb-2">{{ person.job_title | lower }} (rust/c) @ {{ person.works_for | lower }}. based in {{ person.display_location | lower }}.</p>
+          <p id="bio" class="text-gray-300">
+            {{ person.bio_paragraph }}
+          </p>
+        </section>
+
+        <hr class="border-gray-700 dark:border-gray-600 w-full col-span-full md:col-span-10 mx-0 my-1">
+
+{% if work_history %}
+        <section id="work-history" class="p-2 w-full md:col-span-10 col-span-1 mb-1">
+          <span class="prompt">❯ less <span class="josie">~/.cv</span></span>
+          <ul class="text-gray-300 space-y-4 mt-2 list-none pl-0">
+{% for w in work_history %}
+            <li class="work-history-item">
+              <div class="role-label font-bold">{{ w.role | lower_keep_acronyms }}</div>
+              <div class="text-sm text-gray-400">{% if w.url %}<a href="{{ w.url }}" class="text-purple-500 dark:text-purple-400 no-underline transition-colors duration-200 hover:text-white hover:underline">{{ w.employer | lower_keep_acronyms }}</a>{% else %}{{ w.employer | lower_keep_acronyms }}{% endif %} &middot; {{ w.start_date }} to {{ "present" if w.current else w.end_date }}</div>
+              <div class="text-xs text-gray-500">{% if w.team %}{{ w.team | lower_keep_acronyms }} &middot; {% endif %}{{ w.location | lower_keep_acronyms }}</div>
+{% if w.description %}
+              <div class="text-gray-300 text-sm mt-1">{{ w.description | lower_keep_acronyms }}</div>
+{% endif %}
+            </li>
+{% endfor %}
+          </ul>
+        </section>
+
+        <hr class="border-gray-700 dark:border-gray-600 w-full col-span-full md:col-span-10 mx-0 my-1">
+{% endif %}
+
+        <section id="now" class="p-2 w-full md:col-span-10 col-span-1 mb-1">
+          <span class="prompt">❯ cat <span class="josie">/now</span></span>
+          <ul class="list-disc list-inside text-gray-300 space-y-1">
+            <li>day job: rust rewrite of networkmanager and adjacent linux userspace networking @ red hat</li>
+            <li>side: maintaining the karpenter provider for IBM cloud (adopted by kubernetes SIG autoscaling, oct 2025); porting arch linux to s390x; FOSDEM 2026 lightning talk <a href="https://fosdem.org/2026/schedule/event/CNPVJL-lightning_lightning_talks_1/" class="text-purple-500 dark:text-purple-400 no-underline transition-colors duration-200 hover:text-white hover:underline">recording</a> is up</li>
+          </ul>
+        </section>
+
+        <hr class="border-gray-700 dark:border-gray-600 w-full col-span-full md:col-span-10 mx-0 my-1">
+
+        <section id="projects" class="p-2 w-full md:col-span-10 col-span-1 mb-1">
+          <span class="prompt">❯ ls <span class="josie">/projects</span></span>
+          <dl class="text-gray-300 space-y-3 mt-2">
+{% for p in projects %}
+            <div class="project-item">
+              <dt class="role-label">{{ p.role | lower_keep_acronyms }} &middot; <span class="text-gray-400 font-normal">{{ p.since }}</span></dt>
+              <dd class="ml-0">
+                <a href="{{ p.url }}" class="text-purple-500 dark:text-purple-400 no-underline transition-colors duration-200 hover:text-white hover:underline font-bold">{{ p.project | lower_keep_acronyms }}</a>
+{% set meta_bits = [] %}
+{% if p.language %}{% set _ = meta_bits.append(p.language | lower_keep_acronyms) %}{% endif %}
+{% if p.org %}{% set _ = meta_bits.append(p.org | lower_keep_acronyms) %}{% endif %}
+{% if meta_bits %}
+                <span class="text-sm text-gray-500"> [{{ meta_bits | join(', ') }}]</span>
+{% endif %}
+{% if p.description %}
+                <div class="text-gray-300 text-sm mt-1">{{ p.description | lower_keep_acronyms }}</div>
+{% endif %}
+              </dd>
+            </div>
+{% endfor %}
+          </dl>
+        </section>
+
+        <hr class="border-gray-700 dark:border-gray-600 w-full col-span-full md:col-span-10 mx-0 my-1">
+
+        <section id="affiliations" class="p-2 w-full md:col-span-10 col-span-1 mb-1">
+          <span class="prompt">❯ groups</span>
+          <ul class="list-disc list-inside text-gray-300 space-y-1 mt-2">
+{% for m in memberships %}
+            <li>
+{% if m.url %}
+              <a href="{{ m.url }}" class="text-purple-500 dark:text-purple-400 no-underline transition-colors duration-200 hover:text-white hover:underline">{{ m.name | lower_keep_acronyms }}</a>
+{% else %}
+              {{ m.name | lower_keep_acronyms }}
+{% endif %}
+{% if m.description %}
+              &middot; <span class="text-gray-400">{{ m.description | lower_keep_acronyms }}</span>
+{% endif %}
+            </li>
+{% endfor %}
+          </ul>
+        </section>
+
+        <hr class="border-gray-700 dark:border-gray-600 w-full col-span-full md:col-span-10 mx-0 my-1">
+
+        <section id="speaking" class="p-2 w-full md:col-span-10 col-span-1 mb-1">
+          <span class="prompt">❯ ls <span class="josie">/talks</span> | wc -l</span>
+          <p class="text-gray-300 mt-2">
+            {{ talks_count }} talks across {{ conferences_count }} conferences, 2024 to 2026.
+            topics: kubernetes autoscaling (karpenter), running linux on IBM Z mainframes, container security and escape techniques, developer productivity.
+          </p>
+          <p class="mt-2"><a href="/talks/" class="text-purple-500 dark:text-purple-400 no-underline transition-colors duration-200 hover:text-white hover:underline">browse all talks</a></p>
+        </section>
+
+        <hr class="border-gray-700 dark:border-gray-600 w-full col-span-full md:col-span-10 mx-0 my-1">
+
+        <section id="writing" class="p-2 w-full md:col-span-10 col-span-1 mb-1">
+          <span class="prompt">❯ ls <span class="josie">/writing</span></span>
+          <ul class="list-disc list-inside text-gray-300 space-y-1 mt-2">
+{% for post in blog_posts %}
+            <li>
+              <a href="{{ post.url }}" class="text-purple-500 dark:text-purple-400 no-underline transition-colors duration-200 hover:text-white hover:underline">{{ post.title | lower_keep_acronyms }}</a>
+{% if post.publication %}
+              &middot; <span class="text-gray-400">{{ post.publication | lower_keep_acronyms }}</span>
+{% endif %}
+              &middot; <span class="text-gray-500">{{ post.date_iso }}</span>
+            </li>
+{% endfor %}
+{% for pub in publications %}
+            <li>
+              <a href="{{ pub.url }}" class="text-purple-500 dark:text-purple-400 no-underline transition-colors duration-200 hover:text-white hover:underline">{{ pub.title | lower_keep_acronyms }}</a>
+{% if pub.publisher %}
+              &middot; <span class="text-gray-400">{{ pub.publisher | lower_keep_acronyms }}</span>
+{% endif %}
+              &middot; <span class="text-gray-500">{{ pub.datePublished }}</span>
+            </li>
+{% endfor %}
+          </ul>
+        </section>
+
+        <hr class="border-gray-700 dark:border-gray-600 w-full col-span-full md:col-span-10 mx-0 my-1">
+
+        <section id="certifications" class="p-2 w-full md:col-span-10 col-span-1 mb-1">
+          <span class="prompt">❯ ls <span class="josie">/crt</span> | tail -5</span>
+          <ul class="list-disc list-inside text-gray-300 space-y-1 mt-2">
+{% for c in credentials[:5] %}
+            <li><span class="cert-item">{{ c.name | lower_keep_acronyms }} ({{ c.year }})</span></li>
+{% endfor %}
+          </ul>
+          <p class="mt-2">
+            <a href="/?cmd=ls+-la+/crt/" class="text-purple-500 dark:text-purple-400 no-underline transition-colors duration-200 hover:text-white hover:underline">full list on homepage</a>
+            &middot;
+            <a href="https://www.credly.com/users/pfeifferj" class="text-purple-500 dark:text-purple-400 no-underline transition-colors duration-200 hover:text-white hover:underline">credly profile</a>
+          </p>
+        </section>
+
+        <hr class="border-gray-700 dark:border-gray-600 w-full col-span-full md:col-span-10 mx-0 my-1">
+
+        <section id="faq" class="p-2 w-full md:col-span-10 col-span-1 mb-1">
+          <details class="faq-disclosure">
+            <summary class="cursor-pointer select-none">
+              <span class="prompt">❯ cat <span class="josie">/faq</span></span>
+              <span class="text-sm text-gray-500 faq-hint"></span>
+            </summary>
+            <dl class="text-gray-300 space-y-4 mt-2">
+{% for q in faq %}
+              <div class="faq-entry">
+                <dt class="faq-q">{{ q.question }}</dt>
+                <dd class="faq-answer text-gray-300 mt-1 ml-0">{{ q.answer_md | markdown_inline }}</dd>
+              </div>
+{% endfor %}
+            </dl>
+          </details>
+        </section>
+
+        <hr class="border-gray-700 dark:border-gray-600 w-full col-span-full md:col-span-10 mx-0 my-1">
+
+        <section id="contact" class="p-2 w-full md:col-span-10 col-span-1 mb-1">
+          <span class="prompt">❯ contact</span>
+          <ul class="list-disc list-inside text-gray-300 space-y-1 mt-2">
+            <li><a href="mailto:{{ person.email }}" class="text-purple-500 dark:text-purple-400 no-underline transition-colors duration-200 hover:text-white hover:underline">{{ person.email }}</a></li>
+            <li><a href="https://go.josie.lol/signal" rel="noopener noreferrer" target="_blank" class="text-purple-500 dark:text-purple-400 no-underline transition-colors duration-200 hover:text-white hover:underline">signal</a></li>
+            <li><a href="https://sofre.ch/@josie" rel="me noopener noreferrer" target="_blank" class="text-purple-500 dark:text-purple-400 no-underline transition-colors duration-200 hover:text-white hover:underline">fedi (sofre.ch/@josie)</a></li>
+            <li><a href="https://bsky.app/profile/josie.lol" rel="noopener noreferrer" target="_blank" class="text-purple-500 dark:text-purple-400 no-underline transition-colors duration-200 hover:text-white hover:underline">bluesky (@josie.lol)</a></li>
+            <li><a href="https://www.linkedin.com/in/josephine-pfeiffer/" rel="noopener noreferrer" target="_blank" class="text-purple-500 dark:text-purple-400 no-underline transition-colors duration-200 hover:text-white hover:underline">linkedin</a></li>
+            <li><a href="https://github.com/pfeifferj" rel="noopener noreferrer" target="_blank" class="text-purple-500 dark:text-purple-400 no-underline transition-colors duration-200 hover:text-white hover:underline">github</a></li>
+          </ul>
+        </section>
+
+      </div>
+    </main>
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        const allLinks = document.querySelectorAll('a');
+        allLinks.forEach(function(link) {
+          const href = link.getAttribute('href');
+          if (href && (href.startsWith('http://') || href.startsWith('https://')) && !href.includes('josie.lol')) {
+            link.setAttribute('target', '_blank');
+            link.setAttribute('rel', 'noopener noreferrer');
+          }
+        });
+      });
+    </script>
+  </body>
+</html>

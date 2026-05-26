@@ -49,6 +49,10 @@ tmp/
 CLAUDE.md
 .claude
 
+# Python build pipeline
+__pycache__/
+*.pyc
+
 # Keep these files
 !.gitignore
 !.dockerignore

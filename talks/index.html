@@ -14,25 +14,24 @@
     <link rel="canonical" href="https://josie.lol/talks/" />
     <link rel="alternate" type="application/rss+xml" title="josie.lol blog RSS feed" href="/rss.xml" />
 
-    <!-- TALKS_JSONLD_START -->
     <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@graph": [
     {
       "@type": "PresentationDigitalDocument",
-      "@id": "https://josie.lol/talks/#talk-arch-mainframes-lightning",
-      "name": "my mainframe runs arch btw",
-      "description": "A lightning talk exploring the journey of getting Arch Linux running on IBM mainframe hardware. Because if it runs Linux, it should run Arch.",
+      "@id": "https://josie.lol/talks/#talk-secure-node-joining",
+      "name": "From Static Tokens to Attestation: The Evolution of Secure Node Joining",
+      "description": "This panel examines secure node joining in modern Kubernetes environments where tools like Karpenter and Cluster API enable rapid infrastructure scaling. We discuss defining a root of trust, validating node identities with metadata and attestation, locking down CSR approval, and other security mechanisms to prevent unauthorized nodes from joining clusters.",
       "author": {
         "@id": "https://josie.lol/#person"
       }
     },
     {
       "@type": "PresentationDigitalDocument",
-      "@id": "https://josie.lol/talks/#talk-mainframe-kubernetes",
-      "name": "Mainframes Aren't Dead, They're Just Running Kubernetes Now",
-      "description": "Mainframes have been declared dead more times than JavaScript frameworks have been invented—but here they are, still running the backbone of global finance, government, and enterprise computing. And now? They’re running Kubernetes too. This talk covers the why and how of running Kubernetes on mainframes, from containerization on z/OS to networking, workload orchestration, and real-world use cases. We’ll break down the challenges, the benefits, and whether this is a clever hack or a genuinely viable approach for modern infrastructure. If you think mainframes are relics, think again—because they’re running microservices now.",
+      "@id": "https://josie.lol/talks/#talk-arch-mainframes-lightning",
+      "name": "my mainframe runs arch btw",
+      "description": "A lightning talk exploring the journey of getting Arch Linux running on IBM mainframe hardware. Because if it runs Linux, it should run Arch.",
       "author": {
         "@id": "https://josie.lol/#person"
       }
@@ -48,18 +47,9 @@
     },
     {
       "@type": "PresentationDigitalDocument",
-      "@id": "https://josie.lol/talks/#talk-ai-developer-productivity",
-      "name": "Would You Like Fries With That? AI for Developer Productivity",
-      "description": "In this talk, Kyra and I showcased how we successfully integrated an AI-powered recommendation engine into Red Hat's Internal Developer Platform, based on Backstage.io, to enhance developer productivity. Our approach leverages data from the Developer Hub analytics API and processes it with Knative event-driven microservices to generate smart action proposals. Using OpenShift AI, we train and deploy AI models that power a frontend plugin in the Developer Hub, providing tailored recommendations directly to users powered by ML-Ops pipelines. By leveraging the power of AI, we have improved the developer experience by providing personalized suggestions for tools, resources, and tutorials, resulting in increased productivity and efficiency.",
-      "author": {
-        "@id": "https://josie.lol/#person"
-      }
-    },
-    {
-      "@type": "PresentationDigitalDocument",
-      "@id": "https://josie.lol/talks/#talk-secure-node-joining",
-      "name": "From Static Tokens to Attestation: The Evolution of Secure Node Joining",
-      "description": "This panel examines secure node joining in modern Kubernetes environments where tools like Karpenter and Cluster API enable rapid infrastructure scaling. We discuss defining a root of trust, validating node identities with metadata and attestation, locking down CSR approval, and other security mechanisms to prevent unauthorized nodes from joining clusters.",
+      "@id": "https://josie.lol/talks/#talk-mainframe-kubernetes",
+      "name": "Mainframes Aren't Dead, They're Just Running Kubernetes Now",
+      "description": "Mainframes have been declared dead more times than JavaScript frameworks have been invented—but here they are, still running the backbone of global finance, government, and enterprise computing. And now? They’re running Kubernetes too. This talk covers the why and how of running Kubernetes on mainframes, from containerization on z/OS to networking, workload orchestration, and real-world use cases. We’ll break down the challenges, the benefits, and whether this is a clever hack or a genuinely viable approach for modern infrastructure. If you think mainframes are relics, think again—because they’re running microservices now.",
       "author": {
         "@id": "https://josie.lol/#person"
       }
@@ -77,154 +67,18 @@
       "@type": "PresentationDigitalDocument",
       "@id": "https://josie.lol/talks/#talk-container-breakouts",
       "name": "9001 Ways to break out of a container",
-      "description": "Container security is essential, but what happens when the bad guys get creative? In \"9001 ways to break out of a container,\" we’ll explore the fascinating and terrifying techniques hackers use to escape containers. This talk will cover: how attackers slip through the cracks to take over the linux kernel by bypassing the ebpf validator, and the most common and overlooked weaknesses that make containers vulnerable, real-world cases of container escapes and the aftermath. Whether you’re a seasoned security professional or just curious about hacking techniques, this talk should have takeaways for everyone. ",
+      "description": "Container security is essential, but what happens when the bad guys get creative? In \"9001 ways to break out of a container,\" we’ll explore the fascinating and terrifying techniques hackers use to escape containers. This talk will cover: how attackers slip through the cracks to take over the linux kernel by bypassing the ebpf validator, and the most common and overlooked weaknesses that make containers vulnerable, real-world cases of container escapes and the aftermath. Whether you’re a seasoned security professional or just curious about hacking techniques, this talk should have takeaways for everyone.",
       "author": {
         "@id": "https://josie.lol/#person"
       }
     },
     {
-      "@type": "Event",
-      "@id": "https://josie.lol/talks/#event-arch-mainframes-lightning-0",
-      "name": "FOSDEM",
-      "startDate": "2026-01-31",
-      "location": {
-        "@type": "Place",
-        "name": "Brussels"
-      },
-      "performer": {
+      "@type": "PresentationDigitalDocument",
+      "@id": "https://josie.lol/talks/#talk-ai-developer-productivity",
+      "name": "Would You Like Fries With That? AI for Developer Productivity",
+      "description": "In this talk, Kyra and I showcased how we successfully integrated an AI-powered recommendation engine into Red Hat's Internal Developer Platform, based on Backstage.io, to enhance developer productivity. Our approach leverages data from the Developer Hub analytics API and processes it with Knative event-driven microservices to generate smart action proposals. Using OpenShift AI, we train and deploy AI models that power a frontend plugin in the Developer Hub, providing tailored recommendations directly to users powered by ML-Ops pipelines. By leveraging the power of AI, we have improved the developer experience by providing personalized suggestions for tools, resources, and tutorials, resulting in increased productivity and efficiency.",
+      "author": {
         "@id": "https://josie.lol/#person"
-      },
-      "workPresented": {
-        "@id": "https://josie.lol/talks/#talk-arch-mainframes-lightning"
-      }
-    },
-    {
-      "@type": "Event",
-      "@id": "https://josie.lol/talks/#event-mainframe-kubernetes-0",
-      "name": "The Linux Foundation Open Source Summit North America",
-      "startDate": "2025-06-24",
-      "location": {
-        "@type": "Place",
-        "name": "Denver"
-      },
-      "performer": {
-        "@id": "https://josie.lol/#person"
-      },
-      "workPresented": {
-        "@id": "https://josie.lol/talks/#talk-mainframe-kubernetes"
-      },
-      "eventStatus": "https://schema.org/EventCancelled"
-    },
-    {
-      "@type": "Event",
-      "@id": "https://josie.lol/talks/#event-mainframe-kubernetes-1",
-      "name": "Kubernetes Community Day Budapest",
-      "startDate": "2025-04-24",
-      "location": {
-        "@type": "Place",
-        "name": "Budapest"
-      },
-      "performer": {
-        "@id": "https://josie.lol/#person"
-      },
-      "workPresented": {
-        "@id": "https://josie.lol/talks/#talk-mainframe-kubernetes"
-      }
-    },
-    {
-      "@type": "Event",
-      "@id": "https://josie.lol/talks/#event-mainframe-kubernetes-2",
-      "name": "Kubernetes Community Days Bratislava",
-      "startDate": "2025-06-06",
-      "location": {
-        "@type": "Place",
-        "name": "Bratislava"
-      },
-      "performer": {
-        "@id": "https://josie.lol/#person"
-      },
-      "workPresented": {
-        "@id": "https://josie.lol/talks/#talk-mainframe-kubernetes"
-      }
-    },
-    {
-      "@type": "Event",
-      "@id": "https://josie.lol/talks/#event-mainframe-kubernetes-3",
-      "name": "The Linux Foundation Open Source Summit Europe",
-      "startDate": "2025-08-25",
-      "location": {
-        "@type": "Place",
-        "name": "Amsterdam"
-      },
-      "performer": {
-        "@id": "https://josie.lol/#person"
-      },
-      "workPresented": {
-        "@id": "https://josie.lol/talks/#talk-mainframe-kubernetes"
-      }
-    },
-    {
-      "@type": "Event",
-      "@id": "https://josie.lol/talks/#event-mainframe-kubernetes-4",
-      "name": "Container Days ",
-      "startDate": "2025-09-10",
-      "location": {
-        "@type": "Place",
-        "name": "Hamburg"
-      },
-      "performer": {
-        "@id": "https://josie.lol/#person"
-      },
-      "workPresented": {
-        "@id": "https://josie.lol/talks/#talk-mainframe-kubernetes"
-      }
-    },
-    {
-      "@type": "Event",
-      "@id": "https://josie.lol/talks/#event-beyond-cas-karpenter-0",
-      "name": "DevConf",
-      "startDate": "2025-06-14",
-      "location": {
-        "@type": "Place",
-        "name": "Brno"
-      },
-      "performer": {
-        "@id": "https://josie.lol/#person"
-      },
-      "workPresented": {
-        "@id": "https://josie.lol/talks/#talk-beyond-cas-karpenter"
-      }
-    },
-    {
-      "@type": "Event",
-      "@id": "https://josie.lol/talks/#event-ai-developer-productivity-0",
-      "name": "Uphill conf",
-      "startDate": "2024-05-16",
-      "location": {
-        "@type": "Place",
-        "name": "Bern"
-      },
-      "performer": {
-        "@id": "https://josie.lol/#person"
-      },
-      "workPresented": {
-        "@id": "https://josie.lol/talks/#talk-ai-developer-productivity"
-      }
-    },
-    {
-      "@type": "Event",
-      "@id": "https://josie.lol/talks/#event-ai-developer-productivity-1",
-      "name": "Kubernetes Community Days Zurich Rejects",
-      "startDate": "2024-06-13",
-      "location": {
-        "@type": "Place",
-        "name": "Zurich"
-      },
-      "performer": {
-        "@id": "https://josie.lol/#person"
-      },
-      "workPresented": {
-        "@id": "https://josie.lol/talks/#talk-ai-developer-productivity"
       }
     },
     {
@@ -232,15 +86,128 @@
       "@id": "https://josie.lol/talks/#event-secure-node-joining-0",
       "name": "KubeCon + CloudNativeCon Europe",
       "startDate": "2026-03-24",
-      "location": {
-        "@type": "Place",
-        "name": "Amsterdam"
-      },
       "performer": {
         "@id": "https://josie.lol/#person"
       },
       "workPresented": {
         "@id": "https://josie.lol/talks/#talk-secure-node-joining"
+      },
+      "location": {
+        "@type": "Place",
+        "name": "Amsterdam"
+      }
+    },
+    {
+      "@type": "Event",
+      "@id": "https://josie.lol/talks/#event-arch-mainframes-lightning-0",
+      "name": "FOSDEM",
+      "startDate": "2026-01-31",
+      "performer": {
+        "@id": "https://josie.lol/#person"
+      },
+      "workPresented": {
+        "@id": "https://josie.lol/talks/#talk-arch-mainframes-lightning"
+      },
+      "location": {
+        "@type": "Place",
+        "name": "Brussels"
+      }
+    },
+    {
+      "@type": "Event",
+      "@id": "https://josie.lol/talks/#event-beyond-cas-karpenter-0",
+      "name": "DevConf",
+      "startDate": "2025-06-14",
+      "performer": {
+        "@id": "https://josie.lol/#person"
+      },
+      "workPresented": {
+        "@id": "https://josie.lol/talks/#talk-beyond-cas-karpenter"
+      },
+      "location": {
+        "@type": "Place",
+        "name": "Brno"
+      }
+    },
+    {
+      "@type": "Event",
+      "@id": "https://josie.lol/talks/#event-mainframe-kubernetes-0",
+      "name": "Container Days",
+      "startDate": "2025-09-10",
+      "performer": {
+        "@id": "https://josie.lol/#person"
+      },
+      "workPresented": {
+        "@id": "https://josie.lol/talks/#talk-mainframe-kubernetes"
+      },
+      "location": {
+        "@type": "Place",
+        "name": "Hamburg"
+      }
+    },
+    {
+      "@type": "Event",
+      "@id": "https://josie.lol/talks/#event-mainframe-kubernetes-1",
+      "name": "The Linux Foundation Open Source Summit Europe",
+      "startDate": "2025-08-25",
+      "performer": {
+        "@id": "https://josie.lol/#person"
+      },
+      "workPresented": {
+        "@id": "https://josie.lol/talks/#talk-mainframe-kubernetes"
+      },
+      "location": {
+        "@type": "Place",
+        "name": "Amsterdam"
+      }
+    },
+    {
+      "@type": "Event",
+      "@id": "https://josie.lol/talks/#event-mainframe-kubernetes-2",
+      "name": "The Linux Foundation Open Source Summit North America",
+      "startDate": "2025-06-24",
+      "performer": {
+        "@id": "https://josie.lol/#person"
+      },
+      "workPresented": {
+        "@id": "https://josie.lol/talks/#talk-mainframe-kubernetes"
+      },
+      "location": {
+        "@type": "Place",
+        "name": "Denver"
+      },
+      "eventStatus": "https://schema.org/EventCancelled"
+    },
+    {
+      "@type": "Event",
+      "@id": "https://josie.lol/talks/#event-mainframe-kubernetes-3",
+      "name": "Kubernetes Community Days Bratislava",
+      "startDate": "2025-06-06",
+      "performer": {
+        "@id": "https://josie.lol/#person"
+      },
+      "workPresented": {
+        "@id": "https://josie.lol/talks/#talk-mainframe-kubernetes"
+      },
+      "location": {
+        "@type": "Place",
+        "name": "Bratislava"
+      }
+    },
+    {
+      "@type": "Event",
+      "@id": "https://josie.lol/talks/#event-mainframe-kubernetes-4",
+      "name": "Kubernetes Community Day Budapest",
+      "startDate": "2025-04-24",
+      "performer": {
+        "@id": "https://josie.lol/#person"
+      },
+      "workPresented": {
+        "@id": "https://josie.lol/talks/#talk-mainframe-kubernetes"
+      },
+      "location": {
+        "@type": "Place",
+        "name": "Budapest"
       }
     },
     {
@@ -248,47 +215,91 @@
       "@id": "https://josie.lol/talks/#event-developer-productivity-guide-0",
       "name": "Swiss Dev Confederation",
       "startDate": "2024-09-17",
-      "location": {
-        "@type": "Place",
-        "name": "Zurich"
-      },
       "performer": {
         "@id": "https://josie.lol/#person"
       },
       "workPresented": {
         "@id": "https://josie.lol/talks/#talk-developer-productivity-guide"
+      },
+      "location": {
+        "@type": "Place",
+        "name": "Zurich"
       }
     },
     {
       "@type": "Event",
       "@id": "https://josie.lol/talks/#event-container-breakouts-0",
-      "name": "Bsides Bristol",
-      "startDate": "2024-08-30",
-      "location": {
-        "@type": "Place",
-        "name": "Bristol"
-      },
+      "name": "WHY2025 Hacker Camp",
+      "startDate": "2025-08-08",
       "performer": {
         "@id": "https://josie.lol/#person"
       },
       "workPresented": {
         "@id": "https://josie.lol/talks/#talk-container-breakouts"
+      },
+      "location": {
+        "@type": "Place",
+        "name": "Geestmerambacht, Netherlands"
       }
     },
     {
       "@type": "Event",
       "@id": "https://josie.lol/talks/#event-container-breakouts-1",
-      "name": "WHY2025 Hacker Camp",
-      "startDate": "2025-08-08",
-      "location": {
-        "@type": "Place",
-        "name": "Geestmerambacht, Netherlands"
-      },
+      "name": "Bsides Bristol",
+      "startDate": "2024-08-30",
       "performer": {
         "@id": "https://josie.lol/#person"
       },
       "workPresented": {
         "@id": "https://josie.lol/talks/#talk-container-breakouts"
+      },
+      "location": {
+        "@type": "Place",
+        "name": "Bristol"
+      }
+    },
+    {
+      "@type": "Event",
+      "@id": "https://josie.lol/talks/#event-ai-developer-productivity-0",
+      "name": "Kubernetes Community Days Zurich Rejects",
+      "startDate": "2024-06-13",
+      "performer": {
+        "@id": "https://josie.lol/#person"
+      },
+      "workPresented": {
+        "@id": "https://josie.lol/talks/#talk-ai-developer-productivity"
+      },
+      "location": {
+        "@type": "Place",
+        "name": "Zurich"
+      }
+    },
+    {
+      "@type": "Event",
+      "@id": "https://josie.lol/talks/#event-ai-developer-productivity-1",
+      "name": "Uphill conf",
+      "startDate": "2024-05-16",
+      "performer": {
+        "@id": "https://josie.lol/#person"
+      },
+      "workPresented": {
+        "@id": "https://josie.lol/talks/#talk-ai-developer-productivity"
+      },
+      "location": {
+        "@type": "Place",
+        "name": "Bern"
+      }
+    },
+    {
+      "@type": "VideoObject",
+      "@id": "https://josie.lol/talks/#video-secure-node-joining-0",
+      "contentUrl": "https://www.youtube.com/watch?v=MIO3tDk0GnI",
+      "embedUrl": "https://www.youtube.com/watch?v=MIO3tDk0GnI",
+      "name": "KubeCon + CloudNativeCon Europe",
+      "description": "This panel examines secure node joining in modern Kubernetes environments where tools like Karpenter and Cluster API enable rapid infrastructure scaling. We discuss defining a root of trust, validating node identities with metadata and attestation, locking down CSR approval, and other security mechanisms to prevent unauthorized nodes from joining clusters.",
+      "uploadDate": "2026-03-24",
+      "author": {
+        "@id": "https://josie.lol/#person"
       }
     },
     {
@@ -299,54 +310,6 @@
       "name": "FOSDEM",
       "description": "A lightning talk exploring the journey of getting Arch Linux running on IBM mainframe hardware. Because if it runs Linux, it should run Arch.",
       "uploadDate": "2026-01-31",
-      "author": {
-        "@id": "https://josie.lol/#person"
-      }
-    },
-    {
-      "@type": "VideoObject",
-      "@id": "https://josie.lol/talks/#video-mainframe-kubernetes-1",
-      "contentUrl": "https://youtu.be/MRLQL0BNVPk",
-      "embedUrl": "https://youtu.be/MRLQL0BNVPk",
-      "name": "Kubernetes Community Day Budapest",
-      "description": "Mainframes have been declared dead more times than JavaScript frameworks have been invented—but here they are, still running the backbone of global finance, government, and enterprise computing. And now? They’re running Kubernetes too. This talk covers the why and how of running Kubernetes on mainframes, from containerization on z/OS to networking, workload orchestration, and real-world use cases. We’ll break down the challenges, the benefits, and whether this is a clever hack or a genuinely viable approach for modern infrastructure. If you think mainframes are relics, think again—because they’re running microservices now.",
-      "uploadDate": "2025-04-24",
-      "author": {
-        "@id": "https://josie.lol/#person"
-      }
-    },
-    {
-      "@type": "VideoObject",
-      "@id": "https://josie.lol/talks/#video-mainframe-kubernetes-2",
-      "contentUrl": "https://youtu.be/dG9woWoW4m0",
-      "embedUrl": "https://youtu.be/dG9woWoW4m0",
-      "name": "Kubernetes Community Days Bratislava",
-      "description": "Mainframes have been declared dead more times than JavaScript frameworks have been invented—but here they are, still running the backbone of global finance, government, and enterprise computing. And now? They’re running Kubernetes too. This talk covers the why and how of running Kubernetes on mainframes, from containerization on z/OS to networking, workload orchestration, and real-world use cases. We’ll break down the challenges, the benefits, and whether this is a clever hack or a genuinely viable approach for modern infrastructure. If you think mainframes are relics, think again—because they’re running microservices now.",
-      "uploadDate": "2025-06-06",
-      "author": {
-        "@id": "https://josie.lol/#person"
-      }
-    },
-    {
-      "@type": "VideoObject",
-      "@id": "https://josie.lol/talks/#video-mainframe-kubernetes-3",
-      "contentUrl": "https://youtu.be/l2391SqiI-8",
-      "embedUrl": "https://youtu.be/l2391SqiI-8",
-      "name": "The Linux Foundation Open Source Summit Europe",
-      "description": "Mainframes have been declared dead more times than JavaScript frameworks have been invented—but here they are, still running the backbone of global finance, government, and enterprise computing. And now? They’re running Kubernetes too. This talk covers the why and how of running Kubernetes on mainframes, from containerization on z/OS to networking, workload orchestration, and real-world use cases. We’ll break down the challenges, the benefits, and whether this is a clever hack or a genuinely viable approach for modern infrastructure. If you think mainframes are relics, think again—because they’re running microservices now.",
-      "uploadDate": "2025-08-25",
-      "author": {
-        "@id": "https://josie.lol/#person"
-      }
-    },
-    {
-      "@type": "VideoObject",
-      "@id": "https://josie.lol/talks/#video-mainframe-kubernetes-4",
-      "contentUrl": "https://youtu.be/LBkB-J5PQ9s",
-      "embedUrl": "https://youtu.be/LBkB-J5PQ9s",
-      "name": "Container Days ",
-      "description": "Mainframes have been declared dead more times than JavaScript frameworks have been invented—but here they are, still running the backbone of global finance, government, and enterprise computing. And now? They’re running Kubernetes too. This talk covers the why and how of running Kubernetes on mainframes, from containerization on z/OS to networking, workload orchestration, and real-world use cases. We’ll break down the challenges, the benefits, and whether this is a clever hack or a genuinely viable approach for modern infrastructure. If you think mainframes are relics, think again—because they’re running microservices now.",
-      "uploadDate": "2025-09-10",
       "author": {
         "@id": "https://josie.lol/#person"
       }
@@ -365,7 +328,67 @@
     },
     {
       "@type": "VideoObject",
-      "@id": "https://josie.lol/talks/#video-ai-developer-productivity-0",
+      "@id": "https://josie.lol/talks/#video-mainframe-kubernetes-0",
+      "contentUrl": "https://youtu.be/LBkB-J5PQ9s",
+      "embedUrl": "https://youtu.be/LBkB-J5PQ9s",
+      "name": "Container Days",
+      "description": "Mainframes have been declared dead more times than JavaScript frameworks have been invented—but here they are, still running the backbone of global finance, government, and enterprise computing. And now? They’re running Kubernetes too. This talk covers the why and how of running Kubernetes on mainframes, from containerization on z/OS to networking, workload orchestration, and real-world use cases. We’ll break down the challenges, the benefits, and whether this is a clever hack or a genuinely viable approach for modern infrastructure. If you think mainframes are relics, think again—because they’re running microservices now.",
+      "uploadDate": "2025-09-10",
+      "author": {
+        "@id": "https://josie.lol/#person"
+      }
+    },
+    {
+      "@type": "VideoObject",
+      "@id": "https://josie.lol/talks/#video-mainframe-kubernetes-1",
+      "contentUrl": "https://youtu.be/l2391SqiI-8",
+      "embedUrl": "https://youtu.be/l2391SqiI-8",
+      "name": "The Linux Foundation Open Source Summit Europe",
+      "description": "Mainframes have been declared dead more times than JavaScript frameworks have been invented—but here they are, still running the backbone of global finance, government, and enterprise computing. And now? They’re running Kubernetes too. This talk covers the why and how of running Kubernetes on mainframes, from containerization on z/OS to networking, workload orchestration, and real-world use cases. We’ll break down the challenges, the benefits, and whether this is a clever hack or a genuinely viable approach for modern infrastructure. If you think mainframes are relics, think again—because they’re running microservices now.",
+      "uploadDate": "2025-08-25",
+      "author": {
+        "@id": "https://josie.lol/#person"
+      }
+    },
+    {
+      "@type": "VideoObject",
+      "@id": "https://josie.lol/talks/#video-mainframe-kubernetes-3",
+      "contentUrl": "https://youtu.be/dG9woWoW4m0",
+      "embedUrl": "https://youtu.be/dG9woWoW4m0",
+      "name": "Kubernetes Community Days Bratislava",
+      "description": "Mainframes have been declared dead more times than JavaScript frameworks have been invented—but here they are, still running the backbone of global finance, government, and enterprise computing. And now? They’re running Kubernetes too. This talk covers the why and how of running Kubernetes on mainframes, from containerization on z/OS to networking, workload orchestration, and real-world use cases. We’ll break down the challenges, the benefits, and whether this is a clever hack or a genuinely viable approach for modern infrastructure. If you think mainframes are relics, think again—because they’re running microservices now.",
+      "uploadDate": "2025-06-06",
+      "author": {
+        "@id": "https://josie.lol/#person"
+      }
+    },
+    {
+      "@type": "VideoObject",
+      "@id": "https://josie.lol/talks/#video-mainframe-kubernetes-4",
+      "contentUrl": "https://youtu.be/MRLQL0BNVPk",
+      "embedUrl": "https://youtu.be/MRLQL0BNVPk",
+      "name": "Kubernetes Community Day Budapest",
+      "description": "Mainframes have been declared dead more times than JavaScript frameworks have been invented—but here they are, still running the backbone of global finance, government, and enterprise computing. And now? They’re running Kubernetes too. This talk covers the why and how of running Kubernetes on mainframes, from containerization on z/OS to networking, workload orchestration, and real-world use cases. We’ll break down the challenges, the benefits, and whether this is a clever hack or a genuinely viable approach for modern infrastructure. If you think mainframes are relics, think again—because they’re running microservices now.",
+      "uploadDate": "2025-04-24",
+      "author": {
+        "@id": "https://josie.lol/#person"
+      }
+    },
+    {
+      "@type": "VideoObject",
+      "@id": "https://josie.lol/talks/#video-container-breakouts-1",
+      "contentUrl": "https://youtu.be/_7R-Ha3cnuE",
+      "embedUrl": "https://youtu.be/_7R-Ha3cnuE",
+      "name": "Bsides Bristol",
+      "description": "Container security is essential, but what happens when the bad guys get creative? In \"9001 ways to break out of a container,\" we’ll explore the fascinating and terrifying techniques hackers use to escape containers. This talk will cover: how attackers slip through the cracks to take over the linux kernel by bypassing the ebpf validator, and the most common and overlooked weaknesses that make containers vulnerable, real-world cases of container escapes and the aftermath. Whether you’re a seasoned security professional or just curious about hacking techniques, this talk should have takeaways for everyone.",
+      "uploadDate": "2024-08-30",
+      "author": {
+        "@id": "https://josie.lol/#person"
+      }
+    },
+    {
+      "@type": "VideoObject",
+      "@id": "https://josie.lol/talks/#video-ai-developer-productivity-1",
       "contentUrl": "https://youtu.be/ThKFpgDGM94",
       "embedUrl": "https://youtu.be/ThKFpgDGM94",
       "name": "Uphill conf",
@@ -374,35 +397,10 @@
       "author": {
         "@id": "https://josie.lol/#person"
       }
-    },
-    {
-      "@type": "VideoObject",
-      "@id": "https://josie.lol/talks/#video-secure-node-joining-0",
-      "contentUrl": "https://www.youtube.com/watch?v=MIO3tDk0GnI",
-      "embedUrl": "https://www.youtube.com/watch?v=MIO3tDk0GnI",
-      "name": "KubeCon + CloudNativeCon Europe",
-      "description": "This panel examines secure node joining in modern Kubernetes environments where tools like Karpenter and Cluster API enable rapid infrastructure scaling. We discuss defining a root of trust, validating node identities with metadata and attestation, locking down CSR approval, and other security mechanisms to prevent unauthorized nodes from joining clusters.",
-      "uploadDate": "2026-03-24",
-      "author": {
-        "@id": "https://josie.lol/#person"
-      }
-    },
-    {
-      "@type": "VideoObject",
-      "@id": "https://josie.lol/talks/#video-container-breakouts-0",
-      "contentUrl": "https://youtu.be/_7R-Ha3cnuE",
-      "embedUrl": "https://youtu.be/_7R-Ha3cnuE",
-      "name": "Bsides Bristol",
-      "description": "Container security is essential, but what happens when the bad guys get creative? In \"9001 ways to break out of a container,\" we’ll explore the fascinating and terrifying techniques hackers use to escape containers. This talk will cover: how attackers slip through the cracks to take over the linux kernel by bypassing the ebpf validator, and the most common and overlooked weaknesses that make containers vulnerable, real-world cases of container escapes and the aftermath. Whether you’re a seasoned security professional or just curious about hacking techniques, this talk should have takeaways for everyone. ",
-      "uploadDate": "2024-08-30",
-      "author": {
-        "@id": "https://josie.lol/#person"
-      }
     }
   ]
 }
     </script>
-    <!-- TALKS_JSONLD_END -->
 
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://josie.lol/talks/" />
@@ -412,46 +410,24 @@
       property="og:description"
       content="conference talks and presentations by josephine pfeiffer on cloud-native tech, infrastructure, security, and developer experience."
     />
-    <meta
-      name="image"
-      property="og:image"
-      content="https://josie.lol/screenshot.png"
-    />
+    <meta name="image" property="og:image" content="https://josie.lol/screenshot.png" />
     <meta name="author" content="josephine pfeiffer" />
 
-    <meta
-      name="twitter:card"
-      property="twitter:card"
-      content="summary_large_image"
-    />
-    <meta
-      name="twitter:url"
-      property="twitter:url"
-      content="https://josie.lol/talks/"
-    />
-    <meta
-      name="twitter:title"
-      property="twitter:title"
-      content="josie.lol - talks"
-    />
+    <meta name="twitter:card" property="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" property="twitter:url" content="https://josie.lol/talks/" />
+    <meta name="twitter:title" property="twitter:title" content="josie.lol - talks" />
     <meta
       name="twitter:description"
       property="twitter:description"
       content="conference talks and presentations by josephine pfeiffer on cloud-native tech, infrastructure, security, and developer experience."
     />
-    <meta
-      name="twitter:image"
-      property="twitter:image"
-      content="https://josie.lol/screenshot.png"
-    />
+    <meta name="twitter:image" property="twitter:image" content="https://josie.lol/screenshot.png" />
 
-    <!-- Load IBM Plex Mono from Google Fonts -->
     <link
       href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;700&display=swap"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="/styles.css" />
-    <!-- Direct Tailwind CDN link with integrity checks disabled -->
     <script src="https://cdn.tailwindcss.com?v=3.3.3"></script>
     <style>
       body {
@@ -477,85 +453,166 @@
             </h1>
           </div>
         </div>
-        
+
         <hr class="border-gray-700 dark:border-gray-600 w-full col-span-full md:col-span-10 mx-0 my-1">
 
         <div class="p-2 w-full md:col-span-10 col-span-1 mb-1">
-          <!-- Talks list -->
           <div class="talks-list pl-2">
-            <!-- TALKS_LIST_START -->
-        <!-- Auto-generated talks list -->
-        <div class="py-6 border-b border-gray-700 dark:border-gray-600">
-          <h2 class="text-xl font-bold mb-2 text-purple-400">From Static Tokens to Attestation: The Evolution of Secure Node Joining</h2>
-          <p class="text-gray-300 mb-4">This panel examines secure node joining in modern Kubernetes environments where tools like Karpenter and Cluster API enable rapid infrastructure scaling. We discuss defining a root of trust, validating node identities with metadata and attestation, locking down CSR approval, and other security mechanisms to prevent unauthorized nodes from joining clusters.</p>
-          <div class="text-base text-gray-400">
-            <p class="mb-2 font-bold">presented at:</p>
-            <div class="mb-3"><div class="font-semibold">KubeCon + CloudNativeCon Europe</div><div class="text-sm text-gray-500">Amsterdam (2026-03-24)</div><div class="mt-1"><a href="https://www.youtube.com/watch?v=MIO3tDk0GnI" class="text-purple-500 dark:text-purple-400 text-sm no-underline transition-colors duration-200 hover:text-white hover:underline">recording</a></div></div>
-          </div>
-        </div>
-        <div class="py-6 border-b border-gray-700 dark:border-gray-600">
-          <h2 class="text-xl font-bold mb-2 text-purple-400">my mainframe runs arch btw</h2>
-          <p class="text-gray-300 mb-4">A lightning talk exploring the journey of getting Arch Linux running on IBM mainframe hardware. Because if it runs Linux, it should run Arch.</p>
-          <div class="text-base text-gray-400">
-            <p class="mb-2 font-bold">presented at:</p>
-            <div class="mb-3"><div class="font-semibold">FOSDEM</div><div class="text-sm text-gray-500">Brussels (2026-01-31)</div><div class="mt-1"><a href="/talks/slides/fosdem-bru-mainframe.pdf" class="text-purple-500 dark:text-purple-400 mr-3 text-sm no-underline transition-colors duration-200 hover:text-white hover:underline">slides</a><a href="https://fosdem.org/2026/schedule/event/CNPVJL-lightning_lightning_talks_1/" class="text-purple-500 dark:text-purple-400 text-sm no-underline transition-colors duration-200 hover:text-white hover:underline">recording</a></div></div>
-          </div>
-        </div>
-        <div class="py-6 border-b border-gray-700 dark:border-gray-600">
-          <h2 class="text-xl font-bold mb-2 text-purple-400">Beyond CAS: Why the world needs another Kubernetes Cluster Autoscaler</h2>
-          <p class="text-gray-300 mb-4">Kubernetes' Cluster Autoscaler (CAS) has been the standard for dynamic scaling, but it suffers from limitations that hamper its performance in some scenarios. This talk introduces Karpenter, a modern alternative designed for real-time, workload-specific node provisioning.</p>
-          <div class="text-base text-gray-400">
-            <p class="mb-2 font-bold">presented at:</p>
-            <div class="mb-3"><div class="font-semibold">DevConf</div><div class="text-sm text-gray-500">Brno (2025-06-14)</div><div class="mt-1"><a href="/talks/slides/devconf-brno-karpenter.pdf" class="text-purple-500 dark:text-purple-400 mr-3 text-sm no-underline transition-colors duration-200 hover:text-white hover:underline">slides</a><a href="https://youtu.be/YDyalb99OZc" class="text-purple-500 dark:text-purple-400 text-sm no-underline transition-colors duration-200 hover:text-white hover:underline">recording</a></div></div>
-          </div>
-        </div>
-        <div class="py-6 border-b border-gray-700 dark:border-gray-600">
-          <h2 class="text-xl font-bold mb-2 text-purple-400">Mainframes Aren't Dead, They're Just Running Kubernetes Now</h2>
-          <p class="text-gray-300 mb-4">Mainframes have been declared dead more times than JavaScript frameworks have been invented—but here they are, still running the backbone of global finance, government, and enterprise computing. And now? They’re running Kubernetes too. This talk covers the why and how of running Kubernetes on mainframes, from containerization on z/OS to networking, workload orchestration, and real-world use cases. We’ll break down the challenges, the benefits, and whether this is a clever hack or a genuinely viable approach for modern infrastructure. If you think mainframes are relics, think again—because they’re running microservices now.</p>
-          <p class="mb-4"><a href="https://developers.redhat.com/learn/openshift/implement-multi-architecture-openshift-cluster-s390x-lpar" class="text-purple-500 dark:text-purple-400 no-underline transition-colors duration-200 hover:text-white hover:underline">Read related blog post →</a></p>
-          <div class="text-base text-gray-400">
-            <p class="mb-2 font-bold">presented at:</p>
-            <div class="mb-3"><div class="font-semibold">Container Days </div><div class="text-sm text-gray-500">Hamburg (2025-09-10)</div><div class="mt-1"><a href="/talks/slides/cd-ham-mainframe.pdf" class="text-purple-500 dark:text-purple-400 mr-3 text-sm no-underline transition-colors duration-200 hover:text-white hover:underline">slides</a><a href="https://youtu.be/LBkB-J5PQ9s" class="text-purple-500 dark:text-purple-400 text-sm no-underline transition-colors duration-200 hover:text-white hover:underline">recording</a></div></div><div class="mb-3"><div class="font-semibold">The Linux Foundation Open Source Summit Europe</div><div class="text-sm text-gray-500">Amsterdam (2025-08-25)</div><div class="mt-1"><a href="/talks/slides/oss-ams-mainframe.pdf" class="text-purple-500 dark:text-purple-400 mr-3 text-sm no-underline transition-colors duration-200 hover:text-white hover:underline">slides</a><a href="https://youtu.be/l2391SqiI-8" class="text-purple-500 dark:text-purple-400 text-sm no-underline transition-colors duration-200 hover:text-white hover:underline">recording</a></div></div><div class="mb-3"><div class="font-semibold line-through opacity-50">The Linux Foundation Open Source Summit North America</div><div class="text-sm text-gray-500 line-through opacity-50">Denver (2025-06-24)</div><div class="text-sm text-gray-500 italic">cancelled</div></div><div class="mb-3"><div class="font-semibold">Kubernetes Community Days Bratislava</div><div class="text-sm text-gray-500">Bratislava (2025-06-06)</div><div class="mt-1"><a href="/talks/slides/kcd-bra-mainframe.pdf" class="text-purple-500 dark:text-purple-400 mr-3 text-sm no-underline transition-colors duration-200 hover:text-white hover:underline">slides</a><a href="https://youtu.be/dG9woWoW4m0" class="text-purple-500 dark:text-purple-400 text-sm no-underline transition-colors duration-200 hover:text-white hover:underline">recording</a></div></div><div class="mb-3"><div class="font-semibold">Kubernetes Community Day Budapest</div><div class="text-sm text-gray-500">Budapest (2025-04-24)</div><div class="mt-1"><a href="/talks/slides/kcd-bud-mainframe.pdf" class="text-purple-500 dark:text-purple-400 mr-3 text-sm no-underline transition-colors duration-200 hover:text-white hover:underline">slides</a><a href="https://youtu.be/MRLQL0BNVPk" class="text-purple-500 dark:text-purple-400 text-sm no-underline transition-colors duration-200 hover:text-white hover:underline">recording</a></div></div>
-          </div>
-        </div>
-        <div class="py-6 border-b border-gray-700 dark:border-gray-600">
-          <h2 class="text-xl font-bold mb-2 text-purple-400">A Hitchhiker's Guide to Developer Productivity</h2>
-          <p class="text-gray-300 mb-4">This talk explores how Golden Paths and Software Templates can revolutionize developer productivity by providing prescribed, automated practices for common development tasks. Using "The Hitchhiker's Guide to the Galaxy" as a playful metaphor, Janina and I demonstrate how these standardized approaches can eliminate the maze of repetitive tasks, reduce cognitive overload, and cut lead times from 50 days to mere minutes. The presentation covers the what, why, and how of implementing Golden Paths, while emphasizing the importance of treating templates as user-centric products that must evolve with technology and align with organizational culture to truly transform the developer experience from chaos to clarity.</p>
-          <p class="mb-4"><a href="https://developers.redhat.com/articles/2025/01/29/how-golden-paths-improve-developer-productivity" class="text-purple-500 dark:text-purple-400 no-underline transition-colors duration-200 hover:text-white hover:underline">Read related blog post →</a></p>
-          <div class="text-base text-gray-400">
-            <p class="mb-2 font-bold">presented at:</p>
-            <div class="mb-3"><div class="font-semibold">Swiss Dev Confederation</div><div class="text-sm text-gray-500">Zurich (2024-09-17)</div><div class="mt-1"><a href="/talks/slides/ch-devconf-hyperspace.pdf" class="text-purple-500 dark:text-purple-400 mr-3 text-sm no-underline transition-colors duration-200 hover:text-white hover:underline">slides</a></div></div>
-          </div>
-        </div>
-        <div class="py-6 border-b border-gray-700 dark:border-gray-600">
-          <h2 class="text-xl font-bold mb-2 text-purple-400">9001 Ways to break out of a container</h2>
-          <p class="text-gray-300 mb-4">Container security is essential, but what happens when the bad guys get creative? In "9001 ways to break out of a container," we’ll explore the fascinating and terrifying techniques hackers use to escape containers. This talk will cover: how attackers slip through the cracks to take over the linux kernel by bypassing the ebpf validator, and the most common and overlooked weaknesses that make containers vulnerable, real-world cases of container escapes and the aftermath. Whether you’re a seasoned security professional or just curious about hacking techniques, this talk should have takeaways for everyone. </p>
-          <p class="mb-4"><a href="/blog/t-rex.html" class="text-purple-500 dark:text-purple-400 no-underline transition-colors duration-200 hover:text-white hover:underline">Read related blog post →</a></p>
-          <div class="text-base text-gray-400">
-            <p class="mb-2 font-bold">presented at:</p>
-            <div class="mb-3"><div class="font-semibold">WHY2025 Hacker Camp</div><div class="text-sm text-gray-500">Geestmerambacht, Netherlands (2025-08-08)</div></div><div class="mb-3"><div class="font-semibold">Bsides Bristol</div><div class="text-sm text-gray-500">Bristol (2024-08-30)</div><div class="mt-1"><a href="/talks/slides/bsides-brs-containers.pdf" class="text-purple-500 dark:text-purple-400 mr-3 text-sm no-underline transition-colors duration-200 hover:text-white hover:underline">slides</a><a href="https://youtu.be/_7R-Ha3cnuE  " class="text-purple-500 dark:text-purple-400 text-sm no-underline transition-colors duration-200 hover:text-white hover:underline">recording</a></div></div>
-          </div>
-        </div>
-        <div class="py-6 border-b border-gray-700 dark:border-gray-600">
-          <h2 class="text-xl font-bold mb-2 text-purple-400">Would You Like Fries With That? AI for Developer Productivity</h2>
-          <p class="text-gray-300 mb-4">In this talk, Kyra and I showcased how we successfully integrated an AI-powered recommendation engine into Red Hat's Internal Developer Platform, based on Backstage.io, to enhance developer productivity. Our approach leverages data from the Developer Hub analytics API and processes it with Knative event-driven microservices to generate smart action proposals. Using OpenShift AI, we train and deploy AI models that power a frontend plugin in the Developer Hub, providing tailored recommendations directly to users powered by ML-Ops pipelines. By leveraging the power of AI, we have improved the developer experience by providing personalized suggestions for tools, resources, and tutorials, resulting in increased productivity and efficiency.</p>
-          <div class="text-base text-gray-400">
-            <p class="mb-2 font-bold">presented at:</p>
-            <div class="mb-3"><div class="font-semibold">Kubernetes Community Days Zurich Rejects</div><div class="text-sm text-gray-500">Zurich (2024-06-13)</div><div class="mt-1"><a href="/talks/slides/kcd-zrh-backstage-ai.pdf" class="text-purple-500 dark:text-purple-400 mr-3 text-sm no-underline transition-colors duration-200 hover:text-white hover:underline">slides</a></div></div><div class="mb-3"><div class="font-semibold">Uphill conf</div><div class="text-sm text-gray-500">Bern (2024-05-16)</div><div class="mt-1"><a href="/talks/slides/uphill-2024-ai-dev.pdf" class="text-purple-500 dark:text-purple-400 mr-3 text-sm no-underline transition-colors duration-200 hover:text-white hover:underline">slides</a><a href="https://youtu.be/ThKFpgDGM94" class="text-purple-500 dark:text-purple-400 text-sm no-underline transition-colors duration-200 hover:text-white hover:underline">recording</a></div></div>
-          </div>
-        </div>
-            <!-- TALKS_LIST_END -->
+            <div class="py-6 border-b border-gray-700 dark:border-gray-600">
+              <h2 class="text-xl font-bold mb-2 text-purple-400">From Static Tokens to Attestation: The Evolution of Secure Node Joining</h2>
+              <p class="text-gray-300 mb-4">This panel examines secure node joining in modern Kubernetes environments where tools like Karpenter and Cluster API enable rapid infrastructure scaling. We discuss defining a root of trust, validating node identities with metadata and attestation, locking down CSR approval, and other security mechanisms to prevent unauthorized nodes from joining clusters.</p>
+              <div class="text-base text-gray-400">
+                <p class="mb-2 font-bold">presented at:</p>
+                <div class="mb-3">
+                  <div class="font-semibold">KubeCon + CloudNativeCon Europe</div>
+                  <div class="text-sm text-gray-500">Amsterdam (2026-03-24)</div>
+                  <div class="mt-1">
+                    <a href="https://www.youtube.com/watch?v=MIO3tDk0GnI" class="text-purple-500 dark:text-purple-400 text-sm no-underline transition-colors duration-200 hover:text-white hover:underline">recording</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="py-6 border-b border-gray-700 dark:border-gray-600">
+              <h2 class="text-xl font-bold mb-2 text-purple-400">my mainframe runs arch btw</h2>
+              <p class="text-gray-300 mb-4">A lightning talk exploring the journey of getting Arch Linux running on IBM mainframe hardware. Because if it runs Linux, it should run Arch.</p>
+              <div class="text-base text-gray-400">
+                <p class="mb-2 font-bold">presented at:</p>
+                <div class="mb-3">
+                  <div class="font-semibold">FOSDEM</div>
+                  <div class="text-sm text-gray-500">Brussels (2026-01-31)</div>
+                  <div class="mt-1">
+                    <a href="/talks/slides/fosdem-bru-mainframe.pdf" class="text-purple-500 dark:text-purple-400 mr-3 text-sm no-underline transition-colors duration-200 hover:text-white hover:underline">slides</a>
+                    <a href="https://fosdem.org/2026/schedule/event/CNPVJL-lightning_lightning_talks_1/" class="text-purple-500 dark:text-purple-400 text-sm no-underline transition-colors duration-200 hover:text-white hover:underline">recording</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="py-6 border-b border-gray-700 dark:border-gray-600">
+              <h2 class="text-xl font-bold mb-2 text-purple-400">Beyond CAS: Why the world needs another Kubernetes Cluster Autoscaler</h2>
+              <p class="text-gray-300 mb-4">Kubernetes&#39; Cluster Autoscaler (CAS) has been the standard for dynamic scaling, but it suffers from limitations that hamper its performance in some scenarios. This talk introduces Karpenter, a modern alternative designed for real-time, workload-specific node provisioning.</p>
+              <div class="text-base text-gray-400">
+                <p class="mb-2 font-bold">presented at:</p>
+                <div class="mb-3">
+                  <div class="font-semibold">DevConf</div>
+                  <div class="text-sm text-gray-500">Brno (2025-06-14)</div>
+                  <div class="mt-1">
+                    <a href="/talks/slides/devconf-brno-karpenter.pdf" class="text-purple-500 dark:text-purple-400 mr-3 text-sm no-underline transition-colors duration-200 hover:text-white hover:underline">slides</a>
+                    <a href="https://youtu.be/YDyalb99OZc" class="text-purple-500 dark:text-purple-400 text-sm no-underline transition-colors duration-200 hover:text-white hover:underline">recording</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="py-6 border-b border-gray-700 dark:border-gray-600">
+              <h2 class="text-xl font-bold mb-2 text-purple-400">Mainframes Aren&#39;t Dead, They&#39;re Just Running Kubernetes Now</h2>
+              <p class="text-gray-300 mb-4">Mainframes have been declared dead more times than JavaScript frameworks have been invented—but here they are, still running the backbone of global finance, government, and enterprise computing. And now? They’re running Kubernetes too. This talk covers the why and how of running Kubernetes on mainframes, from containerization on z/OS to networking, workload orchestration, and real-world use cases. We’ll break down the challenges, the benefits, and whether this is a clever hack or a genuinely viable approach for modern infrastructure. If you think mainframes are relics, think again—because they’re running microservices now.</p>
+              <p class="mb-4"><a href="https://developers.redhat.com/learn/openshift/implement-multi-architecture-openshift-cluster-s390x-lpar" class="text-purple-500 dark:text-purple-400 no-underline transition-colors duration-200 hover:text-white hover:underline">Read related blog post</a></p>
+              <div class="text-base text-gray-400">
+                <p class="mb-2 font-bold">presented at:</p>
+                <div class="mb-3">
+                  <div class="font-semibold">Container Days</div>
+                  <div class="text-sm text-gray-500">Hamburg (2025-09-10)</div>
+                  <div class="mt-1">
+                    <a href="/talks/slides/cd-ham-mainframe.pdf" class="text-purple-500 dark:text-purple-400 mr-3 text-sm no-underline transition-colors duration-200 hover:text-white hover:underline">slides</a>
+                    <a href="https://youtu.be/LBkB-J5PQ9s" class="text-purple-500 dark:text-purple-400 text-sm no-underline transition-colors duration-200 hover:text-white hover:underline">recording</a>
+                  </div>
+                </div>
+                <div class="mb-3">
+                  <div class="font-semibold">The Linux Foundation Open Source Summit Europe</div>
+                  <div class="text-sm text-gray-500">Amsterdam (2025-08-25)</div>
+                  <div class="mt-1">
+                    <a href="/talks/slides/oss-ams-mainframe.pdf" class="text-purple-500 dark:text-purple-400 mr-3 text-sm no-underline transition-colors duration-200 hover:text-white hover:underline">slides</a>
+                    <a href="https://youtu.be/l2391SqiI-8" class="text-purple-500 dark:text-purple-400 text-sm no-underline transition-colors duration-200 hover:text-white hover:underline">recording</a>
+                  </div>
+                </div>
+                <div class="mb-3">
+                  <div class="font-semibold line-through opacity-50">The Linux Foundation Open Source Summit North America</div>
+                  <div class="text-sm text-gray-500 line-through opacity-50">Denver (2025-06-24)</div>
+                  <div class="text-sm text-gray-500 italic">cancelled</div>
+                </div>
+                <div class="mb-3">
+                  <div class="font-semibold">Kubernetes Community Days Bratislava</div>
+                  <div class="text-sm text-gray-500">Bratislava (2025-06-06)</div>
+                  <div class="mt-1">
+                    <a href="/talks/slides/kcd-bra-mainframe.pdf" class="text-purple-500 dark:text-purple-400 mr-3 text-sm no-underline transition-colors duration-200 hover:text-white hover:underline">slides</a>
+                    <a href="https://youtu.be/dG9woWoW4m0" class="text-purple-500 dark:text-purple-400 text-sm no-underline transition-colors duration-200 hover:text-white hover:underline">recording</a>
+                  </div>
+                </div>
+                <div class="mb-3">
+                  <div class="font-semibold">Kubernetes Community Day Budapest</div>
+                  <div class="text-sm text-gray-500">Budapest (2025-04-24)</div>
+                  <div class="mt-1">
+                    <a href="/talks/slides/kcd-bud-mainframe.pdf" class="text-purple-500 dark:text-purple-400 mr-3 text-sm no-underline transition-colors duration-200 hover:text-white hover:underline">slides</a>
+                    <a href="https://youtu.be/MRLQL0BNVPk" class="text-purple-500 dark:text-purple-400 text-sm no-underline transition-colors duration-200 hover:text-white hover:underline">recording</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="py-6 border-b border-gray-700 dark:border-gray-600">
+              <h2 class="text-xl font-bold mb-2 text-purple-400">A Hitchhiker&#39;s Guide to Developer Productivity</h2>
+              <p class="text-gray-300 mb-4">This talk explores how Golden Paths and Software Templates can revolutionize developer productivity by providing prescribed, automated practices for common development tasks. Using &#34;The Hitchhiker&#39;s Guide to the Galaxy&#34; as a playful metaphor, Janina and I demonstrate how these standardized approaches can eliminate the maze of repetitive tasks, reduce cognitive overload, and cut lead times from 50 days to mere minutes. The presentation covers the what, why, and how of implementing Golden Paths, while emphasizing the importance of treating templates as user-centric products that must evolve with technology and align with organizational culture to truly transform the developer experience from chaos to clarity.</p>
+              <p class="mb-4"><a href="https://developers.redhat.com/articles/2025/01/29/how-golden-paths-improve-developer-productivity" class="text-purple-500 dark:text-purple-400 no-underline transition-colors duration-200 hover:text-white hover:underline">Read related blog post</a></p>
+              <div class="text-base text-gray-400">
+                <p class="mb-2 font-bold">presented at:</p>
+                <div class="mb-3">
+                  <div class="font-semibold">Swiss Dev Confederation</div>
+                  <div class="text-sm text-gray-500">Zurich (2024-09-17)</div>
+                  <div class="mt-1">
+                    <a href="/talks/slides/ch-devconf-hyperspace.pdf" class="text-purple-500 dark:text-purple-400 mr-3 text-sm no-underline transition-colors duration-200 hover:text-white hover:underline">slides</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="py-6 border-b border-gray-700 dark:border-gray-600">
+              <h2 class="text-xl font-bold mb-2 text-purple-400">9001 Ways to break out of a container</h2>
+              <p class="text-gray-300 mb-4">Container security is essential, but what happens when the bad guys get creative? In &#34;9001 ways to break out of a container,&#34; we’ll explore the fascinating and terrifying techniques hackers use to escape containers. This talk will cover: how attackers slip through the cracks to take over the linux kernel by bypassing the ebpf validator, and the most common and overlooked weaknesses that make containers vulnerable, real-world cases of container escapes and the aftermath. Whether you’re a seasoned security professional or just curious about hacking techniques, this talk should have takeaways for everyone.</p>
+              <p class="mb-4"><a href="/blog/t-rex.html" class="text-purple-500 dark:text-purple-400 no-underline transition-colors duration-200 hover:text-white hover:underline">Read related blog post</a></p>
+              <div class="text-base text-gray-400">
+                <p class="mb-2 font-bold">presented at:</p>
+                <div class="mb-3">
+                  <div class="font-semibold">WHY2025 Hacker Camp</div>
+                  <div class="text-sm text-gray-500">Geestmerambacht, Netherlands (2025-08-08)</div>
+                </div>
+                <div class="mb-3">
+                  <div class="font-semibold">Bsides Bristol</div>
+                  <div class="text-sm text-gray-500">Bristol (2024-08-30)</div>
+                  <div class="mt-1">
+                    <a href="/talks/slides/bsides-brs-containers.pdf" class="text-purple-500 dark:text-purple-400 mr-3 text-sm no-underline transition-colors duration-200 hover:text-white hover:underline">slides</a>
+                    <a href="https://youtu.be/_7R-Ha3cnuE" class="text-purple-500 dark:text-purple-400 text-sm no-underline transition-colors duration-200 hover:text-white hover:underline">recording</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="py-6 border-b border-gray-700 dark:border-gray-600">
+              <h2 class="text-xl font-bold mb-2 text-purple-400">Would You Like Fries With That? AI for Developer Productivity</h2>
+              <p class="text-gray-300 mb-4">In this talk, Kyra and I showcased how we successfully integrated an AI-powered recommendation engine into Red Hat&#39;s Internal Developer Platform, based on Backstage.io, to enhance developer productivity. Our approach leverages data from the Developer Hub analytics API and processes it with Knative event-driven microservices to generate smart action proposals. Using OpenShift AI, we train and deploy AI models that power a frontend plugin in the Developer Hub, providing tailored recommendations directly to users powered by ML-Ops pipelines. By leveraging the power of AI, we have improved the developer experience by providing personalized suggestions for tools, resources, and tutorials, resulting in increased productivity and efficiency.</p>
+              <div class="text-base text-gray-400">
+                <p class="mb-2 font-bold">presented at:</p>
+                <div class="mb-3">
+                  <div class="font-semibold">Kubernetes Community Days Zurich Rejects</div>
+                  <div class="text-sm text-gray-500">Zurich (2024-06-13)</div>
+                  <div class="mt-1">
+                    <a href="/talks/slides/kcd-zrh-backstage-ai.pdf" class="text-purple-500 dark:text-purple-400 mr-3 text-sm no-underline transition-colors duration-200 hover:text-white hover:underline">slides</a>
+                  </div>
+                </div>
+                <div class="mb-3">
+                  <div class="font-semibold">Uphill conf</div>
+                  <div class="text-sm text-gray-500">Bern (2024-05-16)</div>
+                  <div class="mt-1">
+                    <a href="/talks/slides/uphill-2024-ai-dev.pdf" class="text-purple-500 dark:text-purple-400 mr-3 text-sm no-underline transition-colors duration-200 hover:text-white hover:underline">slides</a>
+                    <a href="https://youtu.be/ThKFpgDGM94" class="text-purple-500 dark:text-purple-400 text-sm no-underline transition-colors duration-200 hover:text-white hover:underline">recording</a>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </main>
     <script>
-      // Make external links open in new tabs
       document.addEventListener('DOMContentLoaded', function() {
         const allLinks = document.querySelectorAll('a');
         allLinks.forEach(function(link) {
           const href = link.getAttribute('href');
-          // Check if it's an external link (starts with http/https and not josie.lol)
           if (href && (href.startsWith('http://') || href.startsWith('https://')) && !href.includes('josie.lol')) {
             link.setAttribute('target', '_blank');
             link.setAttribute('rel', 'noopener noreferrer');
@@ -564,4 +621,4 @@
       });
     </script>
   </body>
-</html> 
+</html>

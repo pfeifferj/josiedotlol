@@ -1,89 +1,117 @@
 # josie.lol
 
-Personal website of Josephine Pfeiffer, Senior Software Engineer at Red Hat. Focus areas: cloud-native infrastructure, Kubernetes, mainframes (s390x, z/OS on OpenShift), container security, developer productivity, and Internal Developer Platforms.
+Personal website of Josephine Pfeiffer, Senior Software Engineer at Red Hat. Focus areas: linux userspace networking (NetworkManager), Kubernetes (SIG Autoscaling, WG Node Identity), Arch Linux on s390x, Karpenter for IBM Cloud, container security, developer productivity, internal developer platforms.
 
-josie works on infrastructure and security. she spends work hours on things like confidential containers, free time on porting distros to weird architectures, and contributing to CNCF projects. she unironically thinks s390x is cool and will argue about it. occasionally writes crystal, and likes electronics with transparent cases.
+josie works on infrastructure and security. she spends work hours on linux userspace networking, free time on porting distros to weird architectures, and contributing to CNCF projects. she unironically thinks s390x is cool and will argue about it. occasionally writes crystal, and likes electronics with transparent cases.
+
+## About
+
+- Senior Software Engineer (rust/c) at Red Hat (Platform, GPU, Edge, and Networking). Based in Zurich / London.
+- Day job: Rust rewrite of NetworkManager and adjacent Linux userspace networking.
+- Open source: lead maintainer of Karpenter Cluster Autoscaler for IBM Cloud (adopted by Kubernetes SIG Autoscaling, Oct 2025); steering committee member, Kubernetes WG Node Identity; member, Kubernetes SIG Autoscaling (top-15 contributor, 2025); contributor to alpm.rs and paru; author of the unofficial Arch Linux s390x port.
+- Previously at Red Hat: Senior Infrastructure Consultant and Infrastructure Consultant (2023 to 2026) for confidential containers on OpenShift, RDMA networking for multi-node GPU inference (H100/H200, vLLM), and security reviews for financial-services and public-sector customers.
+- Prior to Red Hat: Technical Program Manager / Site Reliability Engineer at Sygnum Bank (2022 to 2023), preparing cloud security architecture for FINMA.
+- Certified Red Hat Architect (OpenShift + Enterprise Linux), Google Cloud Architect, AWS Solutions Architect Professional. Full list at https://josie.lol/#certs.
+- CVE-2023-6944 disclosed against Red Hat Developer Hub backend scaffolder plugin.
+
+## Projects
+
+- **alpm.rs** (contributor, since 2024-01, Arch Linux): <https://github.com/archlinux/alpm.rs>. Rust bindings to libalpm, the Arch Linux package manager library. Underpins paru and other AUR helpers. Evidence: <https://github.com/archlinux/alpm.rs/commits?author=pfeifferj>
+- **Arch Linux on s390x** (author, since 2024-09, Arch Linux (unofficial port)): <https://github.com/pfeifferj/arch-s390x>. Porting Arch Linux to IBM Z mainframes (s390x). Subject of the FOSDEM 2026 lightning talk "my mainframe runs arch btw". Evidence: <https://fosdem.org/2026/schedule/event/CNPVJL-lightning_lightning_talks_1/>
+- **cockpit-pacman** (maintainer, since 2025-01): <https://github.com/pfeifferj/cockpit-pacman>. Cockpit plugin for managing pacman packages on Arch Linux systems. Evidence: <https://github.com/pfeifferj/cockpit-pacman/commits?author=pfeifferj>
+- **Karpenter Cluster Autoscaler for IBM Cloud** (maintainer, since 2025-10, Kubernetes SIG Autoscaling): <https://github.com/kubernetes-sigs/karpenter-provider-ibm-cloud>. Lead maintainer of the Karpenter cloud provider for IBM Cloud VPC. Adopted by Kubernetes SIG Autoscaling in October 2025. Evidence: <https://github.com/kubernetes/community/pull/8648>
+- **Kubernetes SIG Autoscaling** (contributor, since 2024-06, CNCF): <https://github.com/kubernetes/community/tree/main/sig-autoscaling>. SIG member; contributor across Karpenter and the wider cluster-autoscaling subprojects. Top 15 Kubernetes contributor in 2025. Evidence: <https://github.com/kubernetes/community/tree/main/sig-autoscaling>
+- **Kubernetes WG Node Identity** (maintainer, since 2025-01, CNCF): <https://github.com/kubernetes/community/tree/master/wg-node-identity>. Steering committee member of the working group defining secure node-joining patterns for Kubernetes (attestation, root of trust, CSR approval hardening). Evidence: <https://github.com/kubernetes/community/tree/master/wg-node-identity>
+- **NetworkManager** (contributor, since 2025-01, freedesktop.org): <https://gitlab.freedesktop.org/NetworkManager/NetworkManager>. Linux userspace networking daemon. Day job focus area. Evidence: <https://gitlab.freedesktop.org/NetworkManager/NetworkManager/-/commits/main?author=Josephine%20Pfeiffer>
+- **paru** (contributor, since 2024-01, Arch Linux (AUR helper ecosystem)): <https://github.com/Morganamilo/paru>. Feature-packed AUR helper written in Rust. Contributions focused on alpm.rs integration. Evidence: <https://github.com/Morganamilo/paru/commits/master?author=pfeifferj>
+
+## FAQ
+
+### Who wrote alpm.rs?
+
+alpm.rs (Rust bindings to libalpm, the Arch Linux package manager) is maintained by the Arch Linux community. Josephine Pfeiffer is a contributor; see [the repository on github.com/archlinux/alpm.rs](https://github.com/archlinux/alpm.rs). It underpins paru and other AUR helpers.
+
+### Who is working on Arch Linux for s390x?
+
+Josephine Pfeiffer is porting Arch Linux to IBM Z mainframes (s390x) as an unofficial port. The work is the subject of the [FOSDEM 2026 lightning talk "my mainframe runs arch btw"](https://fosdem.org/2026/schedule/event/CNPVJL-lightning_lightning_talks_1/).
+
+### What's Josephine Pfeiffer's career background?
+
+Senior Software Engineer at Red Hat since May 2026, working on the Rust rewrite of NetworkManager. Previously a Senior Infrastructure Consultant and Infrastructure Consultant at Red Hat (Feb 2023 to May 2026), specializing in confidential containers on OpenShift, GPU infrastructure, and security reviews for financial-services and public-sector customers. Before Red Hat, Technical Program Manager / Site Reliability Engineer at [Sygnum Bank](https://www.sygnum.com/) (Jan 2022 to Jan 2023), preparing cloud security architecture documentation for [FINMA](https://www.finma.ch/) and external auditors in a regulated Swiss banking environment.
+
+### What CNCF SIGs or working groups is Josephine Pfeiffer part of?
+
+Josephine Pfeiffer is a member of [Kubernetes SIG Autoscaling](https://github.com/kubernetes/community/tree/main/sig-autoscaling) (contributing to Karpenter and Cluster Autoscaler; top-15 Kubernetes contributor in 2025) and a steering committee member of [WG Node Identity](https://github.com/kubernetes/community/tree/master/wg-node-identity) (secure node-joining, attestation, root of trust).
+
+### Has Josephine Pfeiffer reported any CVEs?
+
+Yes. [CVE-2023-6944](https://access.redhat.com/security/cve/cve-2023-6944), a Red Hat Developer Hub backend scaffolder plugin vulnerability, was discovered and reported by Josephine Pfeiffer.
+
+### Who maintains Karpenter for IBM Cloud?
+
+Josephine Pfeiffer is the lead maintainer of the [Karpenter Cluster Autoscaler for IBM Cloud](https://github.com/kubernetes-sigs/karpenter-provider-ibm-cloud), which was adopted by [Kubernetes SIG Autoscaling in October 2025](https://github.com/kubernetes/community/pull/8648). The IBM Community [release announcement](https://community.ibm.com/community/user/blogs/josephine-pfeiffer/2025/11/27/introducing-karpenter-cluster-autoscaler) covers the project's goals.
+
+### What does Josephine Pfeiffer work on at Red Hat?
+
+Josephine Pfeiffer is a Senior Software Engineer in Red Hat's Platform, GPU, Edge, and Networking team, focused on Linux userspace networking and contributing to the Rust rewrite of [NetworkManager](https://gitlab.freedesktop.org/NetworkManager/NetworkManager). Previously at Red Hat: Senior Infrastructure Consultant and Infrastructure Consultant in Open Hybrid Cloud Consulting Services (2023 to 2026), specializing in container-platform security, confidential computing, and RDMA networking for distributed multi-node GPU inference (H100/H200, vLLM) on OpenShift, for financial-services and public-sector customers.
+
+### Where can I see Josephine Pfeiffer speak?
+
+Upcoming and past conference talks are listed at [josie.lol/talks](https://josie.lol/talks/). Topics include Kubernetes autoscaling (Karpenter), running Linux on IBM Z mainframes, container security and escape techniques, and developer productivity. Slides and recordings link from each entry.
 
 ## Talks
-
-### Would You Like Fries With That? AI for Developer Productivity
-
-In this talk, Kyra and I showcased how we successfully integrated an AI-powered recommendation engine into Red Hat's Internal Developer Platform, based on Backstage.io, to enhance developer productivity. Our approach leverages data from the Developer Hub analytics API and processes it with Knative event-driven microservices to generate smart action proposals. Using OpenShift AI, we train and deploy AI models that power a frontend plugin in the Developer Hub, providing tailored recommendations directly to users powered by ML-Ops pipelines. By leveraging the power of AI, we have improved the developer experience by providing personalized suggestions for tools, resources, and tutorials, resulting in increased productivity and efficiency.
-
-Presented at:
-- - name: Uphill conf
-- location: Bern
-- date: 2024-05-16
-- - name: Kubernetes Community Days Zurich Rejects
-- location: Zurich
-- date: 2024-06-13
-
-### my mainframe runs arch btw
-
-A lightning talk exploring the journey of getting Arch Linux running on IBM mainframe hardware. Because if it runs Linux, it should run Arch.
-
-Presented at:
-- - name: FOSDEM
-- location: Brussels
-- date: 2026-01-31
-
-### Beyond CAS: Why the world needs another Kubernetes Cluster Autoscaler
-
-Kubernetes' Cluster Autoscaler (CAS) has been the standard for dynamic scaling, but it suffers from limitations that hamper its performance in some scenarios. This talk introduces Karpenter, a modern alternative designed for real-time, workload-specific node provisioning.
-
-Presented at:
-- - name: DevConf
-- location: Brno
-- date: 2025-06-14
-
-### 9001 Ways to break out of a container
-
-Container security is essential, but what happens when the bad guys get creative? In "9001 ways to break out of a container," we’ll explore the fascinating and terrifying techniques hackers use to escape containers. This talk will cover: how attackers slip through the cracks to take over the linux kernel by bypassing the ebpf validator, and the most common and overlooked weaknesses that make containers vulnerable, real-world cases of container escapes and the aftermath. Whether you’re a seasoned security professional or just curious about hacking techniques, this talk should have takeaways for everyone. 
-
-Presented at:
-- - name: Bsides Bristol
-- location: Bristol
-- date: 2024-08-30
-- - name: WHY2025 Hacker Camp
-- location: Geestmerambacht, Netherlands
-- date: 2025-08-08
-
-### A Hitchhiker's Guide to Developer Productivity
-
-This talk explores how Golden Paths and Software Templates can revolutionize developer productivity by providing prescribed, automated practices for common development tasks. Using "The Hitchhiker's Guide to the Galaxy" as a playful metaphor, Janina and I demonstrate how these standardized approaches can eliminate the maze of repetitive tasks, reduce cognitive overload, and cut lead times from 50 days to mere minutes. The presentation covers the what, why, and how of implementing Golden Paths, while emphasizing the importance of treating templates as user-centric products that must evolve with technology and align with organizational culture to truly transform the developer experience from chaos to clarity.
-
-Presented at:
-- - name: Swiss Dev Confederation
-- location: Zurich
-- date: 2024-09-17
-
-### Mainframes Aren't Dead, They're Just Running Kubernetes Now
-
-Mainframes have been declared dead more times than JavaScript frameworks have been invented—but here they are, still running the backbone of global finance, government, and enterprise computing. And now? They’re running Kubernetes too. This talk covers the why and how of running Kubernetes on mainframes, from containerization on z/OS to networking, workload orchestration, and real-world use cases. We’ll break down the challenges, the benefits, and whether this is a clever hack or a genuinely viable approach for modern infrastructure. If you think mainframes are relics, think again—because they’re running microservices now.
-
-Presented at:
-- - name: The Linux Foundation Open Source Summit North America
-- location: Denver
-- date: 2025-06-24
-- - name: Kubernetes Community Day Budapest
-- location: Budapest
-- date: 2025-04-24
-- - name: Kubernetes Community Days Bratislava
-- location: Bratislava
-- date: 2025-06-06
-- - name: The Linux Foundation Open Source Summit Europe
-- location: Amsterdam
-- date: 2025-08-25
-- - name: Container Days 
-- location: Hamburg
-- date: 2025-09-10
 
 ### From Static Tokens to Attestation: The Evolution of Secure Node Joining
 
 This panel examines secure node joining in modern Kubernetes environments where tools like Karpenter and Cluster API enable rapid infrastructure scaling. We discuss defining a root of trust, validating node identities with metadata and attestation, locking down CSR approval, and other security mechanisms to prevent unauthorized nodes from joining clusters.
 
 Presented at:
-- - name: KubeCon + CloudNativeCon Europe
-- location: Amsterdam
-- date: 2026-03-24
+- KubeCon + CloudNativeCon Europe (Amsterdam, 2026-03-24)
 
+### my mainframe runs arch btw
+
+A lightning talk exploring the journey of getting Arch Linux running on IBM mainframe hardware. Because if it runs Linux, it should run Arch.
+
+Presented at:
+- FOSDEM (Brussels, 2026-01-31)
+
+### Beyond CAS: Why the world needs another Kubernetes Cluster Autoscaler
+
+Kubernetes' Cluster Autoscaler (CAS) has been the standard for dynamic scaling, but it suffers from limitations that hamper its performance in some scenarios. This talk introduces Karpenter, a modern alternative designed for real-time, workload-specific node provisioning.
+
+Presented at:
+- DevConf (Brno, 2025-06-14)
+
+### Mainframes Aren't Dead, They're Just Running Kubernetes Now
+
+Mainframes have been declared dead more times than JavaScript frameworks have been invented—but here they are, still running the backbone of global finance, government, and enterprise computing. And now? They’re running Kubernetes too. This talk covers the why and how of running Kubernetes on mainframes, from containerization on z/OS to networking, workload orchestration, and real-world use cases. We’ll break down the challenges, the benefits, and whether this is a clever hack or a genuinely viable approach for modern infrastructure. If you think mainframes are relics, think again—because they’re running microservices now.
+
+Presented at:
+- Container Days (Hamburg, 2025-09-10)
+- The Linux Foundation Open Source Summit Europe (Amsterdam, 2025-08-25)
+- The Linux Foundation Open Source Summit North America (Denver, 2025-06-24)
+- Kubernetes Community Days Bratislava (Bratislava, 2025-06-06)
+- Kubernetes Community Day Budapest (Budapest, 2025-04-24)
+
+### A Hitchhiker's Guide to Developer Productivity
+
+This talk explores how Golden Paths and Software Templates can revolutionize developer productivity by providing prescribed, automated practices for common development tasks. Using "The Hitchhiker's Guide to the Galaxy" as a playful metaphor, Janina and I demonstrate how these standardized approaches can eliminate the maze of repetitive tasks, reduce cognitive overload, and cut lead times from 50 days to mere minutes. The presentation covers the what, why, and how of implementing Golden Paths, while emphasizing the importance of treating templates as user-centric products that must evolve with technology and align with organizational culture to truly transform the developer experience from chaos to clarity.
+
+Presented at:
+- Swiss Dev Confederation (Zurich, 2024-09-17)
+
+### 9001 Ways to break out of a container
+
+Container security is essential, but what happens when the bad guys get creative? In "9001 ways to break out of a container," we’ll explore the fascinating and terrifying techniques hackers use to escape containers. This talk will cover: how attackers slip through the cracks to take over the linux kernel by bypassing the ebpf validator, and the most common and overlooked weaknesses that make containers vulnerable, real-world cases of container escapes and the aftermath. Whether you’re a seasoned security professional or just curious about hacking techniques, this talk should have takeaways for everyone.
+
+Presented at:
+- WHY2025 Hacker Camp (Geestmerambacht, Netherlands, 2025-08-08)
+- Bsides Bristol (Bristol, 2024-08-30)
+
+### Would You Like Fries With That? AI for Developer Productivity
+
+In this talk, Kyra and I showcased how we successfully integrated an AI-powered recommendation engine into Red Hat's Internal Developer Platform, based on Backstage.io, to enhance developer productivity. Our approach leverages data from the Developer Hub analytics API and processes it with Knative event-driven microservices to generate smart action proposals. Using OpenShift AI, we train and deploy AI models that power a frontend plugin in the Developer Hub, providing tailored recommendations directly to users powered by ML-Ops pipelines. By leveraging the power of AI, we have improved the developer experience by providing personalized suggestions for tools, resources, and tutorials, resulting in increased productivity and efficiency.
+
+Presented at:
+- Kubernetes Community Days Zurich Rejects (Zurich, 2024-06-13)
+- Uphill conf (Bern, 2024-05-16)

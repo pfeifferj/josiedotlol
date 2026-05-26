@@ -17,38 +17,13 @@
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://josie.lol/blog/karpenter-ibm-cloud.html</loc>
-    <lastmod>2025-12-09</lastmod>
+    <loc>https://josie.lol/about/</loc>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://josie.lol/blog/multi-architecture-openshift-s390x.html</loc>
-    <lastmod>2025-09</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://josie.lol/blog/golden-paths-developer-productivity.html</loc>
-    <lastmod>2025-01-29</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.9</priority>
   </url>
   <url>
     <loc>https://josie.lol/blog/t-rex.html</loc>
     <lastmod>2024-09-23</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://josie.lol/blog/compiler-podcast-air-gapped.html</loc>
-    <lastmod>2024-05-30</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://josie.lol/blog/self-service-developer-hub.html</loc>
-    <lastmod>2024-03-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -59,13 +34,13 @@
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://josie.lol/talks/slides/kcd-bud-mainframe.pdf</loc>
-    <lastmod>2025-01-01</lastmod>
+    <loc>https://josie.lol/talks/slides/devconf-brno-karpenter.pdf</loc>
+    <lastmod>2025-06-14</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://josie.lol/talks/slides/kcd-bra-mainframe.pdf</loc>
+    <loc>https://josie.lol/talks/slides/cd-ham-mainframe.pdf</loc>
     <lastmod>2025-01-01</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.7</priority>
@@ -77,26 +52,14 @@
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://josie.lol/talks/slides/cd-ham-mainframe.pdf</loc>
+    <loc>https://josie.lol/talks/slides/kcd-bra-mainframe.pdf</loc>
     <lastmod>2025-01-01</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://josie.lol/talks/slides/devconf-brno-karpenter.pdf</loc>
-    <lastmod>2025-06-14</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://josie.lol/talks/slides/uphill-2024-ai-dev.pdf</loc>
-    <lastmod>2024-05-16</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://josie.lol/talks/slides/kcd-zrh-backstage-ai.pdf</loc>
-    <lastmod>2024-05-16</lastmod>
+    <loc>https://josie.lol/talks/slides/kcd-bud-mainframe.pdf</loc>
+    <lastmod>2025-01-01</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -109,6 +72,18 @@
   <url>
     <loc>https://josie.lol/talks/slides/bsides-brs-containers.pdf</loc>
     <lastmod>2024-08-30</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://josie.lol/talks/slides/kcd-zrh-backstage-ai.pdf</loc>
+    <lastmod>2024-05-16</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://josie.lol/talks/slides/uphill-2024-ai-dev.pdf</loc>
+    <lastmod>2024-05-16</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.7</priority>
   </url>

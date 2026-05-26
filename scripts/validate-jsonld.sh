@@ -4,7 +4,7 @@ set -euo pipefail
 shopt -s nullglob
 
 targets=("index.html")
-for f in blog/*.html talks/*.html; do
+for f in blog/*.html talks/*.html about/*.html; do
     [[ "$f" == *template.html ]] && continue
     targets+=("$f")
 done

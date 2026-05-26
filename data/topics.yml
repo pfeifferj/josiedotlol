@@ -1,0 +1,34 @@
+# knowsAbout topics for josie.lol Person JSON-LD.
+# Each entry becomes a schema.org DefinedTerm with optional inDefinedTermSet URL
+# pointing at a canonical reference (Wikipedia, project homepage, CNCF glossary).
+topics:
+  - name: Kubernetes
+    url: https://kubernetes.io/
+  - name: Karpenter
+    url: https://karpenter.sh/
+  - name: Cluster Autoscaling
+    url: https://github.com/kubernetes/autoscaler
+  - name: Node Attestation
+    url: https://en.wikipedia.org/wiki/Trusted_Platform_Module
+  - name: s390x
+    url: https://en.wikipedia.org/wiki/Z/Architecture
+  - name: IBM Z
+    url: https://www.ibm.com/it-infrastructure/z
+  - name: Arch Linux
+    url: https://archlinux.org/
+  - name: NetworkManager
+    url: https://networkmanager.dev/
+  - name: Linux Userspace Networking
+    url: https://en.wikipedia.org/wiki/Network_management
+  - name: eBPF
+    url: https://ebpf.io/
+  - name: Container Security
+    url: https://en.wikipedia.org/wiki/OS-level_virtualization
+  - name: OpenShift
+    url: https://www.redhat.com/en/technologies/cloud-computing/openshift
+  - name: Confidential Containers
+    url: https://confidentialcontainers.org/
+  - name: Internal Developer Platforms
+    url: https://internaldeveloperplatform.org/
+  - name: Backstage
+    url: https://backstage.io/

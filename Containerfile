@@ -2,14 +2,20 @@
 FROM fedora:latest AS builder
 
 # Install build dependencies
-RUN dnf install -y pandoc perl jq && dnf clean all
+RUN dnf install -y \
+        python3 \
+        python3-jinja2 \
+        python3-pyyaml \
+        python3-markdown \
+        python3-requests \
+    && dnf clean all
 
 # Copy source files to builder
 WORKDIR /build
 COPY . .
 
-# Run the blog build script to generate static HTML files
-RUN ./scripts/blog-build.sh
+# Render the static site
+RUN python3 scripts/build.py
 
 # Stage 2: Runtime container
 FROM quay.io/fedora/httpd-24

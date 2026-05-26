@@ -20,7 +20,7 @@ clean: stop
 	-podman rmi $(IMAGE)
 
 generate:
-	bash scripts/blog-build.sh
+	python3 scripts/build.py
 
 lint:
 	pre-commit run --all-files
