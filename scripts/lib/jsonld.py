@@ -87,7 +87,7 @@ def projects(ctx: dict) -> dict | None:
     }
 
 
-def website(_ctx: dict) -> dict:
+def website(ctx: dict) -> dict:
     return {
         "@context": "https://schema.org",
         "@type": "WebSite",
@@ -109,12 +109,7 @@ def website(_ctx: dict) -> dict:
             "email": "hi@josie.lol",
             "url": f"{SITE_URL}/",
             "mainEntityOfPage": {"@id": f"{SITE_URL}/about/"},
-            "sameAs": [
-                "https://github.com/pfeifferj",
-                "https://gitlab.com/users/josie",
-                "https://www.linkedin.com/in/josephine-pfeiffer/",
-                "https://www.credly.com/users/pfeifferj",
-            ],
+            "sameAs": list(ctx["person"]["same_as"]),
         },
     }
 
