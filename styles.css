@@ -44,6 +44,14 @@ main {
   flex-direction: column;
 }
 
+/* Bio paragraph: hardcoded <br> breaks are sized for ~55ch desktop terminal.
+   On narrow screens they cause stair-stepped wraps; let the text reflow. */
+@media (max-width: 767px) {
+  .bio br.wrap {
+    display: none;
+  }
+}
+
 /* For screens wider than 768px */
 @media (min-width: 768px) {
   main {
