@@ -4,11 +4,11 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="icon" href="/favicon.ico" />
     <title>Unleashing the T-Rex - How Containers Sometimes Fail to Contain - josie.lol</title>
 
     <meta name="description" content="An exploration of container escapes through the lens of Jurassic Park" />
     <meta name="author" content="Josephine Pfeiffer" />
-    <link rel="icon" href="/favicon.ico" />
     <link rel="canonical" href="https://josie.lol/blog/t-rex.html" />
     <link rel="alternate" type="application/rss+xml" title="josie.lol blog RSS Feed" href="https://josie.lol/rss.xml" />
 
@@ -25,13 +25,6 @@
     <meta name="twitter:title" content="Unleashing the T-Rex - How Containers Sometimes Fail to Contain - josie.lol" />
     <meta name="twitter:description" content="An exploration of container escapes through the lens of Jurassic Park" />
     <meta name="twitter:image" content="https://josie.lol/screenshot.png" />
-
-    <link
-      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;700&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="/styles.css" />
-    <script src="https://cdn.tailwindcss.com?v=3.3.3"></script>
 
     <script type="application/ld+json">
 {
@@ -60,6 +53,12 @@
 }
     </script>
 
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/styles.css" />
+    <script src="https://cdn.tailwindcss.com?v=3.3.3"></script>
     <style>
       body {
         background-color: #121212;
@@ -67,6 +66,8 @@
         font-family: 'IBM Plex Mono', monospace;
       }
       .josie { color: #bb86fc; }
+    </style>
+    <style>
       .blog-content {
         line-height: 1.7;
         font-family: 'IBM Plex Mono', monospace;
@@ -356,9 +357,12 @@ RUN make groovy
           });
           pre.appendChild(copyButton);
         });
-
-        const blogLinks = document.querySelectorAll('.blog-content a');
-        blogLinks.forEach(function(link) {
+      });
+    </script>
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        const allLinks = document.querySelectorAll('a');
+        allLinks.forEach(function(link) {
           const href = link.getAttribute('href');
           if (href && (href.startsWith('http://') || href.startsWith('https://')) && !href.includes('josie.lol')) {
             link.setAttribute('target', '_blank');

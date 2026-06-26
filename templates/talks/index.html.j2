@@ -1,16 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+{% extends "_base.html.j2" %}
+{% block head %}
     <title>josie.lol - talks</title>
 
     <meta
       name="description"
       content="conference talks and presentations by josephine pfeiffer on cloud-native tech, infrastructure, security, and developer experience."
     />
-    <link rel="icon" href="/favicon.ico" />
     <link rel="canonical" href="{{ site.url }}/talks/" />
     <link rel="alternate" type="application/rss+xml" title="josie.lol blog RSS feed" href="/rss.xml" />
 
@@ -38,27 +33,8 @@
       content="conference talks and presentations by josephine pfeiffer on cloud-native tech, infrastructure, security, and developer experience."
     />
     <meta name="twitter:image" property="twitter:image" content="{{ site.url }}/screenshot.png" />
-
-    <link
-      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;700&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="/styles.css" />
-    <script src="https://cdn.tailwindcss.com?v=3.3.3"></script>
-    <style>
-      body {
-        background-color: #121212;
-        color: #e0e0e0;
-        font-family: 'IBM Plex Mono', monospace;
-      }
-      .josie {
-        color: #bb86fc;
-      }
-    </style>
-  </head>
-  <body class="bg-[#121212] text-gray-200">
-    <main>
-      <div class="grid md:grid-cols-10 grid-cols-1 justify-start gap-0 max-w-5xl mx-auto">
+{% endblock %}
+{% block content %}
         <div class="p-2 w-full md:col-span-10 col-span-1 mt-4 mb-1">
           <span class="inline-block px-2 py-1 mb-1 rounded bg-opacity-5 bg-purple-500">❯ ls -la <span class="josie">/talks</span></span>
           <div class="flex items-center justify-between">
@@ -122,19 +98,4 @@
 {% for t in past %}{{ talk_card(t) }}{% endfor %}
           </div>
         </div>
-      </div>
-    </main>
-    <script>
-      document.addEventListener('DOMContentLoaded', function() {
-        const allLinks = document.querySelectorAll('a');
-        allLinks.forEach(function(link) {
-          const href = link.getAttribute('href');
-          if (href && (href.startsWith('http://') || href.startsWith('https://')) && !href.includes('josie.lol')) {
-            link.setAttribute('target', '_blank');
-            link.setAttribute('rel', 'noopener noreferrer');
-          }
-        });
-      });
-    </script>
-  </body>
-</html>
+{% endblock %}

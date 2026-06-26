@@ -4,13 +4,13 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="icon" href="/favicon.ico" />
     <title>josie.lol - blog</title>
 
     <meta
       name="description"
       content="blog by josephine pfeiffer on cloud-native tech, infrastructure, security, and developer experience."
     />
-    <link rel="icon" href="/favicon.ico" />
     <link rel="canonical" href="https://josie.lol/blog/" />
     <link rel="alternate" type="application/rss+xml" title="josie.lol blog RSS feed" href="/rss.xml" />
 
@@ -150,5 +150,17 @@
         </div>
       </div>
     </main>
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        const allLinks = document.querySelectorAll('a');
+        allLinks.forEach(function(link) {
+          const href = link.getAttribute('href');
+          if (href && (href.startsWith('http://') || href.startsWith('https://')) && !href.includes('josie.lol')) {
+            link.setAttribute('target', '_blank');
+            link.setAttribute('rel', 'noopener noreferrer');
+          }
+        });
+      });
+    </script>
   </body>
 </html>

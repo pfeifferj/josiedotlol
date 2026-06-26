@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="icon" href="/favicon.ico" />
+{% block head %}{% endblock %}
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/styles.css" />
+    <script src="https://cdn.tailwindcss.com?v=3.3.3"></script>
+    <style>
+      body {
+        background-color: #121212;
+        color: #e0e0e0;
+        font-family: 'IBM Plex Mono', monospace;
+      }
+      .josie { color: #bb86fc; }
+    </style>
+{% block styles %}{% endblock %}
+  </head>
+  <body class="bg-[#121212] text-gray-200">
+    <main>
+      <div class="grid md:grid-cols-10 grid-cols-1 justify-start gap-0 max-w-5xl mx-auto">
+{% block content %}{% endblock %}
+      </div>
+    </main>
+{% block scripts %}{% endblock %}
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        const allLinks = document.querySelectorAll('a');
+        allLinks.forEach(function(link) {
+          const href = link.getAttribute('href');
+          if (href && (href.startsWith('http://') || href.startsWith('https://')) && !href.includes('josie.lol')) {
+            link.setAttribute('target', '_blank');
+            link.setAttribute('rel', 'noopener noreferrer');
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
