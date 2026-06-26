@@ -61,6 +61,20 @@ Upcoming and past conference talks are listed at [josie.lol/talks](https://josie
 
 ## Talks
 
+### touching grass (and 40-year-old c code)
+
+The Linux kernel, NetworkManager, glibc, OpenSSL, etc are codebases that aren't going anywhere but can seem quite arcane and unapproachable. This talk surveys the sense and nonsense of using contemporary tooling on these projects based on real world learnings. We'll explore whether AI-assisted bug archaeology on mailing list archives is reliable, and whether you can use MCP servers as a translation layer between 1990s workflows and present day SDLC.
+
+Presented at:
+- DevOpsDays Vilnius (Vilnius, 2026-09-30)
+
+### Code Generation is O(1), Code Review is O(n)
+
+AI didn't make software cheaper. It moved the cost from writing code to understanding it, and dumped that bill on maintainers who never agreed to pay it. This talk names the mechanism: generation is O(1) for the contributor, comprehension is O(n) for the maintainer. Every symptom we're complaining about in 2026, the PR firehose, the slop, reviewer burnout, is the same asymmetry wearing different hats.
+
+Presented at:
+- FrOSCon (Sankt Augustin, 2026-08-15)
+
 ### From Static Tokens to Attestation: The Evolution of Secure Node Joining
 
 This panel examines secure node joining in modern Kubernetes environments where tools like Karpenter and Cluster API enable rapid infrastructure scaling. We discuss defining a root of trust, validating node identities with metadata and attestation, locking down CSR approval, and other security mechanisms to prevent unauthorized nodes from joining clusters.

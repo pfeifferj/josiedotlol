@@ -11,6 +11,8 @@ josie works on infrastructure and security. she spends work hours on linux users
 
 ## Talks
 
+- [touching grass (and 40-year-old c code)](https://josie.lol/talks/#talk-touching-grass): The Linux kernel, NetworkManager, glibc, OpenSSL, etc are codebases that aren't going anywhere but can seem quite arcane and unapproachable. This talk surveys the sense and nonsense of using contempor
+- [Code Generation is O(1), Code Review is O(n)](https://josie.lol/talks/#talk-code-generation-o1-review-on): AI didn't make software cheaper. It moved the cost from writing code to understanding it, and dumped that bill on maintainers who never agreed to pay it. This talk names the mechanism: generation is O
 - [From Static Tokens to Attestation: The Evolution of Secure Node Joining](https://josie.lol/talks/#talk-secure-node-joining): This panel examines secure node joining in modern Kubernetes environments where tools like Karpenter and Cluster API enable rapid infrastructure scaling. We discuss defining a root of trust, validatin
 - [my mainframe runs arch btw](https://josie.lol/talks/#talk-arch-mainframes-lightning): A lightning talk exploring the journey of getting Arch Linux running on IBM mainframe hardware. Because if it runs Linux, it should run Arch.
 - [Beyond CAS: Why the world needs another Kubernetes Cluster Autoscaler](https://josie.lol/talks/#talk-beyond-cas-karpenter): Kubernetes' Cluster Autoscaler (CAS) has been the standard for dynamic scaling, but it suffers from limitations that hamper its performance in some scenarios. This talk introduces Karpenter, a modern 

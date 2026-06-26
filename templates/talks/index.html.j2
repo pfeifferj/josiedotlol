@@ -73,8 +73,7 @@
         <hr class="border-gray-700 dark:border-gray-600 w-full col-span-full md:col-span-10 mx-0 my-1">
 
         <div class="p-2 w-full md:col-span-10 col-span-1 mb-1">
-          <div class="talks-list pl-2">
-{% for t in talks %}
+{% macro talk_card(t) %}
             <div class="py-6 border-b border-gray-700 dark:border-gray-600">
               <h2 class="text-xl font-bold mb-2 text-purple-400">{{ t.title }}</h2>
               <p class="text-gray-300 mb-4">{{ t.abstract }}</p>
@@ -82,7 +81,7 @@
               <p class="mb-4"><a href="{{ t.related_post }}" class="text-purple-500 dark:text-purple-400 no-underline transition-colors duration-200 hover:text-white hover:underline">Read related blog post</a></p>
 {% endif %}
               <div class="text-base text-gray-400">
-                <p class="mb-2 font-bold">presented at:</p>
+                <p class="mb-2 font-bold">{{ "presenting at:" if t.upcoming else "presented at:" }}</p>
 {% for c in t.conferences %}
                 <div class="mb-3">
 {% if c.cancelled %}
@@ -107,7 +106,20 @@
 {% endfor %}
               </div>
             </div>
-{% endfor %}
+{% endmacro %}
+{% set upcoming = talks | selectattr("upcoming") | list %}
+{% set past = talks | rejectattr("upcoming") | list %}
+{% if upcoming %}
+          <p class="mb-1 px-2 text-sm uppercase tracking-wide text-purple-400">upcoming</p>
+          <div class="talks-list pl-2 mb-6">
+{% for t in upcoming %}{{ talk_card(t) }}{% endfor %}
+          </div>
+{% endif %}
+{% if past %}
+          <p class="mb-1 px-2 text-sm uppercase tracking-wide text-gray-500">past</p>
+{% endif %}
+          <div class="talks-list pl-2">
+{% for t in past %}{{ talk_card(t) }}{% endfor %}
           </div>
         </div>
       </div>

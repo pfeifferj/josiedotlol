@@ -196,10 +196,16 @@ def load_talks() -> list[dict[str, Any]]:
             c["date"] = normalize_date(c.get("date"))
         confs.sort(key=lambda c: c.get("date") or "", reverse=True)
         meta["conferences"] = confs
+        latest = confs[0]["date"] if confs else meta["date_iso"]
+        meta["upcoming"] = bool(latest) and latest >= _today()
         out.append(meta)
     # Sort by top-level talk date desc (matches bash output).
     out.sort(key=lambda t: t.get("date_iso") or "", reverse=True)
     return out
+
+
+def _today() -> str:
+    return datetime.now(timezone.utc).strftime("%Y-%m-%d")
 
 
 def first_paragraph(body: str) -> str:

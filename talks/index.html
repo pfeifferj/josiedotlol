@@ -20,6 +20,24 @@
   "@graph": [
     {
       "@type": "PresentationDigitalDocument",
+      "@id": "https://josie.lol/talks/#talk-touching-grass",
+      "name": "touching grass (and 40-year-old c code)",
+      "description": "The Linux kernel, NetworkManager, glibc, OpenSSL, etc are codebases that aren't going anywhere but can seem quite arcane and unapproachable. This talk surveys the sense and nonsense of using contemporary tooling on these projects based on real world learnings. We'll explore whether AI-assisted bug archaeology on mailing list archives is reliable, and whether you can use MCP servers as a translation layer between 1990s workflows and present day SDLC.",
+      "author": {
+        "@id": "https://josie.lol/#person"
+      }
+    },
+    {
+      "@type": "PresentationDigitalDocument",
+      "@id": "https://josie.lol/talks/#talk-code-generation-o1-review-on",
+      "name": "Code Generation is O(1), Code Review is O(n)",
+      "description": "AI didn't make software cheaper. It moved the cost from writing code to understanding it, and dumped that bill on maintainers who never agreed to pay it. This talk names the mechanism: generation is O(1) for the contributor, comprehension is O(n) for the maintainer. Every symptom we're complaining about in 2026, the PR firehose, the slop, reviewer burnout, is the same asymmetry wearing different hats.",
+      "author": {
+        "@id": "https://josie.lol/#person"
+      }
+    },
+    {
+      "@type": "PresentationDigitalDocument",
       "@id": "https://josie.lol/talks/#talk-secure-node-joining",
       "name": "From Static Tokens to Attestation: The Evolution of Secure Node Joining",
       "description": "This panel examines secure node joining in modern Kubernetes environments where tools like Karpenter and Cluster API enable rapid infrastructure scaling. We discuss defining a root of trust, validating node identities with metadata and attestation, locking down CSR approval, and other security mechanisms to prevent unauthorized nodes from joining clusters.",
@@ -79,6 +97,38 @@
       "description": "In this talk, Kyra and I showcased how we successfully integrated an AI-powered recommendation engine into Red Hat's Internal Developer Platform, based on Backstage.io, to enhance developer productivity. Our approach leverages data from the Developer Hub analytics API and processes it with Knative event-driven microservices to generate smart action proposals. Using OpenShift AI, we train and deploy AI models that power a frontend plugin in the Developer Hub, providing tailored recommendations directly to users powered by ML-Ops pipelines. By leveraging the power of AI, we have improved the developer experience by providing personalized suggestions for tools, resources, and tutorials, resulting in increased productivity and efficiency.",
       "author": {
         "@id": "https://josie.lol/#person"
+      }
+    },
+    {
+      "@type": "Event",
+      "@id": "https://josie.lol/talks/#event-touching-grass-0",
+      "name": "DevOpsDays Vilnius",
+      "startDate": "2026-09-30",
+      "performer": {
+        "@id": "https://josie.lol/#person"
+      },
+      "workPresented": {
+        "@id": "https://josie.lol/talks/#talk-touching-grass"
+      },
+      "location": {
+        "@type": "Place",
+        "name": "Vilnius"
+      }
+    },
+    {
+      "@type": "Event",
+      "@id": "https://josie.lol/talks/#event-code-generation-o1-review-on-0",
+      "name": "FrOSCon",
+      "startDate": "2026-08-15",
+      "performer": {
+        "@id": "https://josie.lol/#person"
+      },
+      "workPresented": {
+        "@id": "https://josie.lol/talks/#talk-code-generation-o1-review-on"
+      },
+      "location": {
+        "@type": "Place",
+        "name": "Sankt Augustin"
       }
     },
     {
@@ -457,6 +507,32 @@
         <hr class="border-gray-700 dark:border-gray-600 w-full col-span-full md:col-span-10 mx-0 my-1">
 
         <div class="p-2 w-full md:col-span-10 col-span-1 mb-1">
+          <p class="mb-1 px-2 text-sm uppercase tracking-wide text-purple-400">upcoming</p>
+          <div class="talks-list pl-2 mb-6">
+            <div class="py-6 border-b border-gray-700 dark:border-gray-600">
+              <h2 class="text-xl font-bold mb-2 text-purple-400">touching grass (and 40-year-old c code)</h2>
+              <p class="text-gray-300 mb-4">The Linux kernel, NetworkManager, glibc, OpenSSL, etc are codebases that aren&#39;t going anywhere but can seem quite arcane and unapproachable. This talk surveys the sense and nonsense of using contemporary tooling on these projects based on real world learnings. We&#39;ll explore whether AI-assisted bug archaeology on mailing list archives is reliable, and whether you can use MCP servers as a translation layer between 1990s workflows and present day SDLC.</p>
+              <div class="text-base text-gray-400">
+                <p class="mb-2 font-bold">presenting at:</p>
+                <div class="mb-3">
+                  <div class="font-semibold">DevOpsDays Vilnius</div>
+                  <div class="text-sm text-gray-500">Vilnius (2026-09-30)</div>
+                </div>
+              </div>
+            </div>
+            <div class="py-6 border-b border-gray-700 dark:border-gray-600">
+              <h2 class="text-xl font-bold mb-2 text-purple-400">Code Generation is O(1), Code Review is O(n)</h2>
+              <p class="text-gray-300 mb-4">AI didn&#39;t make software cheaper. It moved the cost from writing code to understanding it, and dumped that bill on maintainers who never agreed to pay it. This talk names the mechanism: generation is O(1) for the contributor, comprehension is O(n) for the maintainer. Every symptom we&#39;re complaining about in 2026, the PR firehose, the slop, reviewer burnout, is the same asymmetry wearing different hats.</p>
+              <div class="text-base text-gray-400">
+                <p class="mb-2 font-bold">presenting at:</p>
+                <div class="mb-3">
+                  <div class="font-semibold">FrOSCon</div>
+                  <div class="text-sm text-gray-500">Sankt Augustin (2026-08-15)</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <p class="mb-1 px-2 text-sm uppercase tracking-wide text-gray-500">past</p>
           <div class="talks-list pl-2">
             <div class="py-6 border-b border-gray-700 dark:border-gray-600">
               <h2 class="text-xl font-bold mb-2 text-purple-400">From Static Tokens to Attestation: The Evolution of Secure Node Joining</h2>
